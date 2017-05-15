@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex1", "Ex1\Ex1.csproj", "{D4228214-FBE8-47B8-B206-3DFED6AE28ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchAlgorithmsLib", "SearchAlgorithmsLib\SearchAlgorithmsLib.csproj", "{4CDA06C4-F1AB-45F3-A5F3-AF697F4AB464}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{FB15B3D8-D136-42F5-85BA-B949336F1569}"
+	ProjectSection(SolutionItems) = preProject
+		packages\MazeGeneratorLib.dll = packages\MazeGeneratorLib.dll
+		packages\MazeLib.dll = packages\MazeLib.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adapter", "Adapter\Adapter.csproj", "{2AE7A674-B8A3-4E7F-A8B5-DA5460BDCC92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicationSettings", "CommunicationSettings\CommunicationSettings.csproj", "{BDC31661-A45A-4B02-AFFB-3A8BD35E30CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{86501EE2-D9D3-494B-9FB8-AA0F24533D9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{A4A3D764-AFA3-45A4-AB6E-5BF551A3E53B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4228214-FBE8-47B8-B206-3DFED6AE28ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4228214-FBE8-47B8-B206-3DFED6AE28ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4228214-FBE8-47B8-B206-3DFED6AE28ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4228214-FBE8-47B8-B206-3DFED6AE28ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CDA06C4-F1AB-45F3-A5F3-AF697F4AB464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CDA06C4-F1AB-45F3-A5F3-AF697F4AB464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CDA06C4-F1AB-45F3-A5F3-AF697F4AB464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CDA06C4-F1AB-45F3-A5F3-AF697F4AB464}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AE7A674-B8A3-4E7F-A8B5-DA5460BDCC92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AE7A674-B8A3-4E7F-A8B5-DA5460BDCC92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AE7A674-B8A3-4E7F-A8B5-DA5460BDCC92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AE7A674-B8A3-4E7F-A8B5-DA5460BDCC92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDC31661-A45A-4B02-AFFB-3A8BD35E30CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC31661-A45A-4B02-AFFB-3A8BD35E30CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC31661-A45A-4B02-AFFB-3A8BD35E30CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC31661-A45A-4B02-AFFB-3A8BD35E30CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86501EE2-D9D3-494B-9FB8-AA0F24533D9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86501EE2-D9D3-494B-9FB8-AA0F24533D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86501EE2-D9D3-494B-9FB8-AA0F24533D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86501EE2-D9D3-494B-9FB8-AA0F24533D9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4A3D764-AFA3-45A4-AB6E-5BF551A3E53B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4A3D764-AFA3-45A4-AB6E-5BF551A3E53B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4A3D764-AFA3-45A4-AB6E-5BF551A3E53B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4A3D764-AFA3-45A4-AB6E-5BF551A3E53B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

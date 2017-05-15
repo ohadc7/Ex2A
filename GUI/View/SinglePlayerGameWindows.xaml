@@ -1,0 +1,22 @@
+﻿<Window x:Class="GUI.View.SinglePlayerGameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI.View"  xmlns:Controls="clr-namespace:GUI.Controls"
+        mc:Ignorable="d"
+        Title="SinglePlayerGameWindows" Height="Auto" Width="Auto">
+    <Grid>
+        <Canvas Margin="0,72,0,0">
+<<<<<<< HEAD
+            <Controls:MazeUserControl   x:Name="MyMazeBoard" />
+=======
+            <Controls:MazeUserControl x:Name="MyMazeBoard" Loaded="MazeUserControl_Loaded" />
+>>>>>>> 2c81bce1505e4f719e547c05425abf8d46f79009
+            
+        </Canvas>
+        <Button Content="Restart game" HorizontalAlignment="Left" Margin="24,21,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Solve maze" HorizontalAlignment="Left" Margin="117,21,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Main menu" HorizontalAlignment="Left" Margin="207,21,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+    </Grid>
+</Window>
