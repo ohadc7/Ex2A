@@ -33,7 +33,7 @@ namespace GUI.View
 
         private void MazeUserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            azeBoard.Draw();
+            MyMazeBoard.Draw();
         }
     }
 }
