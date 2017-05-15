@@ -13,41 +13,7 @@ namespace GUI.Model
 {
     class MazeUserControlModel
     {
-        public int WidthOfBlock
-        {
-            get;
-            set;
-        }
-        public int HeightOfBlock
-        {
-            get;
-            set;
-        }
-        public int Rows
-        {
-            get;
-            set;
-        }
-        public int Cols
-        {
-            get;
-            set;
-        }
-        public string Maze
-        {
-            get;
-            set;
-        }
-        public Position InitPosition
-        {
-            get;
-            set;
-        }
-        public Position GoalPosition
-        {
-            get;
-            set;
-        }
+       
 
 
     }

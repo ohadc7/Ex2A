@@ -12,12 +12,14 @@
 // <summary></summary>
 // ***********************************************************************
 using System;
+using System.ComponentModel;
 using System.Configuration;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using CommunicationSettings;
+using MazeLib;
 
 namespace GUI.Model
 {
@@ -27,7 +29,74 @@ namespace GUI.Model
     class ClientModel : IClientModel
     {
 
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        public ClientModel()
+        {
+
+        }
+
+        public void NotifyPropertyChanged(string propName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+        }
+
+        private int widthOfBlock;
+        public int WidthOfBlock
+        {
+            get { return widthOfBlock; }
+            set { widthOfBlock = value;
+                NotifyPropertyChanged("WidthBlock");
+            }
+        }
+        private int heightOfBlock;
+        public int HeightOfBlock
+        {
+            get { return heightOfBlock; }
+            set { heightOfBlock = value;
+                NotifyPropertyChanged("HeightOfBlock");
+            }
+        }
+        private int rows;
+        public int Rows
+        {
+            get { return rows; }
+            set { rows = value;
+                NotifyPropertyChanged("Rows");
+            }
+        }
+        private int cols;
+        public int Cols
+        {
+            get { return cols; }
+            set { cols = value;
+                NotifyPropertyChanged("Cols");
+            }
+        }
+        private string maze;
+        public string Maze
+        {
+            get { return maze; }
+            set { maze = value;
+                NotifyPropertyChanged("maze"); }
+        }
+        private Position initPosition;
+        public Position InitPosition
+        {
+            get { return initPosition; }
+            set {
+                initPosition = value;
+                NotifyPropertyChanged("InitPosition"); }
+        }
+        private Position goalPosition;
+        public Position GoalPosition
+        {
+            get { return goalPosition; }
+            set { goalPosition = value;
+                NotifyPropertyChanged("GoalPosition");
+            }
+        }
 
         /// <summary>
         /// Communicate with the server.
@@ -35,85 +104,41 @@ namespace GUI.Model
         /// do it iteratively.
         /// (in 'Multi-Player-Mode' save the connection with the server. in 'Single-Player-Mode' disconnect.)
         /// </summary>
-        public void Communicate()
+        public TcpClient Connect()
         {
-            var command = "";
-            //flag that indicates that the user entered a comment that haven't been sent yet.
-            var commandIsReadyToBeSent = false;
-            //in every iteration: connect to the server. send a massage to it, receive its answer and print it.
-            //if the answer is Messages.PassToMultiPlayerMassage, then manage long communication with the server,
-            //i.e. both send massages and get answers in parallel until the answer is Messages.PassToSinglePlayerMassage.
-            while (true)
+       
+         //connect to the server:
+            var ep = new IPEndPoint(
+                IPAddress.Parse(GUI.Properties.Settings.Default.ServerIP), Convert.ToInt32(GUI.Properties.Settings.Default.ServerPort));
+            var client = new TcpClient();
+            client.Connect(ep);
+            return client;
+            //Console.WriteLine("debug massage: You are connected");
+        }
+        public string send(TcpClient client, string messege) {
+
+            using (var stream = client.GetStream())
+            using (var reader = new BinaryReader(stream))
+            using (var writer = new BinaryWriter(stream))
             {
-                //read command from the user:
-                if (!commandIsReadyToBeSent)
-                {
-                    //Console.Write("debug massage: Please enter a command: ");
-                    command = Console.ReadLine();
-                    commandIsReadyToBeSent = true;
-                }
+                writer.Write(messege);
+                return reader.ReadString();
 
-                //connect to the server:
-                var ep = new IPEndPoint(
-                    IPAddress.Parse(GUI.Properties.Settings.Default.ServerIP), Convert.ToInt32(GUI.Properties.Settings.Default.ServerPort));
-                var client = new TcpClient();
-                client.Connect(ep);
-                //Console.WriteLine("debug massage: You are connected");
-                
-                using (var stream = client.GetStream())
-                using (var reader = new BinaryReader(stream))
-                using (var writer = new BinaryWriter(stream))
-                {
-                    // Send the command to server:
-                    if (commandIsReadyToBeSent)
-                    {
-                        writer.Write(command);
-                        commandIsReadyToBeSent = false;
-                    }
-
-                    // Get answer from server and print it:
-                    var answerFromServer = reader.ReadString();
-                    if (!(answerFromServer == Messages.PassToMultiPlayerMassage))
-                        Console.WriteLine("{0}", answerFromServer);
-                    //Manage long communication with the server:
-                    else
-                    {
-                        //flag to stop the long communication
-                        var stop = false;
-                        var readUpdates = new Task(() =>
-                        {
-                            while (!stop)
-                            {
-                                var updateFromServer = reader.ReadString();
-                                if (updateFromServer == Messages.PassToSinglePlayerMassage)
-                                    stop = true;
-                                else
-                                    Console.WriteLine(updateFromServer);
-                            }
-                        });
-                        readUpdates.Start();
-
-                        while (!stop)
-                        {
-                            if (!commandIsReadyToBeSent)
-                            {
-                                //Console.Write("debug massage: You are in MultiPlayer mode. Please enter a command: ");
-                                command = Console.ReadLine();
-                                commandIsReadyToBeSent = true;
-                            }
-                            if (!stop)
-                                if (commandIsReadyToBeSent)
-                                {
-                                    writer.Write(command);
-                                    commandIsReadyToBeSent = false;
-                                }
-                        }
-                        stop = true;
-                    }
-                }
-                //Disconnect
-                client.Close();
             }
+
+
+        }
+                
+        public string recive(TcpClient client)
+        {
+            string messege;
+            using (var stream = client.GetStream())
+            using (var reader = new BinaryReader(stream))
+            using (var writer = new BinaryWriter(stream))
+            {
+                messege = reader.ReadString();
+            }
+            return messege;
         }
     }
 }

@@ -22,13 +22,7 @@ namespace GUI.ViewModel
         }
 
 
-        public int Rows2 {
-           get { return 10; }
-            set {
-                mazeUserControlModel.Rows = value;
-                NotifyPropertyChanged("Rows");
-            }
-        }
+       
 
         public int Cols2
         {

@@ -17,8 +17,8 @@ namespace GUI.Controls
         public MazeUserControl()
         {
             InitializeComponent();
-            mazeUserControlViewModel = new MazeUserControlViewModel();
-            this.DataContext = mazeUserControlViewModel;
+           // mazeUserControlViewModel = new MazeUserControlViewModel();
+            //this.DataContext = mazeUserControlViewModel;
            // this.Draw();
         }
 
@@ -32,7 +32,6 @@ namespace GUI.Controls
         // Using a DependencyProperty as the backing store for Rows.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty RowsProperty =
             DependencyProperty.Register("Rows", typeof(int), typeof(MazeUserControl), new PropertyMetadata(0));
-
 
         public int Cols
         {
