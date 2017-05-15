@@ -17,7 +17,7 @@ namespace GUI.ViewModel
         }
         
         public int MazeRowsDefinition
-        {
+        { 
             get { return model.MazeRowsDefinition; }
             set { NotifyPropertyChanged("MazeRowsDefinition"); }
         }
