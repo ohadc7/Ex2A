@@ -23,7 +23,6 @@ namespace GUI.Controls
         }
 
 
-
         public int Rows
         {
             get { return (int)GetValue(RowsProperty); }
@@ -34,22 +33,6 @@ namespace GUI.Controls
         public static readonly DependencyProperty RowsProperty =
             DependencyProperty.Register("Rows", typeof(int), typeof(MazeUserControl), new PropertyMetadata(0));
 
-
-
-
-        public int test
-        {
-            get { return (int)GetValue(testProperty); }
-            set { SetValue(testProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for test.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty testProperty =
-            DependencyProperty.Register("test", typeof(int), typeof(MazeUserControl), new PropertyMetadata(0));
-
-
-
- 
 
         public int Cols
         {
@@ -127,10 +110,7 @@ namespace GUI.Controls
         {
 
 
-            int x = test;
-            int y = x;
-
-            for (int i = 0; i < Rows; i++)
+         for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Cols; j++)
                 {

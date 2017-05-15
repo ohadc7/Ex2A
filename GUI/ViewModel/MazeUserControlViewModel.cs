@@ -30,7 +30,7 @@ namespace GUI.ViewModel
             }
         }
 
-        public int Cols
+        public int Cols2
         {
             get { return mazeUserControlModel.Cols; }
             set

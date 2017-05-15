@@ -37,6 +37,7 @@ namespace GUI.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
             SinglePlayerGameWindow spGW = new SinglePlayerGameWindow();
             spGW.Show();
             this.Close();

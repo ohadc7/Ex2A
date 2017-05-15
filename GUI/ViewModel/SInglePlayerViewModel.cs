@@ -10,6 +10,7 @@ namespace GUI.ViewModel
         public SinglePlayerViewModel()
         {
             this.model = new ClientModel();
+            this.model.Communicate();
             //manage all the communication with the server
 
         }
