@@ -45,11 +45,30 @@ namespace GUI.Controls
 
 
 
+        public string MazeName
+        {
+            get { return (string)GetValue(MazeNameProperty); }
+            set { SetValue(MazeNameProperty, value); }
+        }
 
-       
+        // Using a DependencyProperty as the backing store for MazeName.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MazeNameProperty =
+            DependencyProperty.Register("MazeName", typeof(string), typeof(MazeUserControl));
 
 
 
+
+        public string MazeString
+        {
+            get { return (string)GetValue(MazeStringProperty); }
+            set { SetValue(MazeStringProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MazeString.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MazeStringProperty =
+            DependencyProperty.Register("MazeString", typeof(string), typeof(MazeUserControl));
+
+        
         public int InitPosition
         {
             get { return (int)GetValue(InitPositionProperty); }
@@ -77,8 +96,8 @@ namespace GUI.Controls
         public void Draw()
         {
 
-            int widthOfBlock = (int)MazeCanvas.ActualWidth/Rows;
-            int HeightOfBlock = (int)MazeCanvas.ActualHeight/Cols;
+            int widthOfBlock = 30;//(int)MazeCanvas.ActualWidth/Rows;
+            int HeightOfBlock = 30;//(int)MazeCanvas.ActualHeight/Cols;
 
           //  string maze = MazeString;
             
@@ -95,7 +114,7 @@ namespace GUI.Controls
                         StrokeThickness = 2
                     };
 
-                    /*if (CellType.Free == MyMaze[i, j])
+                   /* if (1 == MazeString[j])
                     {
                         rec.Fill = Brushes.White;
 

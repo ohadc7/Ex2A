@@ -6,7 +6,12 @@ namespace GUI.Model
 {
     public interface IClientModel : INotifyPropertyChanged
     {
-
+        string MazeName
+        {
+            get;
+            set
+            ;
+        }
         int Rows
         {
             get;

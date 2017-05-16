@@ -88,6 +88,18 @@ namespace GUI.Model
                 throw new NotImplementedException();
             }
         }
+        public string MazeName
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         public int Rows
         {

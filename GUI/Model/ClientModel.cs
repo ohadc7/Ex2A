@@ -20,6 +20,9 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using CommunicationSettings;
 using MazeLib;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace GUI.Model
 {
@@ -64,11 +67,13 @@ namespace GUI.Model
         public void GetMaze(TcpClient client, string mazeInput)
         {
             
-           string x=  (this.Communicate(client, mazeInput));
-            Maze maze = Maze.FromJSON(x);
+            string serverResponedMaze =  (this.Communicate(client, mazeInput));
+            Maze maze = Maze.FromJSON(serverResponedMaze);
+            var data = (JObject)JsonConvert.DeserializeObject(serverResponedMaze);
+            string MazeString = data["Maze"].Value<String>();
+            MazeName = maze.Name;
             Cols = maze.Cols;
             Rows = maze.Rows;
-            MazeString = maze.ToString();
             InitPosition = maze.InitialPos;
             GoalPosition = maze.GoalPos;
 
@@ -87,7 +92,16 @@ namespace GUI.Model
 
         }
 
-       
+        private string mazeName;
+        public string MazeName
+        {
+            get { return mazeName; }
+            set
+            {
+                mazeName = value;
+                NotifyPropertyChanged("MazeName");
+            }
+        }
         private int rows;
         public int Rows
         {
@@ -115,7 +129,7 @@ namespace GUI.Model
             set
             {
                 maze = value;
-                NotifyPropertyChanged("maze");
+                NotifyPropertyChanged("MazeString");
             }
         }
         private Position initPosition;

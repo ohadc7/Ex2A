@@ -26,6 +26,17 @@ namespace GUI.ViewModel
             };
         }
 
+        public String VM_MazeName
+        {
+            get { return model.MazeName; }
+            set
+            {
+                model.MazeName = value;
+                NotifyPropertyChanged("VM_MazeName");
+
+            }
+        }
+
         public int VM_Rows
         {
             get { return model.Rows; }
@@ -46,13 +57,13 @@ namespace GUI.ViewModel
                 NotifyPropertyChanged("VM_Cols");
             }
         }
-        public string VM_Maze
+        public string VM_MazeString
         {
             get { return model.MazeString; }
             set
             {
                 model.MazeString = value;
-                NotifyPropertyChanged("VM_Maze");
+                NotifyPropertyChanged("VM_MazeString");
             }
         }
         public Position VM_InitPosition
