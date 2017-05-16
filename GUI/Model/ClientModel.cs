@@ -42,63 +42,9 @@ namespace GUI.Model
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
 
-        private int widthOfBlock;
-        public int WidthOfBlock
-        {
-            get { return widthOfBlock; }
-            set { widthOfBlock = value;
-                NotifyPropertyChanged("WidthBlock");
-            }
-        }
-        private int heightOfBlock;
-        public int HeightOfBlock
-        {
-            get { return heightOfBlock; }
-            set { heightOfBlock = value;
-                NotifyPropertyChanged("HeightOfBlock");
-            }
-        }
-        private int rows;
-        public int Rows
-        {
-            get { return rows; }
-            set { rows = value;
-                NotifyPropertyChanged("Rows");
-            }
-        }
-        private int cols;
-        public int Cols
-        {
-            get { return cols; }
-            set { cols = value;
-                NotifyPropertyChanged("Cols");
-            }
-        }
-        private string maze;
-        public string Maze
-        {
-            get { return maze; }
-            set { maze = value;
-                NotifyPropertyChanged("maze"); }
-        }
-        private Position initPosition;
-        public Position InitPosition
-        {
-            get { return initPosition; }
-            set {
-                initPosition = value;
-                NotifyPropertyChanged("InitPosition"); }
-        }
-        private Position goalPosition;
-        public Position GoalPosition
-        {
-            get { return goalPosition; }
-            set { goalPosition = value;
-                NotifyPropertyChanged("GoalPosition");
-            }
-        }
+        
 
-        /// <summary>
+           /// <summary>
         /// Communicate with the server.
         /// read massage from the user. connect to the server. send the massage to it, receive its answer and print it.
         /// do it iteratively.
@@ -115,30 +61,82 @@ namespace GUI.Model
             return client;
             //Console.WriteLine("debug massage: You are connected");
         }
-        public string send(TcpClient client, string messege) {
+        public void getMaze(TcpClient client, string mazeInput)
+        {
+            
+            Maze maze = Maze.FromJSON(this.Communicate(client, mazeInput));
+            Cols = maze.Cols;
+            Rows = maze.Rows;
+            MazeString = maze.ToString();
+            InitPosition = maze.InitialPos;
+            GoalPosition = maze.GoalPos;
+
+        }
+        public string Communicate(TcpClient client, string messege) {
 
             using (var stream = client.GetStream())
             using (var reader = new BinaryReader(stream))
             using (var writer = new BinaryWriter(stream))
             {
                 writer.Write(messege);
-                return reader.ReadString();
+               return  reader.ReadString();
 
             }
 
 
         }
-                
-        public string recive(TcpClient client)
+       
+        private int rows;
+        public int Rows
         {
-            string messege;
-            using (var stream = client.GetStream())
-            using (var reader = new BinaryReader(stream))
-            using (var writer = new BinaryWriter(stream))
+            get { return rows; }
+            set
             {
-                messege = reader.ReadString();
+                rows = value;
+                NotifyPropertyChanged("Rows");
             }
-            return messege;
         }
+        private int cols;
+        public int Cols
+        {
+            get { return cols; }
+            set
+            {
+                cols = value;
+                NotifyPropertyChanged("Cols");
+            }
+        }
+        private string maze;
+        public string MazeString
+        {
+            get { return maze; }
+            set
+            {
+                maze = value;
+                NotifyPropertyChanged("maze");
+            }
+        }
+        private Position initPosition;
+        public Position InitPosition
+        {
+            get { return initPosition; }
+            set
+            {
+                initPosition = value;
+                NotifyPropertyChanged("InitPosition");
+            }
+        }
+        private Position goalPosition;
+        public Position GoalPosition
+        {
+            get { return goalPosition; }
+            set
+            {
+                goalPosition = value;
+                NotifyPropertyChanged("GoalPosition");
+            }
+        }
+
+
     }
 }

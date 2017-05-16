@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,11 @@ namespace GUI.View
     /// </summary>
     public partial class SinglePlayerGameWindow : Window
     {
+        private SinglePlayerGameViewModel spVM;
         public SinglePlayerGameWindow()
         {
+            spVM = new SinglePlayerGameViewModel();
+            DataContext = spVM;
             InitializeComponent();
         }
 

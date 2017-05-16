@@ -21,12 +21,12 @@ namespace GUI.View
     /// </summary>
     public partial class SinglePlayerWindow : Window
     {
-        private SinglePlayerViewModel spVM;
+        private SinglePlayerGameViewModel spVM;
 
         public SinglePlayerWindow()
         {
             InitializeComponent();
-            spVM = new SinglePlayerViewModel();
+            spVM = new SinglePlayerGameViewModel();
             this.DataContext = spVM;
         }
 

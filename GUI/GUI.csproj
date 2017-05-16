@@ -64,16 +64,16 @@
     </ApplicationDefinition>
     <Compile Include="Model\IClientModel.cs" />
     <Compile Include="Model\ISettingsModel.cs" />
-    <Compile Include="Model\MazeUserControlModel.cs" />
     <Compile Include="Model\MazeDefinitionsUserControlModel.cs" />
     <Compile Include="Model\MultiClientModel.cs" />
     <Compile Include="Model\SettingsModel.cs" />
     <Compile Include="Model\ClientModel.cs" />
-    <Compile Include="ViewModel\MazeUserControlViewModel.cs" />
+    <Compile Include="ViewModel\MultiPlayerGameViewModel.cs" />
     <Compile Include="ViewModel\MultiPlayerViewModel.cs" />
     <Compile Include="ViewModel\MazeDefinitionsUserControlVM.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
-    <Compile Include="ViewModel\SInglePlayerViewModel.cs" />
+    <Compile Include="ViewModel\SInglePlayerGameViewModel.cs" />
+    <Compile Include="ViewModel\SinglePlayerViewModel.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
     <Compile Include="Controls\MazeDefinitionsUserControl.xaml.cs">
       <DependentUpon>MazeDefinitionsUserControl.xaml</DependentUpon>

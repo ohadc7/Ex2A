@@ -12,7 +12,6 @@ namespace GUI.Controls
     /// </summary>
     public partial class MazeUserControl : UserControl
     {
-        private MazeUserControlViewModel mazeUserControlViewModel;
 
         public MazeUserControl()
         {
@@ -45,40 +44,15 @@ namespace GUI.Controls
 
 
 
-        public int Maze
+        public string MazeString
         {
-            get { return (int)GetValue(MazeProperty); }
+            get { return (string)GetValue(MazeProperty); }
             set { SetValue(MazeProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MazeProperty =
             DependencyProperty.Register("MazeProperty", typeof(int), typeof(MazeUserControl), new PropertyMetadata(0));
-
-
-
-        public int HeightOfBlock
-        {
-            get { return (int)GetValue(HeightOfBlockProperty); }
-            set { SetValue(HeightOfBlockProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for HeightOfBlock.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty HeightOfBlockProperty =
-            DependencyProperty.Register("HeightOfBlock", typeof(int), typeof(MazeUserControl), new PropertyMetadata(0));
-
-
-
-        public int WidthOfBlock
-        {
-            get { return (int)GetValue(WidthOfBlockProperty); }
-            set { SetValue(WidthOfBlockProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for WidthOfBlock.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty WidthOfBlockProperty =
-            DependencyProperty.Register("WidthOfBlock", typeof(int), typeof(MazeUserControl), new PropertyMetadata(0));
-
 
 
         public int InitPosition
@@ -108,7 +82,11 @@ namespace GUI.Controls
         public void Draw()
         {
 
+            int widthOfBlock = (int)MazeCanvas.ActualWidth/Rows;
+            int HeightOfBlock = (int)MazeCanvas.ActualHeight/Cols;
 
+            string maze = MazeString;
+            
          for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Cols; j++)
@@ -116,7 +94,7 @@ namespace GUI.Controls
 
                     var rec = new Path
                     {
-                        Data = new RectangleGeometry(new Rect(j *  WidthOfBlock, i * HeightOfBlock, WidthOfBlock, HeightOfBlock)),
+                        Data = new RectangleGeometry(new Rect(j *  widthOfBlock, i * HeightOfBlock, widthOfBlock, HeightOfBlock)),
                         Fill = Brushes.Black,
                         Stroke = Brushes.Black,
                         StrokeThickness = 2

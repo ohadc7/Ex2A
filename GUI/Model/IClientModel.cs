@@ -6,18 +6,7 @@ namespace GUI.Model
 {
     interface IClientModel : INotifyPropertyChanged
     {
-        int widthOfBlock { get; set; }
-         int WidthOfBlock
-        {
-            get;
-            set;
-            
-        }
-        int HeightOfBlock
-        { get;
-            set;
-           
-        }
+
         int Rows
         {
             get;
@@ -32,7 +21,7 @@ namespace GUI.Model
             ;
         }
       
-        string Maze
+        string MazeString
         {
             get;
             set
@@ -51,8 +40,7 @@ namespace GUI.Model
            ;
         }
         TcpClient Connect();
-        string send(TcpClient client, string messege);
-        string recive(TcpClient client);
+        string Communicate(TcpClient client, string messege);
     }
 
 }
