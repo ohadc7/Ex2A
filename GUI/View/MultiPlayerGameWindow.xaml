@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="MultiPlayerGameWindow" Height="300" Width="300">
     <Grid>
-        <Controls:MazeUserControl HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="300" Margin="0,69,-8,0"/>
-        <Controls:MazeUserControl HorizontalAlignment="Right" Height="200" VerticalAlignment="Top" Width="300"/>
+       
     </Grid>
 </Window>

@@ -6,12 +6,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Border BorderThickness="2" BorderBrush="Black">
-       
-            <Canvas Name="MazeCanvas">
-              
-            <TextBox Text="{Binding bla}"></TextBox>
 
-        </Canvas>
+        <Canvas Name="MazeCanvas"></Canvas>
        
     </Border>
 

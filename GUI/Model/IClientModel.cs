@@ -4,7 +4,7 @@ using System.Net.Sockets;
 
 namespace GUI.Model
 {
-    interface IClientModel : INotifyPropertyChanged
+    public interface IClientModel : INotifyPropertyChanged
     {
 
         int Rows
@@ -41,6 +41,7 @@ namespace GUI.Model
         }
         TcpClient Connect();
         string Communicate(TcpClient client, string messege);
+        void GetMaze(TcpClient client, string mazeInput);
     }
 
 }

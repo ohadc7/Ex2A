@@ -3,6 +3,7 @@ using GUI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,13 +22,14 @@ namespace GUI.View
     /// </summary>
     public partial class SinglePlayerWindow : Window
     {
-        private SinglePlayerGameViewModel spVM;
-
+        public SinglePlayerViewModel spVM;
+        private TcpClient client;
         public SinglePlayerWindow()
         {
-            InitializeComponent();
-            spVM = new SinglePlayerGameViewModel();
+            spVM = new SinglePlayerViewModel();
             this.DataContext = spVM;
+            client = spVM.model.Connect();
+            InitializeComponent();
         }
 
         private void txtMazeName_TextChanged(object sender, TextChangedEventArgs e)
@@ -37,8 +39,11 @@ namespace GUI.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            StringBuilder generateString = new StringBuilder();
+            generateString.Append("generate "  + spVM.MazeNameDefinition + " " + spVM.MazeRowsDefinition + " " + spVM.MazeColsDefinition);
 
-            SinglePlayerGameWindow spGW = new SinglePlayerGameWindow();
+            spVM.model.GetMaze(client, generateString.ToString());
+            SinglePlayerGameWindow spGW = new SinglePlayerGameWindow(spVM.Model);
             spGW.Show();
             this.Close();
         }

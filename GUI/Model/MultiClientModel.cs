@@ -76,6 +76,19 @@ namespace GUI.Model
             }
         }
 
+        public string MazeString
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public int Rows
         {
             get
@@ -117,7 +130,17 @@ namespace GUI.Model
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public string Communicate(TcpClient client, string messege)
+        {
+            throw new NotImplementedException();
+        }
+
         public TcpClient Connect()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetMaze(TcpClient client, string messege)
         {
             throw new NotImplementedException();
         }

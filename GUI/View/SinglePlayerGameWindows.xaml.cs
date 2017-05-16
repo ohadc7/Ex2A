@@ -1,7 +1,9 @@
-﻿using GUI.ViewModel;
+﻿using GUI.Model;
+using GUI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,15 +23,20 @@ namespace GUI.View
     public partial class SinglePlayerGameWindow : Window
     {
         private SinglePlayerGameViewModel spVM;
-        public SinglePlayerGameWindow()
+        private IClientModel Model;
+        private TcpClient client;
+        public SinglePlayerGameWindow(IClientModel model)
         {
-            spVM = new SinglePlayerGameViewModel();
+            Model = model;
+            spVM = new SinglePlayerGameViewModel(Model);
             DataContext = spVM;
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+           client = Model.Connect();
+
             MainWindow win = (MainWindow)Application.Current.MainWindow;
             win.Show();
             this.Close();

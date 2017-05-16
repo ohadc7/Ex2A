@@ -8,10 +8,9 @@
         Title="SinglePlayerGameWindows" Height="Auto" Width="Auto">
     <Grid>
         <Canvas Margin="0,72,0,0">
+            <Controls:MazeUserControl x:Name="MyMazeBoard" Loaded="MazeUserControl_Loaded" 
+               Rows="{Binding VM_Rows}" Cols="{Binding VM_Cols}"                                   InitPosition="{Binding VM_InitPosition}" GoalPosition="{Binding VM_GoalPostion}"/>
 
-
-            <Controls:MazeUserControl x:Name="MyMazeBoard" Loaded="MazeUserControl_Loaded" Rows="{Binding Rows2 }"/>
-            
         </Canvas>
         <Button Content="Restart game" HorizontalAlignment="Left" Margin="24,21,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="Solve maze" HorizontalAlignment="Left" Margin="117,21,0,0" VerticalAlignment="Top" Width="75"/>

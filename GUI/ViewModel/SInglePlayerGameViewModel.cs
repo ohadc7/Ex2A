@@ -15,10 +15,10 @@ namespace GUI.ViewModel
     {
         private IClientModel model;
 
-        public SinglePlayerGameViewModel()
+        public SinglePlayerGameViewModel(IClientModel model)
         {
 
-            this.model = new ClientModel();
+            this.model = model;
             model.PropertyChanged +=
             delegate (Object sender, PropertyChangedEventArgs e)
             {
@@ -32,7 +32,7 @@ namespace GUI.ViewModel
             set
             {
                 model.Rows = value;
-                NotifyPropertyChanged("Rows");
+                NotifyPropertyChanged("VM_Rows");
 
             }
         }
@@ -43,7 +43,7 @@ namespace GUI.ViewModel
             set
             {
                 model.Cols = value;
-                NotifyPropertyChanged("Cols");
+                NotifyPropertyChanged("VM_Cols");
             }
         }
         public string VM_Maze
@@ -52,7 +52,7 @@ namespace GUI.ViewModel
             set
             {
                 model.MazeString = value;
-                NotifyPropertyChanged("maze");
+                NotifyPropertyChanged("VM_Maze");
             }
         }
         public Position VM_InitPosition
@@ -61,7 +61,7 @@ namespace GUI.ViewModel
             set
             {
                 model.InitPosition = value;
-                NotifyPropertyChanged("InitPosition");
+                NotifyPropertyChanged("VM_InitPosition");
             }
         }
         public Position VM_GoalPosition
@@ -70,7 +70,7 @@ namespace GUI.ViewModel
             set
             {
                 model.GoalPosition = value;
-                NotifyPropertyChanged("GoalPosition");
+                NotifyPropertyChanged("VM_GoalPosition");
             }
         }
     }

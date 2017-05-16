@@ -61,10 +61,11 @@ namespace GUI.Model
             return client;
             //Console.WriteLine("debug massage: You are connected");
         }
-        public void getMaze(TcpClient client, string mazeInput)
+        public void GetMaze(TcpClient client, string mazeInput)
         {
             
-            Maze maze = Maze.FromJSON(this.Communicate(client, mazeInput));
+           string x=  (this.Communicate(client, mazeInput));
+            Maze maze = Maze.FromJSON(x);
             Cols = maze.Cols;
             Rows = maze.Rows;
             MazeString = maze.ToString();
@@ -85,6 +86,7 @@ namespace GUI.Model
 
 
         }
+
        
         private int rows;
         public int Rows
@@ -137,6 +139,7 @@ namespace GUI.Model
             }
         }
 
+        
 
     }
 }

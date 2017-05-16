@@ -40,19 +40,14 @@ namespace GUI.Controls
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColsProperty =
-            DependencyProperty.Register("ColsProperty", typeof(int), typeof(MazeUserControl), new PropertyMetadata(0));
+            DependencyProperty.Register("Cols", typeof(int), typeof(MazeUserControl), new PropertyMetadata(0));
 
 
 
-        public string MazeString
-        {
-            get { return (string)GetValue(MazeProperty); }
-            set { SetValue(MazeProperty, value); }
-        }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty MazeProperty =
-            DependencyProperty.Register("MazeProperty", typeof(int), typeof(MazeUserControl), new PropertyMetadata(0));
+
+       
+
 
 
         public int InitPosition
@@ -85,7 +80,7 @@ namespace GUI.Controls
             int widthOfBlock = (int)MazeCanvas.ActualWidth/Rows;
             int HeightOfBlock = (int)MazeCanvas.ActualHeight/Cols;
 
-            string maze = MazeString;
+          //  string maze = MazeString;
             
          for (int i = 0; i < Rows; i++)
             {
@@ -114,7 +109,7 @@ namespace GUI.Controls
                     {
                         rec.Fill = Brushes.Red;
                     }
-                    MyCanvas.Children.Add(rec);
+                    MazeCanvas.Children.Add(rec);
 
 
                 }

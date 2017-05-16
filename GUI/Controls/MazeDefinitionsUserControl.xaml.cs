@@ -1,4 +1,5 @@
 ﻿using GUI.ViewModel;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace GUI.Controls
@@ -8,14 +9,12 @@ namespace GUI.Controls
     /// </summary>
     public partial class MazeDefinitionsUserControl : UserControl
     {
-        private MazeDefinitionsUserControlVM mdusvm;
-
         public MazeDefinitionsUserControl()
         {
             InitializeComponent();
-            this.mdusvm = new MazeDefinitionsUserControlVM();
-            this.DataContext = mdusvm;
+           
         }
+
 
         private void txtMazeName_TextChanged(object sender, TextChangedEventArgs e)
         {
