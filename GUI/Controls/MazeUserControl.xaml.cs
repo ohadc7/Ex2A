@@ -70,28 +70,28 @@ namespace GUI.Controls
             DependencyProperty.Register("MazeString", typeof(string), typeof(MazeUserControl));
 
         
-        public int InitPosition
+        public Position InitPosition
         {
-            get { return (int)GetValue(InitPositionProperty); }
+            get { return (Position)GetValue(InitPositionProperty); }
             set { SetValue(InitPositionProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for InitPosition.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty InitPositionProperty =
-            DependencyProperty.Register("InitPosition", typeof(int), typeof(MazeUserControl), new PropertyMetadata(0));
+            DependencyProperty.Register("InitPosition", typeof(Position), typeof(MazeUserControl));
 
 
 
 
-        public int GoalPosition
+        public Position GoalPosition
         {
-            get { return (int)GetValue(GoalPositionProperty); }
+            get { return (Position)GetValue(GoalPositionProperty); }
             set { SetValue(GoalPositionProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for GoalPosition.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty GoalPositionProperty =
-            DependencyProperty.Register("GoalPosition", typeof(int), typeof(MazeUserControl), new PropertyMetadata(0));
+            DependencyProperty.Register("GoalPosition", typeof(Position), typeof(MazeUserControl));
 
 
         public void Draw()
