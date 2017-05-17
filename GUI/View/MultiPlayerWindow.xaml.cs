@@ -37,7 +37,7 @@ namespace GUI
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder generateString = new StringBuilder();
-            generateString.Append("generate " + mpVM.MazeNameDefinition + " " + mpVM.MazeRowsDefinition + " " + mpVM.MazeColsDefinition);
+            generateString.Append("generate " + mpVM.MazeNameDefinition + " " + mpVM.MazeRowsDefinition + " " + mpVM.MazeColsDefinition); 
 
             mpVM.Model.GetMaze(client, generateString.ToString());
             MultiPlayerGameWindow mpGW = new MultiPlayerGameWindow();//MultiPlayerGameWindow(spVM.Model);
