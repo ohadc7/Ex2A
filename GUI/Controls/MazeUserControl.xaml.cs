@@ -99,7 +99,6 @@ namespace GUI.Controls
             int widthOfBlock = 30;//(int)MazeCanvas.ActualWidth/Rows;
             int HeightOfBlock = 30;//(int)MazeCanvas.ActualHeight/Cols;
 
-          //  string maze = MazeString;
             
          for (int i = 0; i < Rows; i++)
             {
@@ -114,12 +113,12 @@ namespace GUI.Controls
                         StrokeThickness = 2
                     };
 
-                   /* if (1 == MazeString[j])
+                    if ('0' == MazeString[i])
                     {
                         rec.Fill = Brushes.White;
 
 
-                    }*/
+                    }
                     if (new Position(i, j).Equals(InitPosition))
                     {
                         rec.Fill = Brushes.Blue;

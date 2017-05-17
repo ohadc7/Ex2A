@@ -70,7 +70,7 @@ namespace GUI.Model
             string serverResponedMaze =  (this.Communicate(client, mazeInput));
             Maze maze = Maze.FromJSON(serverResponedMaze);
             var data = (JObject)JsonConvert.DeserializeObject(serverResponedMaze);
-            string MazeString = data["Maze"].Value<String>();
+            MazeString = data["Maze"].Value<String>();
             MazeName = maze.Name;
             Cols = maze.Cols;
             Rows = maze.Rows;
