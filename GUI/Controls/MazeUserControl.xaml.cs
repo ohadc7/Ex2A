@@ -7,6 +7,9 @@ using MazeLib;
 using System.Linq;
 using System.Windows.Media.Imaging;
 using System;
+using System.Windows.Input;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace GUI.Controls
 {
@@ -22,9 +25,12 @@ namespace GUI.Controls
           
         }
 
-        ImageBrush imageBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/user.jpg")));
+        private ImageBrush characterImageBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/user.jpg")));
 
-        
+        private ImageBrush endDoorBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/end.jpg")));
+
+
+        private Dictionary<Point, Path> recPlaceDict = new Dictionary<Point, Path>();
 
         public int Rows
         {
@@ -113,6 +119,8 @@ namespace GUI.Controls
         private Path initRec;
         int widthOfBlock = 30;//(int)MazeCanvas.ActualWidth/Rows;
         int HeightOfBlock = 30;//(int)MazeCanvas.ActualHeight/Cols;
+        private Rect moveRect;
+
         public void Draw()
         {
 
@@ -139,16 +147,18 @@ namespace GUI.Controls
                     }
                     if (new Position(i, j).Equals(InitPosition))
                     {
-                        rec.Fill = imageBrush;
+                        rec.Fill = characterImageBrush;
                         initX = i;
                         initY = j;
                         initRec = rec;
-                        
+                        moveRect = new Rect(initX, initY, widthOfBlock, HeightOfBlock);
+
                     }
                     if (new Position(i, j).Equals(GoalPosition))
                     {
-                        rec.Fill = Brushes.Red;
+                        rec.Fill = endDoorBrush;
                     }
+                    recPlaceDict.Add(new Point(i, j), rec);
                     MazeCanvas.Children.Add(rec);
 
                     x++;
@@ -165,29 +175,33 @@ namespace GUI.Controls
                     case '0':
                         {
                             animationRect.X -= 1;
-                            initRec.Data = new RectangleGeometry(animationRect);
-                            System.Threading.Thread.Sleep(1000);
+                            //initRec.Data = new RectangleGeometry(animationRect);
+                            recPlaceDict[new Point(initX - 1, initY)].Fill = characterImageBrush;
+                            System.Threading.Thread.Sleep(100);
                             break;
                         }
                     case '1':
                         {
                             animationRect.X += 1;
-                            initRec.Data = new RectangleGeometry(animationRect);
-                            System.Threading.Thread.Sleep(1000);
+                            //initRec.Data = new RectangleGeometry(animationRect);
+                            recPlaceDict[new Point(initX + 1, initY)].Fill = characterImageBrush;
+                            System.Threading.Thread.Sleep(100);
                             break;
                         }
                     case '2':
                         {
                             animationRect.Y -= 1;
-                            initRec.Data = new RectangleGeometry(animationRect);
-                            System.Threading.Thread.Sleep(1000);
+                            //initRec.Data = new RectangleGeometry(animationRect);
+                            recPlaceDict[new Point(initX , initY-1)].Fill = characterImageBrush;
+                            System.Threading.Thread.Sleep(100);
                             break;
                         }
                     case '3':
                         {
                             animationRect.Y += 1;
-                            initRec.Data = new RectangleGeometry(animationRect);
-                           System.Threading.Thread.Sleep(1000);
+                            //initRec.Data = new RectangleGeometry(animationRect);
+                            recPlaceDict[new Point(initX , initY+1)].Fill = characterImageBrush;
+                            System.Threading.Thread.Sleep(100);
                             break;
                         }
                     default:
@@ -195,5 +209,30 @@ namespace GUI.Controls
                 }
             }
         }
+
+        public void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Left)
+            {
+                moveRect.X -= 1;
+                initRec.Data = new RectangleGeometry(moveRect);
+            }
+            if (e.Key == Key.Right)
+            {
+                moveRect.X += 1;
+                initRec.Data = new RectangleGeometry(moveRect);
+            }
+            if (e.Key == Key.Up)
+            {
+                moveRect.Y -= 1;
+                initRec.Data = new RectangleGeometry(moveRect);
+            }
+            if (e.Key == Key.Down)
+            {
+                moveRect.Y += 1;
+                initRec.Data = new RectangleGeometry(moveRect);
+            }
+        }
+
     }
 }

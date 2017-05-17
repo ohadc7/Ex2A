@@ -25,6 +25,7 @@ namespace GUI.View
         private SinglePlayerGameViewModel spgVM;
         public IClientModel Model;
         private TcpClient client;
+
         public SinglePlayerGameWindow(IClientModel model)
         {
             Model = model;
@@ -45,6 +46,8 @@ namespace GUI.View
         private void MazeUserControl_Loaded(object sender, RoutedEventArgs e)
         {
             MyMazeBoard.Draw();
+            this.KeyDown += MyMazeBoard.OnKeyDownHandler;
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

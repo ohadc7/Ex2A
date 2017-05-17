@@ -176,7 +176,9 @@
       <Name>CommunicationSettings</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\End.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\user.jpg" />
   </ItemGroup>

@@ -9,7 +9,7 @@
     <Grid>
         
         <Canvas Margin="0,72,0,0">
-            <Controls:MazeUserControl x:Name="MyMazeBoard" Loaded="MazeUserControl_Loaded" 
+            <Controls:MazeUserControl x:Name="MyMazeBoard" Loaded="MazeUserControl_Loaded"  
                Rows="{Binding VM_Rows}" Cols="{Binding VM_Cols}"                                   InitPosition="{Binding VM_InitPosition}" GoalPosition="{Binding VM_GoalPostion}" MazeString="{Binding VM_MazeString}" MazeName="{Binding VM_MazeName}" SolveString="{Binding VM_SolveString}"/>
 
         </Canvas>
