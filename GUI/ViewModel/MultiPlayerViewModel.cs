@@ -9,7 +9,7 @@ namespace GUI.ViewModel
 
         public MultiPlayerViewModel()
         {
-            this.model = new ClientModel();
+            this.model = new MultiClientModel();
             this.model.Connect();
             //manage all the communication with the server
         }
