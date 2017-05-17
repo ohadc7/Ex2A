@@ -22,7 +22,9 @@ namespace GUI.Controls
           
         }
 
-        //ImageBrush imageBrush = new ImageBrush(new BitmapImage(new Uri("/Images/user.jpg", UriKind.Relative)));
+        ImageBrush imageBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/user.jpg")));
+
+        
 
         public int Rows
         {
@@ -107,12 +109,14 @@ namespace GUI.Controls
             DependencyProperty.Register("SolveString", typeof(string), typeof(MazeUserControl));
 
 
-
+        private int initX, initY;
+        private Path initRec;
+        int widthOfBlock = 30;//(int)MazeCanvas.ActualWidth/Rows;
+        int HeightOfBlock = 30;//(int)MazeCanvas.ActualHeight/Cols;
         public void Draw()
         {
 
-            int widthOfBlock = 30;//(int)MazeCanvas.ActualWidth/Rows;
-            int HeightOfBlock = 30;//(int)MazeCanvas.ActualHeight/Cols;
+            
 
             int x = 0;
             for (int i = 0; i < Rows; i++)
@@ -135,7 +139,11 @@ namespace GUI.Controls
                     }
                     if (new Position(i, j).Equals(InitPosition))
                     {
-                        rec.Fill = Brushes.Green; //imageBrush;
+                        rec.Fill = imageBrush;
+                        initX = i;
+                        initY = j;
+                        initRec = rec;
+                        
                     }
                     if (new Position(i, j).Equals(GoalPosition))
                     {
@@ -149,7 +157,43 @@ namespace GUI.Controls
         }
         public void Solve()
         {
-
+            Rect animationRect = new Rect(initX, initY, widthOfBlock, HeightOfBlock);
+            foreach (char c in SolveString)
+            {
+                switch (c)
+                {
+                    case '0':
+                        {
+                            animationRect.X -= 1;
+                            initRec.Data = new RectangleGeometry(animationRect);
+                            System.Threading.Thread.Sleep(1000);
+                            break;
+                        }
+                    case '1':
+                        {
+                            animationRect.X += 1;
+                            initRec.Data = new RectangleGeometry(animationRect);
+                            System.Threading.Thread.Sleep(1000);
+                            break;
+                        }
+                    case '2':
+                        {
+                            animationRect.Y -= 1;
+                            initRec.Data = new RectangleGeometry(animationRect);
+                            System.Threading.Thread.Sleep(1000);
+                            break;
+                        }
+                    case '3':
+                        {
+                            animationRect.Y += 1;
+                            initRec.Data = new RectangleGeometry(animationRect);
+                           System.Threading.Thread.Sleep(1000);
+                            break;
+                        }
+                    default:
+                        break;
+                }
+            }
         }
     }
 }

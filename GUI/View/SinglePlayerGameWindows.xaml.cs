@@ -29,6 +29,8 @@ namespace GUI.View
         {
             Model = model;
             spgVM = new SinglePlayerGameViewModel(Model);
+            client = spgVM.model.Connect();
+
             DataContext = spgVM;
             InitializeComponent();
         }
@@ -53,7 +55,7 @@ namespace GUI.View
         private void Button_Click_Solve(object sender, RoutedEventArgs e)
         {
             StringBuilder generateString = new StringBuilder();
-            generateString.Append("solve " + spgVM.VM_MazeName);
+            generateString.Append("solve " + spgVM.VM_MazeName + " 1");
             spgVM.model.GetSolveString(client, generateString.ToString());
             MyMazeBoard.Solve();
         }

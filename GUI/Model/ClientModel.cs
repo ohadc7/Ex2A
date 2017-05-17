@@ -79,9 +79,9 @@ namespace GUI.Model
 
         }
 
-        public void GetSolveString(TcpClient client, string mazeName)
+        public void GetSolveString(TcpClient client, string solveCommand)
         {
-            string solve = (this.Communicate(client, mazeName));
+            string solve = (this.Communicate(client, solveCommand));
             var data = (JObject)JsonConvert.DeserializeObject(solve);
             SolveString = data["Solution"].Value<String>();
         }
