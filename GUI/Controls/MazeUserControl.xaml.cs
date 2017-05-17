@@ -4,6 +4,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using GUI.ViewModel;
 using MazeLib;
+using System.Linq;
 
 namespace GUI.Controls
 {
@@ -99,8 +100,8 @@ namespace GUI.Controls
             int widthOfBlock = 30;//(int)MazeCanvas.ActualWidth/Rows;
             int HeightOfBlock = 30;//(int)MazeCanvas.ActualHeight/Cols;
 
-            
-         for (int i = 0; i < Rows; i++)
+            int x = 0;
+            for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Cols; j++)
                 {
@@ -112,12 +113,11 @@ namespace GUI.Controls
                         Stroke = Brushes.Black,
                         StrokeThickness = 2
                     };
-
-                    if ('0' == MazeString[i])
+                    
+                    if (MazeString[x].Equals('0'))
                     {
                         rec.Fill = Brushes.White;
-
-
+                        
                     }
                     if (new Position(i, j).Equals(InitPosition))
                     {
@@ -129,7 +129,7 @@ namespace GUI.Controls
                     }
                     MazeCanvas.Children.Add(rec);
 
-
+                    x++;
                 }
             }
         }
