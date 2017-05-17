@@ -36,11 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MazeGeneratorLib">
-      <HintPath>..\packages\MazeGeneratorLib.dll</HintPath>
+      <HintPath>D:\D Documents\My Documents\עידו\לימודים\אוניברסיטת בר אילן\מדעי המחשב\תכנות מתקדם 2\תרגיל 1\מטלה 1-20170330\MazeGeneratorLib.dll</HintPath>
     </Reference>
-    <Reference Include="MazeLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MazeLib.dll</HintPath>
+    <Reference Include="MazeLib">
+      <HintPath>D:\D Documents\My Documents\עידו\לימודים\אוניברסיטת בר אילן\מדעי המחשב\תכנות מתקדם 2\תרגיל 1\מטלה 1-20170330\MazeLib.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>

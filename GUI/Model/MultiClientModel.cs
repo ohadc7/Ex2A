@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using MazeLib;
+using System.Net;
 
 namespace GUI.Model
 {
@@ -162,7 +163,12 @@ namespace GUI.Model
 
         public TcpClient Connect()
         {
-            throw new NotImplementedException();
+            var ep = new IPEndPoint(
+            IPAddress.Parse(GUI.Properties.Settings.Default.ServerIP), Convert.ToInt32(GUI.Properties.Settings.Default.ServerPort));
+            var client = new TcpClient();
+            client.Connect(ep);
+            return client;
+
         }
 
         public void GetMaze(TcpClient client, string messege)
