@@ -1,17 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex1", "Ex1\Ex1.csproj", "{D4228214-FBE8-47B8-B206-3DFED6AE28ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchAlgorithmsLib", "SearchAlgorithmsLib\SearchAlgorithmsLib.csproj", "{4CDA06C4-F1AB-45F3-A5F3-AF697F4AB464}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{FB15B3D8-D136-42F5-85BA-B949336F1569}"
-	ProjectSection(SolutionItems) = preProject
-		packages\MazeGeneratorLib.dll = packages\MazeGeneratorLib.dll
-		packages\MazeLib.dll = packages\MazeLib.dll
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adapter", "Adapter\Adapter.csproj", "{2AE7A674-B8A3-4E7F-A8B5-DA5460BDCC92}"
 EndProject

@@ -31,10 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MazeGeneratorLib">
-      <HintPath>..\packages\MazeGeneratorLib.dll</HintPath>
+      <HintPath>D:\D Documents\My Documents\עידו\לימודים\אוניברסיטת בר אילן\מדעי המחשב\תכנות מתקדם 2\תרגיל 1\מטלה 1-20170330\MazeGeneratorLib.dll</HintPath>
     </Reference>
     <Reference Include="MazeLib">
-      <HintPath>..\packages\MazeLib.dll</HintPath>
+      <HintPath>D:\D Documents\My Documents\עידו\לימודים\אוניברסיטת בר אילן\מדעי המחשב\תכנות מתקדם 2\תרגיל 1\מטלה 1-20170330\MazeLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
