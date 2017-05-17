@@ -78,6 +78,13 @@ namespace GUI.Model
             GoalPosition = maze.GoalPos;
 
         }
+
+        public void GetSolveString(TcpClient client, string mazeName)
+        {
+            string solve = (this.Communicate(client, mazeName));
+            var data = (JObject)JsonConvert.DeserializeObject(solve);
+            SolveString = data["Solution"].Value<String>();
+        }
         public string Communicate(TcpClient client, string messege) {
 
             using (var stream = client.GetStream())
@@ -152,7 +159,14 @@ namespace GUI.Model
                 NotifyPropertyChanged("GoalPosition");
             }
         }
-
+        private string solveString;
+        public string SolveString
+        {
+            get { return solveString; }
+            set { solveString = value;
+                NotifyPropertyChanged("SolveString");
+            }
+        }
         
 
     }

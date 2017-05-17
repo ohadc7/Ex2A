@@ -5,6 +5,8 @@ using System.Windows.Shapes;
 using GUI.ViewModel;
 using MazeLib;
 using System.Linq;
+using System.Windows.Media.Imaging;
+using System;
 
 namespace GUI.Controls
 {
@@ -17,11 +19,10 @@ namespace GUI.Controls
         public MazeUserControl()
         {
             InitializeComponent();
-           // mazeUserControlViewModel = new MazeUserControlViewModel();
-            //this.DataContext = mazeUserControlViewModel;
-           // this.Draw();
+          
         }
 
+        //ImageBrush imageBrush = new ImageBrush(new BitmapImage(new Uri("/Images/user.jpg", UriKind.Relative)));
 
         public int Rows
         {
@@ -44,8 +45,7 @@ namespace GUI.Controls
             DependencyProperty.Register("Cols", typeof(int), typeof(MazeUserControl), new PropertyMetadata(0));
 
 
-
-
+       
         public string MazeName
         {
             get { return (string)GetValue(MazeNameProperty); }
@@ -94,6 +94,20 @@ namespace GUI.Controls
             DependencyProperty.Register("GoalPosition", typeof(Position), typeof(MazeUserControl));
 
 
+
+
+        public string SolveString
+        {
+            get { return (string)GetValue(SolveStringProperty); }
+            set { SetValue(SolveStringProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SolveString.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SolveStringProperty =
+            DependencyProperty.Register("SolveString", typeof(string), typeof(MazeUserControl));
+
+
+
         public void Draw()
         {
 
@@ -121,7 +135,7 @@ namespace GUI.Controls
                     }
                     if (new Position(i, j).Equals(InitPosition))
                     {
-                        rec.Fill = Brushes.Blue;
+                        rec.Fill = Brushes.Green; //imageBrush;
                     }
                     if (new Position(i, j).Equals(GoalPosition))
                     {
@@ -132,6 +146,10 @@ namespace GUI.Controls
                     x++;
                 }
             }
+        }
+        public void Solve()
+        {
+
         }
     }
 }

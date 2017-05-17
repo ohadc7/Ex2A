@@ -13,7 +13,7 @@ namespace GUI.ViewModel
 {
     class SinglePlayerGameViewModel : ViewModel
     {
-        private IClientModel model;
+        public IClientModel model;
 
         public SinglePlayerGameViewModel(IClientModel model)
         {
@@ -82,6 +82,15 @@ namespace GUI.ViewModel
             {
                 model.GoalPosition = value;
                 NotifyPropertyChanged("VM_GoalPosition");
+            }
+        }
+        public string VM_SolveString
+        {
+            get { return model.SolveString; }
+            set
+            {
+                model.SolveString = value;
+                NotifyPropertyChanged("VM_SolveString");
             }
         }
     }

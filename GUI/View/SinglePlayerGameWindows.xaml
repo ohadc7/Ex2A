@@ -5,15 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI.View"  xmlns:Controls="clr-namespace:GUI.Controls"
         mc:Ignorable="d"
-        Title="SinglePlayerGameWindows" Height="Auto" Width="Auto">
+        Title="SinglePlayerGameWindows" >
     <Grid>
-        <Canvas Margin="0,72,0,0" Height="500" Width="700">
+        
+        <Canvas Margin="0,72,0,0">
             <Controls:MazeUserControl x:Name="MyMazeBoard" Loaded="MazeUserControl_Loaded" 
-               Rows="{Binding VM_Rows}" Cols="{Binding VM_Cols}"                                   InitPosition="{Binding VM_InitPosition}" GoalPosition="{Binding VM_GoalPostion}" MazeString="{Binding VM_MazeString}" MazeName="{Binding VM_MazeName}"/>
+               Rows="{Binding VM_Rows}" Cols="{Binding VM_Cols}"                                   InitPosition="{Binding VM_InitPosition}" GoalPosition="{Binding VM_GoalPostion}" MazeString="{Binding VM_MazeString}" MazeName="{Binding VM_MazeName}" SolveString="{Binding VM_SolveString}"/>
 
         </Canvas>
         <Button Content="Restart game" HorizontalAlignment="Left" Margin="24,21,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Solve maze" HorizontalAlignment="Left" Margin="117,21,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Main menu" HorizontalAlignment="Left" Margin="207,21,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Solve maze" HorizontalAlignment="Left" Margin="117,21,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Solve"/>
+        <Button Content="Main menu" HorizontalAlignment="Left" Margin="207,21,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Menu"/>
     </Grid>
 </Window>

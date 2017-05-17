@@ -68,13 +68,11 @@
     </ApplicationDefinition>
     <Compile Include="Model\IClientModel.cs" />
     <Compile Include="Model\ISettingsModel.cs" />
-    <Compile Include="Model\MazeDefinitionsUserControlModel.cs" />
     <Compile Include="Model\MultiClientModel.cs" />
     <Compile Include="Model\SettingsModel.cs" />
     <Compile Include="Model\ClientModel.cs" />
     <Compile Include="ViewModel\MultiPlayerGameViewModel.cs" />
     <Compile Include="ViewModel\MultiPlayerViewModel.cs" />
-    <Compile Include="ViewModel\MazeDefinitionsUserControlVM.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\SInglePlayerGameViewModel.cs" />
     <Compile Include="ViewModel\SinglePlayerViewModel.cs" />
@@ -178,6 +176,9 @@
       <Project>{bdc31661-a45a-4b02-affb-3a8bd35e30ca}</Project>
       <Name>CommunicationSettings</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -140,6 +140,19 @@ namespace GUI.Model
             }
         }
 
+        public string SolveString
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string Communicate(TcpClient client, string messege)
@@ -163,6 +176,11 @@ namespace GUI.Model
         }
 
         public string send(TcpClient client, string messege)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetSolveString(TcpClient client, string mazeName)
         {
             throw new NotImplementedException();
         }

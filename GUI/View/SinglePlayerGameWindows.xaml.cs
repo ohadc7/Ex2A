@@ -22,21 +22,19 @@ namespace GUI.View
     /// </summary>
     public partial class SinglePlayerGameWindow : Window
     {
-        private SinglePlayerGameViewModel spVM;
-        private IClientModel Model;
+        private SinglePlayerGameViewModel spgVM;
+        public IClientModel Model;
         private TcpClient client;
         public SinglePlayerGameWindow(IClientModel model)
         {
             Model = model;
-            spVM = new SinglePlayerGameViewModel(Model);
-            DataContext = spVM;
+            spgVM = new SinglePlayerGameViewModel(Model);
+            DataContext = spgVM;
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_Menu(object sender, RoutedEventArgs e)
         {
-           client = Model.Connect();
-
             MainWindow win = (MainWindow)Application.Current.MainWindow;
             win.Show();
             this.Close();
@@ -45,6 +43,19 @@ namespace GUI.View
         private void MazeUserControl_Loaded(object sender, RoutedEventArgs e)
         {
             MyMazeBoard.Draw();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_Solve(object sender, RoutedEventArgs e)
+        {
+            StringBuilder generateString = new StringBuilder();
+            generateString.Append("solve " + spgVM.VM_MazeName);
+            spgVM.model.GetSolveString(client, generateString.ToString());
+            MyMazeBoard.Solve();
         }
     }
 }

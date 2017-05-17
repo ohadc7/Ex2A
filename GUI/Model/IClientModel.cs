@@ -44,9 +44,15 @@ namespace GUI.Model
             set
            ;
         }
+        string SolveString
+        {
+            get;
+            set;
+        }
         TcpClient Connect();
         string Communicate(TcpClient client, string messege);
         void GetMaze(TcpClient client, string mazeInput);
+        void GetSolveString(TcpClient client, string mazeName);
     }
 
 }
