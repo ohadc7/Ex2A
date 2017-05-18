@@ -10,6 +10,8 @@ using System;
 using System.Windows.Input;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace GUI.Controls
 {
@@ -161,7 +163,7 @@ namespace GUI.Controls
 
                     var rec = new Path
                     {
-                        Data = new RectangleGeometry(new Rect(j *  WidthOfBlock, i * HeightOfBlock, WidthOfBlock, HeightOfBlock)),
+                        Data = new RectangleGeometry(new Rect(j *  HeightOfBlock, i * WidthOfBlock, WidthOfBlock, HeightOfBlock)),
                         Fill = Brushes.Black,
                         Stroke = Brushes.Black,
                         StrokeThickness = 2
@@ -210,7 +212,19 @@ namespace GUI.Controls
             }
         }
 
+        public void animation(Position p)
+        {
+            Thread.Sleep(700);
+            Dispatcher.Invoke(() =>
+            {
+                currentPosition = p;
+                Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
+                Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+            });
+            
+        }
 
+        
 
     }
 }

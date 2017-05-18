@@ -38,13 +38,17 @@ namespace GUI.ViewModel
         public int MazeRows
         {
             get { return model.MazeRows; }
-            set { NotifyPropertyChanged("MazeRows"); }
+            set {
+                model.MazeRows = value;
+                NotifyPropertyChanged("MazeRows"); }
         }
 
         public int MazeCols
         {
             get { return model.MazeCols; }
-            set { NotifyPropertyChanged("MazeCols"); }
+            set {
+                model.MazeCols = value;
+                NotifyPropertyChanged("MazeCols"); }
         }
 
         public int SearchAlgorithm
@@ -52,6 +56,7 @@ namespace GUI.ViewModel
             get { return model.SearchAlgorithm; }
             set
             {
+                model.SearchAlgorithm = value;
                 NotifyPropertyChanged("SearchAlgorithm");
             }
         }

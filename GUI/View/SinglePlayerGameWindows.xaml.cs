@@ -61,69 +61,59 @@ namespace GUI.View
             StringBuilder generateString = new StringBuilder();
             generateString.Append("solve " + spgVM.VM_MazeName + " 1");
             spgVM.model.GetSolveString(client, generateString.ToString());
-           
-                this.Solve();
-            
+
+            this.Solve();
+
         }
-
-
 
         public void Solve()
         {
-        Task t = Task.Run(() =>
-        {
-            Position p = spgVM.VM_InitPosition;
             
+            Task t = Task.Run(() =>
+            {
+                Position p = spgVM.VM_CurrentPosition;
                 foreach (char c in spgVM.VM_SolveString)
                 {
                     switch (c)
                     {
                         case '0':
                             {
-                                p.Row -= 1;
-                                spgVM.VM_CurrentPosition = p;
-                           // MyMazeBoard.move(p);
-                               // System.Threading.Thread.Sleep(100);
+                                p.Col -= 1;
+                                MyMazeBoard.animation(p);
                                 break;
                             }
                         case '1':
                             {
-                                p.Row += 1;
-                            spgVM.VM_CurrentPosition = p;
-                           // MyMazeBoard.move(p);
-
-                           // System.Threading.Thread.Sleep(100);
+                                p.Col += 1;
+                                MyMazeBoard.animation(p);
                                 break;
                             }
                         case '2':
                             {
 
-
-                                p.Col -= 1;
-                            spgVM.VM_CurrentPosition = p;
-                           // MyMazeBoard.move(p);
-
-                           // System.Threading.Thread.Sleep(100);
+                                p.Row -= 1;
+                                MyMazeBoard.animation(p);
                                 break;
                             }
                         case '3':
                             {
 
-
-                               p.Col += 1;
-                            spgVM.VM_CurrentPosition = p;
-                           // MyMazeBoard.move(p);
-
-                           // System.Threading.Thread.Sleep(100);
+                                p.Row += 1;
+                                MyMazeBoard.animation(p);
                                 break;
                             }
                         default:
                             break;
                     }
                 }
-        });
+            });
+
         }
 
-             
     }
+
+
+
+
+
 }

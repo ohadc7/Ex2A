@@ -3,10 +3,6 @@
     class SettingsModel : ISettingsModel
     {
 
-        public int DefaultMazeRows = 5;
-        public int DefaultMazeCols = 5;
-        public int DefaultSearchAlgorithm = 0;
-
         public string ServerIP
         {
             get { return Properties.Settings.Default.ServerIP; }
@@ -22,11 +18,11 @@
         {
             get
             {
-                return DefaultMazeRows;
+                return Properties.Settings.Default.MazeRows;
             }
             set
             {
-                DefaultMazeRows = value;
+                Properties.Settings.Default.MazeRows = value;
             }
         }
     
@@ -34,22 +30,22 @@
         {
             get
             {
-                return DefaultMazeCols;
+                return Properties.Settings.Default.MazeCols;
             }
             set
             {
-                DefaultMazeCols = value;
+                Properties.Settings.Default.MazeCols = value;
             }
         }
         public int SearchAlgorithm
         {
             get
             {
-                return DefaultSearchAlgorithm;
+                return Properties.Settings.Default.DefaultSearchAlgorithm;
             }
             set
             {
-                DefaultSearchAlgorithm = value;
+                Properties.Settings.Default.DefaultSearchAlgorithm = value;
             }
         }
 

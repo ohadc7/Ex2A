@@ -14,6 +14,7 @@ namespace GUI.ViewModel
         public SinglePlayerViewModel()
         {
             model = new ClientModel();
+           
 
         }
 

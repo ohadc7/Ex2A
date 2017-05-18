@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Padding="3" Margin="3">Maze name:</TextBlock>
-        <TextBox x:Name="txtMazeName" Grid.Column="1" Grid.Row="0"  Padding="3" Margin="3" Text="{Binding MazeNameDefinition}" TextChanged="txtMazeName_TextChanged"></TextBox>
+        <TextBox x:Name="txtMazeName" Grid.Column="1" Grid.Row="0"  Padding="3" Margin="3" Text="{Binding MazeNameDefinition }" TextChanged="txtMazeName_TextChanged"></TextBox>
             <TextBlock Grid.Row="1" Grid.Column="0" Padding="3" Margin="3">Maze rows:</TextBlock>
         <TextBox x:Name="txtRows" Grid.Row="1" Grid.Column="1" Padding="3" Margin="3" Text="{Binding MazeRowsDefinition}" TextChanged="txtRows_TextChanged"></TextBox>
             <TextBlock Grid.Row="2" Grid.Column="0" Padding="3" Margin="3">Maze columns:</TextBlock>
