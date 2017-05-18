@@ -9,7 +9,29 @@
         mc:Ignorable="d"
         Title="MultiPlayerWindow" Height="300" Width="300">
     <Grid>
-        <Controls:MazeDefinitionsUserControl/>
-        <Button Content="OkButton" HorizontalAlignment="Left" Margin="116,134,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Padding="3" Margin="3">List of games: </TextBlock>
+        <ComboBox x:Name="cboSearchAlgo" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="100" Margin="3" 
+SelectedIndex="{Binding SearchAlgorithm}" IsEditable="False">
+            <ComboBoxItem>Maze_name1</ComboBoxItem>
+            <ComboBoxItem>Maze_name2</ComboBoxItem>
+        </ComboBox>
+        <Button Content="Join Game" HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" Width="75" Margin="3" Click="Button_Click"/>
+        
+
+        <Controls:MazeDefinitionsUserControl Grid.Row="2" Grid.ColumnSpan="2" />
+        <Button Content="Start Game" HorizontalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Top" Width="75" Margin="3" Click="Button_Click"/>
     </Grid>
 </Window>

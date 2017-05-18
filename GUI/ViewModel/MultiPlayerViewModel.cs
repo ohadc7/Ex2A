@@ -1,22 +1,43 @@
 ﻿using GUI.Model;
+using MazeLib;
+using System;
+using System.Net.Sockets;
+using System.Threading.Tasks;
 
 namespace GUI.ViewModel
 {
     class MultiPlayerViewModel : ViewModel
     {
+        //TcpClient client;
 
-        private IClientModel model;
+        private MultiClientModel model;
 
         public MultiPlayerViewModel()
         {
             this.model = new MultiClientModel();
-            this.model.Connect();
-            //manage all the communication with the server
         }
 
-        public IClientModel Model
+        public MultiClientModel Model
         {
             get { return model; }
+        }
+
+        public void ConnectAndCommunicate(string firstCommand)
+        {
+            model.ReceivingMessageEvent += UpdateViewThatTheServerSentMessageToUs;
+            var t = new Task(() =>
+            {
+                this.model.MessageToSend = firstCommand;
+                this.model.commandIsReadyToBeSent = true;
+                this.model.Communicate();
+            });
+            //manage all the communication with the server
+            t.Start();
+        }
+
+        private void UpdateViewThatTheServerSentMessageToUs(string message)
+        {
+
         }
 
 

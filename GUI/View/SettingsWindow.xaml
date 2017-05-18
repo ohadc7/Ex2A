@@ -30,7 +30,7 @@
         <TextBlock Grid.Row="3" Grid.Column="0">Maze columns:</TextBlock>
         <TextBox x:Name="txtCols" Grid.Row="3" Grid.Column="1" Text="{Binding MazeCols}"></TextBox>
         <TextBlock Grid.Row="4" Grid.Column="0">Search algorithm:</TextBlock>
-        <ComboBox x:Name="cboSearchAlgo" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Width="30" Height="Auto"
+        <ComboBox x:Name="cboSearchAlgo" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Width="55" Height="Auto"
 SelectedIndex="{Binding SearchAlgorithm}" IsEditable="False">
             <ComboBoxItem>BFS</ComboBoxItem>
             <ComboBoxItem>DFS</ComboBoxItem>

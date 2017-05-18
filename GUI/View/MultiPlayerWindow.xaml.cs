@@ -23,23 +23,27 @@ namespace GUI
     public partial class MultiPlayerWindow : Window
     {
         private MultiPlayerViewModel mpVM;
-        private TcpClient client;
+        //private TcpClient client;
 
         public MultiPlayerWindow()
         {
+            SinglePlayerViewModel spvm = new SinglePlayerViewModel();
+            //spvm.model.GetList();
+
             mpVM = new MultiPlayerViewModel();
-            client = mpVM.Model.Connect();
+            /*client =*/ //mpVM.ConnectAndCommunicate();
             this.DataContext = mpVM;
             InitializeComponent();
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder generateString = new StringBuilder();
-            generateString.Append("generate " + mpVM.MazeNameDefinition + " " + mpVM.MazeRowsDefinition + " " + mpVM.MazeColsDefinition); 
+            generateString.Append("start " + mpVM.MazeNameDefinition + " " + mpVM.MazeRowsDefinition + " " + mpVM.MazeColsDefinition); 
+            //mpVM.Model.GetMaze(client, generateString.ToString());
 
-            mpVM.Model.GetMaze(client, generateString.ToString());
+            mpVM.ConnectAndCommunicate(generateString.ToString());
+
             MultiPlayerGameWindow mpGW = new MultiPlayerGameWindow();//MultiPlayerGameWindow(spVM.Model);
             mpGW.Show();
             this.Close();
