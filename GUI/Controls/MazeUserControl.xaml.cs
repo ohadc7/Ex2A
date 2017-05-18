@@ -25,13 +25,12 @@ namespace GUI.Controls
           
         }
 
-        private ImageBrush characterImageBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/user.jpg")));
+          private ImageBrush characterImageBrush = new ImageBrush(new BitmapImage(new Uri("user.jpg", UriKind.Relative)));
 
-        private ImageBrush endDoorBrush = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Images/end.jpg")));
+          private ImageBrush endDoorBrush = new ImageBrush(new BitmapImage(new Uri("End.jpg", UriKind.Relative)));
 
 
-        private Dictionary<Point, Path> recPlaceDict = new Dictionary<Point, Path>();
-
+       
         public int Rows
         {
             get { return (int)GetValue(RowsProperty); }
@@ -115,17 +114,45 @@ namespace GUI.Controls
             DependencyProperty.Register("SolveString", typeof(string), typeof(MazeUserControl));
 
 
-        private int initX, initY;
-        private Path initRec;
-        int widthOfBlock = 30;//(int)MazeCanvas.ActualWidth/Rows;
-        int HeightOfBlock = 30;//(int)MazeCanvas.ActualHeight/Cols;
-        private Rect moveRect;
+
+        public Position CurrentPosition
+        {
+            get { return (Position)GetValue(CurrentPositionProperty); }
+            set { SetValue(CurrentPositionProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CurrentPosition.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CurrentPositionProperty =
+            DependencyProperty.Register("CurrentPosition", typeof(Position), typeof(MazeUserControl));
+
+        private Position currentPosition;
+        private double WidthOfBlock;
+        private double HeightOfBlock;
+
+        private Image StartImage;
+        private Image EndImage;
 
         public void Draw()
         {
-
-            
-
+            WidthOfBlock =  MazeCanvas.Width / Cols;
+            HeightOfBlock = MazeCanvas.Height / Rows;
+            StartImage = new Image
+            {
+                Width = WidthOfBlock,
+                Height = HeightOfBlock,
+                Source = new BitmapImage(new Uri("user.jpg", UriKind.Relative))
+            };
+            Canvas.SetLeft(StartImage, InitPosition.Row* HeightOfBlock);
+            Canvas.SetTop(StartImage, InitPosition.Col*WidthOfBlock);
+            EndImage = new Image
+            {
+                Width = WidthOfBlock,
+                Height = HeightOfBlock,
+                Source = new BitmapImage(new Uri("End.jpg", UriKind.Relative))
+            };
+            Canvas.SetLeft(EndImage, GoalPosition.Row * HeightOfBlock);
+            Canvas.SetTop(EndImage, GoalPosition.Col * WidthOfBlock);
+          
             int x = 0;
             for (int i = 0; i < Rows; i++)
             {
@@ -134,7 +161,7 @@ namespace GUI.Controls
 
                     var rec = new Path
                     {
-                        Data = new RectangleGeometry(new Rect(j *  widthOfBlock, i * HeightOfBlock, widthOfBlock, HeightOfBlock)),
+                        Data = new RectangleGeometry(new Rect(j *  WidthOfBlock, i * HeightOfBlock, WidthOfBlock, HeightOfBlock)),
                         Fill = Brushes.Black,
                         Stroke = Brushes.Black,
                         StrokeThickness = 2
@@ -145,94 +172,45 @@ namespace GUI.Controls
                         rec.Fill = Brushes.White;
                         
                     }
-                    if (new Position(i, j).Equals(InitPosition))
-                    {
-                        rec.Fill = characterImageBrush;
-                        initX = i;
-                        initY = j;
-                        initRec = rec;
-                        moveRect = new Rect(initX, initY, widthOfBlock, HeightOfBlock);
-
-                    }
-                    if (new Position(i, j).Equals(GoalPosition))
-                    {
-                        rec.Fill = endDoorBrush;
-                    }
-                    recPlaceDict.Add(new Point(i, j), rec);
+                    currentPosition = InitPosition;
                     MazeCanvas.Children.Add(rec);
 
                     x++;
                 }
             }
-        }
-        public void Solve()
-        {
-            Rect animationRect = new Rect(initX, initY, widthOfBlock, HeightOfBlock);
-            foreach (char c in SolveString)
-            {
-                switch (c)
-                {
-                    case '0':
-                        {
-                            animationRect.X -= 1;
-                            //initRec.Data = new RectangleGeometry(animationRect);
-                            recPlaceDict[new Point(initX - 1, initY)].Fill = characterImageBrush;
-                            System.Threading.Thread.Sleep(100);
-                            break;
-                        }
-                    case '1':
-                        {
-                            animationRect.X += 1;
-                            //initRec.Data = new RectangleGeometry(animationRect);
-                            recPlaceDict[new Point(initX + 1, initY)].Fill = characterImageBrush;
-                            System.Threading.Thread.Sleep(100);
-                            break;
-                        }
-                    case '2':
-                        {
-                            animationRect.Y -= 1;
-                            //initRec.Data = new RectangleGeometry(animationRect);
-                            recPlaceDict[new Point(initX , initY-1)].Fill = characterImageBrush;
-                            System.Threading.Thread.Sleep(100);
-                            break;
-                        }
-                    case '3':
-                        {
-                            animationRect.Y += 1;
-                            //initRec.Data = new RectangleGeometry(animationRect);
-                            recPlaceDict[new Point(initX , initY+1)].Fill = characterImageBrush;
-                            System.Threading.Thread.Sleep(100);
-                            break;
-                        }
-                    default:
-                        break;
-                }
-            }
+            MazeCanvas.Children.Add(StartImage);
+            MazeCanvas.Children.Add(EndImage);
         }
 
         public void OnKeyDownHandler(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Left)
             {
-                moveRect.X -= 1;
-                initRec.Data = new RectangleGeometry(moveRect);
+                currentPosition.Col -= 1;
+                Canvas.SetLeft(StartImage, currentPosition.Col* HeightOfBlock);
+                Canvas.SetTop(StartImage, currentPosition.Row* WidthOfBlock);
             }
             if (e.Key == Key.Right)
             {
-                moveRect.X += 1;
-                initRec.Data = new RectangleGeometry(moveRect);
+                currentPosition.Col += 1;
+                Canvas.SetLeft(StartImage, currentPosition.Col* HeightOfBlock);
+                Canvas.SetTop(StartImage, currentPosition.Row* WidthOfBlock);
             }
             if (e.Key == Key.Up)
             {
-                moveRect.Y -= 1;
-                initRec.Data = new RectangleGeometry(moveRect);
+                currentPosition.Row -= 1;
+                Canvas.SetLeft(StartImage, currentPosition.Col* HeightOfBlock);
+                Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
             }
             if (e.Key == Key.Down)
             {
-                moveRect.Y += 1;
-                initRec.Data = new RectangleGeometry(moveRect);
+                currentPosition.Row += 1;
+                Canvas.SetLeft(StartImage, currentPosition.Col* HeightOfBlock);
+                Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
             }
         }
+
+
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using GUI.Model;
 using GUI.ViewModel;
+using MazeLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,7 +61,69 @@ namespace GUI.View
             StringBuilder generateString = new StringBuilder();
             generateString.Append("solve " + spgVM.VM_MazeName + " 1");
             spgVM.model.GetSolveString(client, generateString.ToString());
-            MyMazeBoard.Solve();
+           
+                this.Solve();
+            
         }
+
+
+
+        public void Solve()
+        {
+        Task t = Task.Run(() =>
+        {
+            Position p = spgVM.VM_InitPosition;
+            
+                foreach (char c in spgVM.VM_SolveString)
+                {
+                    switch (c)
+                    {
+                        case '0':
+                            {
+                                p.Row -= 1;
+                                spgVM.VM_CurrentPosition = p;
+                           // MyMazeBoard.move(p);
+                               // System.Threading.Thread.Sleep(100);
+                                break;
+                            }
+                        case '1':
+                            {
+                                p.Row += 1;
+                            spgVM.VM_CurrentPosition = p;
+                           // MyMazeBoard.move(p);
+
+                           // System.Threading.Thread.Sleep(100);
+                                break;
+                            }
+                        case '2':
+                            {
+
+
+                                p.Col -= 1;
+                            spgVM.VM_CurrentPosition = p;
+                           // MyMazeBoard.move(p);
+
+                           // System.Threading.Thread.Sleep(100);
+                                break;
+                            }
+                        case '3':
+                            {
+
+
+                               p.Col += 1;
+                            spgVM.VM_CurrentPosition = p;
+                           // MyMazeBoard.move(p);
+
+                           // System.Threading.Thread.Sleep(100);
+                                break;
+                            }
+                        default:
+                            break;
+                    }
+                }
+        });
+        }
+
+             
     }
 }

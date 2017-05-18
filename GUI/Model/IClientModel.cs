@@ -44,6 +44,12 @@ namespace GUI.Model
             set
            ;
         }
+        Position CurrentPosition
+        {
+            get;
+            set
+           ;
+        }
         string SolveString
         {
             get;

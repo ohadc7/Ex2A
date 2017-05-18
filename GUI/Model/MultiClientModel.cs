@@ -152,6 +152,19 @@ namespace GUI.Model
                 throw new NotImplementedException();
             }
         }
+        public Position CurrentPosition
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public int HeightOfBlock
         {
             get
