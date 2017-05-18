@@ -32,7 +32,16 @@ namespace GUI.ViewModel
             set
             {
                 model.MazeName = value;
-                NotifyPropertyChanged("VM_MazeName");
+
+            }
+        }
+
+        public Position VM_CurrentPosition
+        {
+            get { return model.CurrentPosition; }
+            set
+            {
+                model.CurrentPosition = value;
 
             }
         }
@@ -43,8 +52,6 @@ namespace GUI.ViewModel
             set
             {
                 model.Rows = value;
-                NotifyPropertyChanged("VM_Rows");
-
             }
         }
         
@@ -54,7 +61,6 @@ namespace GUI.ViewModel
             set
             {
                 model.Cols = value;
-                NotifyPropertyChanged("VM_Cols");
             }
         }
         public string VM_MazeString
@@ -63,7 +69,6 @@ namespace GUI.ViewModel
             set
             {
                 model.MazeString = value;
-                NotifyPropertyChanged("VM_MazeString");
             }
         }
         public Position VM_InitPosition
@@ -72,7 +77,6 @@ namespace GUI.ViewModel
             set
             {
                 model.InitPosition = value;
-                NotifyPropertyChanged("VM_InitPosition");
             }
         }
         public Position VM_GoalPosition
@@ -81,7 +85,6 @@ namespace GUI.ViewModel
             set
             {
                 model.GoalPosition = value;
-                NotifyPropertyChanged("VM_GoalPosition");
             }
         }
         public string VM_SolveString
@@ -90,7 +93,6 @@ namespace GUI.ViewModel
             set
             {
                 model.SolveString = value;
-                NotifyPropertyChanged("VM_SolveString");
             }
         }
     }

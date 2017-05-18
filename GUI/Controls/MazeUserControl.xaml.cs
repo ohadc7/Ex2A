@@ -31,8 +31,6 @@ namespace GUI.Controls
 
 
        
-        private Dictionary<Point, Path> recPlaceDict = new Dictionary<Point, Path>();
-
         public int Rows
         {
             get { return (int)GetValue(RowsProperty); }
@@ -116,14 +114,28 @@ namespace GUI.Controls
             DependencyProperty.Register("SolveString", typeof(string), typeof(MazeUserControl));
 
 
+
+        public Position CurrentPosition
+        {
+            get { return (Position)GetValue(CurrentPositionProperty); }
+            set { SetValue(CurrentPositionProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CurrentPosition.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CurrentPositionProperty =
+            DependencyProperty.Register("CurrentPosition", typeof(Position), typeof(MazeUserControl));
+
+        private Position currentPosition;
+        private double WidthOfBlock;
+        private double HeightOfBlock;
+
         private Image StartImage;
         private Image EndImage;
-        private Position currentPosition;
 
         public void Draw()
         {
-            double WidthOfBlock =  MazeCanvas.Width / Cols;
-            double HeightOfBlock = MazeCanvas.Height / Rows;
+            WidthOfBlock =  MazeCanvas.Width / Cols;
+            HeightOfBlock = MazeCanvas.Height / Rows;
             StartImage = new Image
             {
                 Width = WidthOfBlock,
@@ -160,8 +172,7 @@ namespace GUI.Controls
                         rec.Fill = Brushes.White;
                         
                     }
-                   
-                    recPlaceDict.Add(new Point(i, j), rec);
+                    currentPosition = InitPosition;
                     MazeCanvas.Children.Add(rec);
 
                     x++;
@@ -169,86 +180,37 @@ namespace GUI.Controls
             }
             MazeCanvas.Children.Add(StartImage);
             MazeCanvas.Children.Add(EndImage);
-            currentPosition = InitPosition;
-        }
-
-
-        public void Solve()
-        {
-            foreach (char c in SolveString)
-            {
-                switch (c)
-                {
-                    case '0':
-                        {
-                            currentPosition.Row -= 1;
-                            Canvas.SetLeft(StartImage, currentPosition.Col);
-                            Canvas.SetTop(StartImage, currentPosition.Row);
-                           
-                            System.Threading.Thread.Sleep(100);
-                            break;
-                        }
-                    case '1':
-                        {
-                            currentPosition.Row += 1;
-                            Canvas.SetLeft(StartImage, currentPosition.Col);
-                            Canvas.SetTop(StartImage, currentPosition.Row);
-                            System.Threading.Thread.Sleep(100);
-                            break;
-                        }
-                    case '2':
-                        {
-                           
-
-                            currentPosition.Col -= 1;
-                            Canvas.SetLeft(StartImage, currentPosition.Col);
-                            Canvas.SetTop(StartImage, currentPosition.Row);
-                            System.Threading.Thread.Sleep(100);
-                            break;
-                        }
-                    case '3':
-                        {
-                           
-
-                            currentPosition.Col += 1;
-                            Canvas.SetLeft(StartImage, currentPosition.Col);
-                            Canvas.SetTop(StartImage, currentPosition.Row);
-                            System.Threading.Thread.Sleep(100);
-                            break;
-                        }
-                    default:
-                        break;
-                }
-            }
         }
 
         public void OnKeyDownHandler(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Left)
             {
-                currentPosition.Row -= 1;
-                Canvas.SetLeft(StartImage, currentPosition.Col);
-                Canvas.SetTop(StartImage, currentPosition.Row);
+                currentPosition.Col -= 1;
+                Canvas.SetLeft(StartImage, currentPosition.Col* HeightOfBlock);
+                Canvas.SetTop(StartImage, currentPosition.Row* WidthOfBlock);
             }
             if (e.Key == Key.Right)
             {
-                currentPosition.Row += 1;
-                Canvas.SetLeft(StartImage, currentPosition.Col);
-                Canvas.SetTop(StartImage, currentPosition.Row);
+                currentPosition.Col += 1;
+                Canvas.SetLeft(StartImage, currentPosition.Col* HeightOfBlock);
+                Canvas.SetTop(StartImage, currentPosition.Row* WidthOfBlock);
             }
             if (e.Key == Key.Up)
             {
-                currentPosition.Col -= 1;
-                Canvas.SetLeft(StartImage, currentPosition.Col);
-                Canvas.SetTop(StartImage, currentPosition.Row);
+                currentPosition.Row -= 1;
+                Canvas.SetLeft(StartImage, currentPosition.Col* HeightOfBlock);
+                Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
             }
             if (e.Key == Key.Down)
             {
-                currentPosition.Col += 1;
-                Canvas.SetLeft(StartImage, currentPosition.Col);
-                Canvas.SetTop(StartImage, currentPosition.Row);
+                currentPosition.Row += 1;
+                Canvas.SetLeft(StartImage, currentPosition.Col* HeightOfBlock);
+                Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
             }
         }
+
+
 
     }
 }

@@ -62,7 +62,6 @@ namespace GUI.Model
             var client = new TcpClient();
             client.Connect(ep);
             return client;
-            //Console.WriteLine("debug massage: You are connected");
         }
         public void GetMaze(TcpClient client, string mazeInput)
         {
@@ -76,6 +75,7 @@ namespace GUI.Model
             Rows = maze.Rows;
             InitPosition = maze.InitialPos;
             GoalPosition = maze.GoalPos;
+            CurrentPosition = maze.InitialPos;
 
         }
 
@@ -107,6 +107,16 @@ namespace GUI.Model
             {
                 mazeName = value;
                 NotifyPropertyChanged("MazeName");
+            }
+        }
+        private Position currentPosition;
+        public Position CurrentPosition
+        {
+            get { return currentPosition; }
+            set
+            {
+                currentPosition = value;
+                NotifyPropertyChanged("CurrentPosition");
             }
         }
         private int rows;
