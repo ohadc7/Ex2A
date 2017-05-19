@@ -26,10 +26,10 @@
         <ComboBox x:Name="cboMazeNames" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="100" Margin="3" SelectedIndex="{Binding SearchAlgorithm}" IsEditable="False">
 
         </ComboBox>
-        <Button Content="Join Game" HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" Width="75" Margin="3" Click="Button_Click"/>
+        <Button Content="Join Game" HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" Width="75" Margin="3" Click="JoinGameButton_Click"/>
         
 
         <Controls:MazeDefinitionsUserControl Grid.Row="2" Grid.ColumnSpan="2" />
-        <Button Content="Start Game" HorizontalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Top" Width="75" Margin="3" Click="Button_Click"/>
+        <Button Content="Start Game" HorizontalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Top" Width="75" Margin="3" Click="StartGameButton_Click"/>
     </Grid>
 </Window>

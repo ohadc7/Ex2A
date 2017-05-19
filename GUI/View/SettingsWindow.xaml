@@ -22,16 +22,16 @@
 
         </Grid.RowDefinitions>
         <TextBlock>Server IP:</TextBlock>
-        <TextBox x:Name="txtIP" Grid.Row="0" Grid.Column="1" Text="{Binding ServerIP}"></TextBox>
+        <TextBox x:Name="txtIP" Grid.Row="0" Grid.Column="1" Text="{Binding ServerIP, UpdateSourceTrigger=Explicit}"></TextBox>
         <TextBlock Grid.Row="1" Grid.Column="0">Server Port:</TextBlock>
-        <TextBox x:Name="txtPort" Grid.Row="1" Grid.Column="1" Text="{Binding ServerPort}"></TextBox>
+        <TextBox x:Name="txtPort" Grid.Row="1" Grid.Column="1" Text="{Binding ServerPort, UpdateSourceTrigger=Explicit}"></TextBox>
         <TextBlock Grid.Row="2" Grid.Column="0">Maze rows:</TextBlock>
-        <TextBox x:Name="txtRows" Grid.Row="2" Grid.Column="1" Text="{Binding MazeRows}"></TextBox>
+        <TextBox x:Name="txtRows" Grid.Row="2" Grid.Column="1" Text="{Binding MazeRows, UpdateSourceTrigger=Explicit}"></TextBox>
         <TextBlock Grid.Row="3" Grid.Column="0">Maze columns:</TextBlock>
-        <TextBox x:Name="txtCols" Grid.Row="3" Grid.Column="1" Text="{Binding MazeCols}"></TextBox>
+        <TextBox x:Name="txtCols" Grid.Row="3" Grid.Column="1" Text="{Binding MazeCols, UpdateSourceTrigger=Explicit}"></TextBox>
         <TextBlock Grid.Row="4" Grid.Column="0">Search algorithm:</TextBlock>
         <ComboBox x:Name="cboSearchAlgo" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Width="70" Height="Auto"
-SelectedIndex="{Binding SearchAlgorithm}" IsEditable="False">
+SelectedIndex="{Binding SearchAlgorithm, UpdateSourceTrigger=Explicit}" IsEditable="False">
             <ComboBoxItem>BFS</ComboBoxItem>
             <ComboBoxItem>DFS</ComboBoxItem>
         </ComboBox>

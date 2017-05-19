@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using GUI.Model;
 using GUI.ViewModel;
+using System.Windows.Data;
+using System.Windows.Controls;
 
 namespace GUI.View
 {
@@ -19,6 +21,17 @@ namespace GUI.View
         }
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
+            BindingExpression be = txtIP.GetBindingExpression(TextBox.TextProperty);
+            be.UpdateSource();
+            be = txtPort.GetBindingExpression(TextBox.TextProperty);
+            be.UpdateSource();
+            be = txtRows.GetBindingExpression(TextBox.TextProperty);
+            be.UpdateSource();
+            be = txtCols.GetBindingExpression(TextBox.TextProperty);
+            be.UpdateSource();
+            be = cboSearchAlgo.GetBindingExpression(ComboBox.SelectedIndexProperty);
+            be.UpdateSource();
+            
             vm.SaveSettings();
             MainWindow win = (MainWindow)Application.Current.MainWindow;
             win.Show();

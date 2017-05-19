@@ -28,6 +28,7 @@ namespace GUI
 
         public MultiPlayerWindow()
         {
+            //request from the server list of available games
             SinglePlayerViewModel spvm = new SinglePlayerViewModel();
             TcpClient client = spvm.model.Connect();
             JArray jarray = spvm.model.GetListOfGames(client);
@@ -35,6 +36,7 @@ namespace GUI
             string[] stringsArray = jarray.ToObject<string[]>();
             List<string> stringsList = stringsArray.OfType<string>().ToList();
 
+            //create mpvm
             mpVM = new MultiPlayerViewModel();
             /*client =*/ //mpVM.ConnectAndCommunicate();
             this.DataContext = mpVM;
@@ -43,17 +45,22 @@ namespace GUI
             cboMazeNames.ItemsSource = stringsList;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void StartGameButton_Click(object sender, RoutedEventArgs e)
         {
-            StringBuilder generateString = new StringBuilder();
-            generateString.Append("start " + mpVM.MazeNameDefinition + " " + mpVM.MazeRowsDefinition + " " + mpVM.MazeColsDefinition); 
+            StringBuilder startString = new StringBuilder();
+            startString.Append("start " + mpVM.MazeNameDefinition + " " + mpVM.MazeRowsDefinition + " " + mpVM.MazeColsDefinition); 
             //mpVM.Model.GetMaze(client, generateString.ToString());
 
-            mpVM.ConnectAndCommunicate(generateString.ToString());
+            mpVM.ConnectAndCommunicate(startString.ToString());
 
             MultiPlayerGameWindow mpGW = new MultiPlayerGameWindow();//MultiPlayerGameWindow(spVM.Model);
             mpGW.Show();
             this.Close();
+        }
+
+        private void JoinGameButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
