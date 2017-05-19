@@ -1,4 +1,5 @@
 ﻿using MazeLib;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel;
 using System.Net.Sockets;
 
@@ -59,6 +60,7 @@ namespace GUI.Model
         string Communicate(TcpClient client, string messege);
         void GetMaze(TcpClient client, string mazeInput);
         void GetSolveString(TcpClient client, string mazeName);
+        JArray GetListOfGames(TcpClient client);
     }
 
 }

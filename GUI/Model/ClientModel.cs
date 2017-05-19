@@ -99,6 +99,13 @@ namespace GUI.Model
 
         }
 
+        public JArray GetListOfGames(TcpClient client)
+        {
+            string solve = (this.Communicate(client, "list"));
+            var array = JArray.Parse(solve);
+            return array;
+        }
+
         private string mazeName;
         public string MazeName
         {

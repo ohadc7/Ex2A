@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Net.Sockets;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace GUI
 {
@@ -28,12 +29,18 @@ namespace GUI
         public MultiPlayerWindow()
         {
             SinglePlayerViewModel spvm = new SinglePlayerViewModel();
-            //spvm.model.GetList();
+            TcpClient client = spvm.model.Connect();
+            JArray jarray = spvm.model.GetListOfGames(client);
+            Console.WriteLine(jarray);
+            string[] stringsArray = jarray.ToObject<string[]>();
+            List<string> stringsList = stringsArray.OfType<string>().ToList();
 
             mpVM = new MultiPlayerViewModel();
             /*client =*/ //mpVM.ConnectAndCommunicate();
             this.DataContext = mpVM;
             InitializeComponent();
+
+            cboMazeNames.ItemsSource = stringsList;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

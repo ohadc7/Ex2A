@@ -48,12 +48,14 @@ namespace Ex1.Controller.Commands
         {
             //gets the list of multi player games that available to join
             var listOfGames = model.list();
+            JArray j = new JArray(listOfGames);
+            /*
             JArray j = new JArray();
             foreach (var name in listOfGames)
             {
                 j.Add(name);
             }
-
+            */
             var ListPacketStream = new PacketStream
             {
                 StringStream = j.ToString()
