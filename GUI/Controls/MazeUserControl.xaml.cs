@@ -12,6 +12,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Collections.ObjectModel;
 
 namespace GUI.Controls
 {
@@ -132,8 +133,10 @@ namespace GUI.Controls
         private double HeightOfBlock;
 
         private Image StartImage;
-        private Image EndImage;
+        // private Image EndImage;
+        private HashSet<Point> WallsSet = new HashSet<Point>();
 
+        private Hashtable WallsCollection = new Hashtable();
         public void Draw()
         {
             WidthOfBlock =  MazeCanvas.Width / Cols;
@@ -146,7 +149,7 @@ namespace GUI.Controls
             };
             Canvas.SetLeft(StartImage, InitPosition.Row* HeightOfBlock);
             Canvas.SetTop(StartImage, InitPosition.Col*WidthOfBlock);
-            EndImage = new Image
+          /*  EndImage = new Image
             {
                 Width = WidthOfBlock,
                 Height = HeightOfBlock,
@@ -154,7 +157,7 @@ namespace GUI.Controls
             };
             Canvas.SetLeft(EndImage, GoalPosition.Row * HeightOfBlock);
             Canvas.SetTop(EndImage, GoalPosition.Col * WidthOfBlock);
-          
+          */
             int x = 0;
             for (int i = 0; i < Rows; i++)
             {
@@ -164,51 +167,75 @@ namespace GUI.Controls
                     var rec = new Path
                     {
                         Data = new RectangleGeometry(new Rect(j *  HeightOfBlock, i * WidthOfBlock, WidthOfBlock, HeightOfBlock)),
-                        Fill = Brushes.Black,
+                        Fill = Brushes.White,
                         Stroke = Brushes.Black,
                         StrokeThickness = 2
                     };
                     
-                    if (MazeString[x].Equals('0'))
+                    if (MazeString[x].Equals('1'))
                     {
-                        rec.Fill = Brushes.White;
+                        rec.Fill = Brushes.Black;
+                        WallsCollection.Add(new Point(i, j),new Point(0,0));
+                        WallsSet.Add(new Point(i, j));
                         
                     }
-                    currentPosition = InitPosition;
+                    if(new Position(i, j).Equals(GoalPosition))
+                    {
+                        rec.Fill = endDoorBrush;
+                    }
+                   
                     MazeCanvas.Children.Add(rec);
 
                     x++;
                 }
             }
+            currentPosition = InitPosition;
             MazeCanvas.Children.Add(StartImage);
-            MazeCanvas.Children.Add(EndImage);
+            //MazeCanvas.Children.Add(EndImage);
         }
 
         public void OnKeyDownHandler(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Left)
             {
-                currentPosition.Col -= 1;
-                Canvas.SetLeft(StartImage, currentPosition.Col* HeightOfBlock);
-                Canvas.SetTop(StartImage, currentPosition.Row* WidthOfBlock);
+                Point Left = new Point(currentPosition.Col - 1, currentPosition.Row);
+
+                if (WallsSet.Contains(Left))
+                {
+                    currentPosition.Col -= 1;
+                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
+                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                }
             }
             if (e.Key == Key.Right)
             {
-                currentPosition.Col += 1;
-                Canvas.SetLeft(StartImage, currentPosition.Col* HeightOfBlock);
-                Canvas.SetTop(StartImage, currentPosition.Row* WidthOfBlock);
+                Point Right = new Point(currentPosition.Col + 1, currentPosition.Row);
+                if (WallsSet.Contains(Right))
+                {
+                    currentPosition.Col += 1;
+                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
+                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                }
             }
             if (e.Key == Key.Up)
             {
-                currentPosition.Row -= 1;
-                Canvas.SetLeft(StartImage, currentPosition.Col* HeightOfBlock);
-                Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                Point Up = new Point(currentPosition.Col, currentPosition.Row - 1);
+                if (WallsSet.Contains(Up))
+                {
+                    currentPosition.Row -= 1;
+                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
+                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                }
             }
             if (e.Key == Key.Down)
             {
-                currentPosition.Row += 1;
-                Canvas.SetLeft(StartImage, currentPosition.Col* HeightOfBlock);
-                Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                Point Down = new Point(currentPosition.Col, currentPosition.Row + 1);
+                if (WallsSet.Contains(Down))
+                {
+                    currentPosition.Row += 1;
+                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
+                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                }
             }
         }
 

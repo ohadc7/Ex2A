@@ -59,7 +59,7 @@ namespace GUI.View
         private void Button_Click_Solve(object sender, RoutedEventArgs e)
         {
             StringBuilder generateString = new StringBuilder();
-            generateString.Append("solve " + spgVM.VM_MazeName + " 1");
+            generateString.Append("solve " + spgVM.VM_MazeName + " 0");
             spgVM.model.GetSolveString(client, generateString.ToString());
 
             this.Solve();
@@ -71,7 +71,7 @@ namespace GUI.View
             
             Task t = Task.Run(() =>
             {
-                Position p = spgVM.VM_CurrentPosition;
+                Position p = spgVM.VM_InitPosition;
                 foreach (char c in spgVM.VM_SolveString)
                 {
                     switch (c)

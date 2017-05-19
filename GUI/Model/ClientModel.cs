@@ -101,9 +101,7 @@ namespace GUI.Model
 
         public JArray GetListOfGames(TcpClient client)
         {
-            string solve = (this.Communicate(client, "list"));
-            var array = JArray.Parse(solve);
-            return array;
+            throw new NotImplementedException();
         }
 
         private string mazeName;

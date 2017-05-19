@@ -5,16 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI.View"  xmlns:Controls="clr-namespace:GUI.Controls"
         mc:Ignorable="d"
-        Title="SinglePlayerGameWindows" >
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="62"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Controls:MazeUserControl x:Name="MyMazeBoard" Loaded="MazeUserControl_Loaded"  
+        Title="SinglePlayerGameWindows" d:DesignWidth="500" >
+    <Viewbox>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="62"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Controls:MazeUserControl x:Name="MyMazeBoard" Loaded="MazeUserControl_Loaded"  
                Rows="{Binding VM_Rows}" Cols="{Binding VM_Cols}" InitPosition="{Binding VM_InitPosition}" GoalPosition="{Binding VM_GoalPosition}" MazeString="{Binding VM_MazeString}" MazeName="{Binding VM_MazeName}" SolveString="{Binding VM_SolveString}" CurrentPosition="{Binding VM_CurrentPosition}" Grid.Row="1"/>
-        <Button Content="Restart game" HorizontalAlignment="Left" Margin="24,21,0,0" VerticalAlignment="Top" Width="75" Grid.Row="0"/>
-        <Button Content="Solve maze" HorizontalAlignment="Left" Margin="117,21,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Solve" Grid.Row="0"/>
-        <Button Content="Main menu" HorizontalAlignment="Left" Margin="207,21,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Menu" Grid.Row="0"/>
-    </Grid>
+            <Button Content="Restart game" HorizontalAlignment="Left" Margin="24,21,0,0" VerticalAlignment="Top" Width="75" Grid.Row="0"/>
+            <Button Content="Solve maze" HorizontalAlignment="Left" Margin="117,21,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Solve" Grid.Row="0"/>
+            <Button Content="Main menu" HorizontalAlignment="Left" Margin="207,21,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Menu" Grid.Row="0"/>
+        </Grid>
+    </Viewbox>
 </Window>
