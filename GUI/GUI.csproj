@@ -177,12 +177,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\End.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\user.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Controls\End.jpg" />
     <Resource Include="Controls\user.jpg" />
   </ItemGroup>
