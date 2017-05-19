@@ -1,7 +1,9 @@
-﻿using System;
+﻿using GUI.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,9 +21,20 @@ namespace GUI.View
     /// </summary>
     public partial class MultiPlayerGameWindow : Window
     {
-        public MultiPlayerGameWindow()
+        private MultiPlayerViewModel mpVM;
+
+        public MultiPlayerGameWindow(MultiPlayerViewModel mpVM)
         {
+            this.mpVM = mpVM;
+            this.DataContext = mpVM;
             InitializeComponent();
         }
+
+        private void MazeUserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            MyMazeBoard.Draw();
+            this.KeyDown += MyMazeBoard.OnKeyDownHandler;
+        }
+
     }
 }

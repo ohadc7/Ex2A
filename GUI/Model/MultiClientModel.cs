@@ -13,17 +13,17 @@ using System.Threading;
 
 namespace GUI.Model
 {
-
     public delegate void ChangedEventHandler(object sender, EventArgs e);
 
     public delegate void ServerSentMessage(string message);
 
-    class MultiClientModel
+    public class MultiClientModel : INotifyPropertyChanged
     {
         public string MessageToSend { private get; set; }
         public bool commandIsReadyToBeSent { private get; set; }
 
         public event ServerSentMessage ReceivingMessageEvent;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public MultiClientModel()
         {
@@ -128,156 +128,147 @@ namespace GUI.Model
             }
         }
 
-        public int Cols
+        public void NotifyPropertyChanged(string propName)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-        public Position GoalPosition
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-        public Position CurrentPosition
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
 
-        public int HeightOfBlock
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-        public Position InitPosition
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-        public string Maze
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-        public string MazeString
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        
+        private string mazeName;
         public string MazeName
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
+            get { return mazeName; }
             set
             {
-                throw new NotImplementedException();
+                mazeName = value;
+                NotifyPropertyChanged("MazeName");
             }
         }
+        private Position currentPosition;
+        public Position CurrentPosition
+        {
+            get { return currentPosition; }
+            set
+            {
+                currentPosition = value;
+                NotifyPropertyChanged("CurrentPosition");
+            }
+        }
+        private int rows;
         public int Rows
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
+            get { return rows; }
             set
             {
-                throw new NotImplementedException();
+                rows = value;
+                NotifyPropertyChanged("Rows");
             }
         }
-        public int WidthOfBlock
+        private int cols;
+        public int Cols
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
+            get { return cols; }
             set
             {
-                throw new NotImplementedException();
+                cols = value;
+                NotifyPropertyChanged("Cols");
             }
         }
-        public int widthOfBlock
+        private string maze;
+        public string MazeString
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
+            get { return maze; }
             set
             {
-                throw new NotImplementedException();
+                maze = value;
+                NotifyPropertyChanged("MazeString");
             }
         }
+        private Position initPosition;
+        public Position InitPosition
+        {
+            get { return initPosition; }
+            set
+            {
+                initPosition = value;
+                NotifyPropertyChanged("InitPosition");
+            }
+        }
+        private Position goalPosition;
+        public Position GoalPosition
+        {
+            get { return goalPosition; }
+            set
+            {
+                goalPosition = value;
+                NotifyPropertyChanged("GoalPosition");
+            }
+        }
+        private string solveString;
         public string SolveString
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
+            get { return solveString; }
             set
             {
-                throw new NotImplementedException();
+                solveString = value;
+                NotifyPropertyChanged("SolveString");
             }
         }
+        
+
+
+
+
+
+
+
+
+
+
 
         /*
+public int WidthOfBlock
+{
+    get
+    {
+        throw new NotImplementedException();
+    }
+
+    set
+    {
+        throw new NotImplementedException();
+    }
+}
+public int widthOfBlock
+{
+    get
+    {
+        throw new NotImplementedException();
+    }
+
+    set
+    {
+        throw new NotImplementedException();
+    }
+}
+public string SolveString
+{
+    get
+    {
+        throw new NotImplementedException();
+    }
+
+    set
+    {
+        throw new NotImplementedException();
+    }
+}
+
+
 public string Communicate(TcpClient client, string messege)
 {
-    throw new NotImplementedException();
+throw new NotImplementedException();
 }
 */
         /*
@@ -291,6 +282,7 @@ public string Communicate(TcpClient client, string messege)
 
         }
         */
+        /*
         public void GetMaze(TcpClient client, string messege)
         {
             throw new NotImplementedException();
@@ -307,5 +299,6 @@ public string Communicate(TcpClient client, string messege)
         {
             throw new NotImplementedException();
         }
+        */
     }
 }

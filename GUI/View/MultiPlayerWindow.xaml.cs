@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Net.Sockets;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.Threading;
 
 namespace GUI
 {
@@ -25,6 +26,8 @@ namespace GUI
     {
         private MultiPlayerViewModel mpVM;
         //private TcpClient client;
+        private string[] namesOfAvailableGames;
+        
 
         public MultiPlayerWindow()
         {
@@ -33,8 +36,8 @@ namespace GUI
             TcpClient client = spvm.model.Connect();
             JArray jarray = spvm.model.GetListOfGames(client);
             Console.WriteLine(jarray);
-            string[] stringsArray = jarray.ToObject<string[]>();
-            List<string> stringsList = stringsArray.OfType<string>().ToList();
+            namesOfAvailableGames = jarray.ToObject<string[]>();
+            List<string> stringsList = namesOfAvailableGames.OfType<string>().ToList();
 
             //create mpvm
             mpVM = new MultiPlayerViewModel();
@@ -53,14 +56,32 @@ namespace GUI
 
             mpVM.ConnectAndCommunicate(startString.ToString());
 
-            MultiPlayerGameWindow mpGW = new MultiPlayerGameWindow();//MultiPlayerGameWindow(spVM.Model);
+            while(!mpVM.IsReady)
+            {
+                Thread.Sleep(100);
+            }
+
+            MultiPlayerGameWindow mpGW = new MultiPlayerGameWindow(mpVM);//MultiPlayerGameWindow(spVM.Model);
             mpGW.Show();
             this.Close();
         }
 
         private void JoinGameButton_Click(object sender, RoutedEventArgs e)
         {
+            //Console.WriteLine(namesOfAvailableGames[cboMazeNames.SelectedIndex]);
+            mpVM.SelectedGame = namesOfAvailableGames[cboMazeNames.SelectedIndex];
+            string joinCommand = "join " + mpVM.SelectedGame;
 
+            mpVM.ConnectAndCommunicate(joinCommand);
+
+            while (!mpVM.IsReady)
+            {
+                Thread.Sleep(100);
+            }
+
+            MultiPlayerGameWindow mpGW = new MultiPlayerGameWindow(mpVM);//MultiPlayerGameWindow(spVM.Model);
+            mpGW.Show();
+            this.Close();
         }
     }
 }
