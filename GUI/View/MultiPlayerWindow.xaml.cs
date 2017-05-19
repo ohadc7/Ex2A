@@ -34,7 +34,12 @@ namespace GUI
             //request from the server list of available games
             SinglePlayerViewModel spvm = new SinglePlayerViewModel();
             TcpClient client = spvm.model.Connect();
-            JArray jarray = spvm.model.GetListOfGames(client);
+
+            string solve = (spvm.model.Communicate(client, "list"));
+            var array = JArray.Parse(solve);
+            JArray jarray = array;
+            //JArray jarray = spvm.model.GetListOfGames(client);
+
             Console.WriteLine(jarray);
             namesOfAvailableGames = jarray.ToObject<string[]>();
             List<string> stringsList = namesOfAvailableGames.OfType<string>().ToList();
