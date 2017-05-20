@@ -30,11 +30,15 @@ namespace GUI.View
             InitializeComponent();
         }
 
-        private void MazeUserControl_Loaded(object sender, RoutedEventArgs e)
+        private void MyMazeUserControl_Loaded(object sender, RoutedEventArgs e)
         {
             MyMazeBoard.Draw();
             this.KeyDown += MyMazeBoard.OnKeyDownHandler;
         }
 
+        private void OpponentMazeUserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            OpponentMazeBoard.Draw();
+        }
     }
 }

@@ -155,6 +155,20 @@ namespace GUI.Model
                 NotifyPropertyChanged("CurrentPosition");
             }
         }
+
+
+        private Position opponentPosition;
+        public Position OpponentPosition
+        {
+            get { return opponentPosition; }
+            set
+            {
+                opponentPosition = value;
+                NotifyPropertyChanged("OpponentPosition");
+            }
+        }
+
+
         private int rows;
         public int Rows
         {

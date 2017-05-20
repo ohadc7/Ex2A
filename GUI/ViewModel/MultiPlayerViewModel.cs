@@ -43,6 +43,8 @@ namespace GUI.ViewModel
         private void UpdateViewThatTheServerSentMessageToUs(string message)
         {
             Console.WriteLine("debug: message from the server - " + message);
+            //message
+            //model.OpponentPosition = 
         }
 
         private void UpdateViewThatTheServerSentMazeToUs(string serverResponedMaze)
@@ -116,6 +118,19 @@ namespace GUI.ViewModel
                 model.CurrentPosition = value;
             }
         }
+
+
+        public Position OpponentPosition
+        {
+            get { return model.OpponentPosition; }
+            set
+            {
+                model.OpponentPosition = value;
+            }
+        }
+
+
+
         public int Rows
         {
             get { return model.Rows; }
