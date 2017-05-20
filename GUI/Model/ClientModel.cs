@@ -77,6 +77,7 @@ namespace GUI.Model
             GoalPosition = maze.GoalPos;
             CurrentPosition = maze.InitialPos;
             FinishGame = false;
+            SolveFinish = false;
 
         }
 
@@ -191,7 +192,18 @@ namespace GUI.Model
             set { finishGame = value;
                 NotifyPropertyChanged("FinishGame"); }
         }
-        
+
+        private bool solveFinish;
+        public bool SolveFinish
+        {
+            get { return solveFinish; }
+            set
+            {
+                solveFinish = value;
+                NotifyPropertyChanged("SolveFinish");
+            }
+        }
+
 
     }
 }

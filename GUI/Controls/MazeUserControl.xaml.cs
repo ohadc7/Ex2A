@@ -120,16 +120,17 @@ namespace GUI.Controls
 
 
 
-        public Position CurrentPosition
+
+
+        public bool SolveFinish
         {
-            get { return (Position)GetValue(CurrentPositionProperty); }
-            set { SetValue(CurrentPositionProperty, value); }
+            get { return (bool)GetValue(SolveFinishProperty); }
+            set { SetValue(SolveFinishProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CurrentPosition.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CurrentPositionProperty =
-            DependencyProperty.Register("CurrentPosition", typeof(Position), typeof(MazeUserControl));
-
+        // Using a DependencyProperty as the backing store for SolveFinish.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SolveFinishProperty =
+            DependencyProperty.Register("SolveFinish", typeof(bool), typeof(MazeUserControl));
 
 
 
@@ -155,10 +156,10 @@ namespace GUI.Controls
 
         public void Draw()
         {
-             WidthOfBlock =  MazeCanvas.Width / Cols;
+           //  WidthOfBlock = System.Windows.SystemParameters.PrimaryScreenWidth / Cols;
+           // HeightOfBlock = System.Windows.SystemParameters.PrimaryScreenHeight / Rows;
+            WidthOfBlock = MazeCanvas.Width / Cols;
             HeightOfBlock = MazeCanvas.Height / Rows;
-           // WidthOfBlock = MazeCanvas.Width / Rows;
-           // HeightOfBlock = MazeCanvas.Height / Cols;
             //WidthOfBlock = 100;
             //HeightOfBlock = 100;
             StartImage = new Image
@@ -332,6 +333,10 @@ namespace GUI.Controls
                 currentPosition = p;
                 Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
                 Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                if (currentPosition.Equals(GoalPosition))
+                {
+                    SolveFinish = true;
+                }
             });
             
         }
