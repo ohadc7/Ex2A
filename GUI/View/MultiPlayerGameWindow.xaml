@@ -7,12 +7,19 @@
         mc:Ignorable="d"
         Title="MultiPlayerGameWindow">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="62"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Controls:MazeUserControl x:Name="MyMazeBoard" Loaded="MazeUserControl_Loaded"  
-               Rows="{Binding Rows}" Cols="{Binding Cols}" InitPosition="{Binding InitPosition}" GoalPosition="{Binding GoalPosition}" MazeString="{Binding MazeString}" MazeName="{Binding MazeName}" SolveString="{Binding SolveString}" SolveFinish="{Binding CurrentPosition}" Grid.Row="1"/>
+        <Controls:MazeUserControl x:Name="MyMazeBoard" Loaded="MyMazeUserControl_Loaded" Grid.Column="0" Grid.Row="1"
+               Rows="{Binding Rows}" Cols="{Binding Cols}" InitPosition="{Binding InitPosition}" GoalPosition="{Binding GoalPosition}" MazeString="{Binding MazeString}" MazeName="{Binding MazeName}" SolveString="{Binding SolveString}" CurrentPosition="{Binding CurrentPosition}"/>
+        <Controls:MazeUserControl x:Name="OpponentMazeBoard" Loaded="OpponentMazeUserControl_Loaded" Grid.Column="1" Grid.Row="1"
+               Rows="{Binding Rows}" Cols="{Binding Cols}" InitPosition="{Binding InitPosition}" GoalPosition="{Binding GoalPosition}" MazeString="{Binding MazeString}" MazeName="{Binding MazeName}" SolveString="{Binding SolveString}" CurrentPosition="{Binding OpponentPosition}"/>
+
     </Grid>
 </Window>
