@@ -24,24 +24,24 @@ namespace GUI.View
     public partial class SinglePlayerGameWindow : Window
     {
         private SinglePlayerGameViewModel spgVM;
-        public IClientModel Model;
-        private TcpClient client;
 
         public SinglePlayerGameWindow(IClientModel model)
         {
-            Model = model;
-            spgVM = new SinglePlayerGameViewModel(Model);
-            client = spgVM.model.Connect();
-
+            spgVM = new SinglePlayerGameViewModel(model);
             DataContext = spgVM;
             InitializeComponent();
         }
 
         private void Button_Click_Menu(object sender, RoutedEventArgs e)
         {
-            MainWindow win = (MainWindow)Application.Current.MainWindow;
-            win.Show();
-            this.Close();
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to return to the main menu?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                MainWindow win = (MainWindow)Application.Current.MainWindow;
+                win.Show();
+                this.Close();
+            }
+           
         }
 
         private void MazeUserControl_Loaded(object sender, RoutedEventArgs e)
@@ -51,17 +51,18 @@ namespace GUI.View
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_Restart(object sender, RoutedEventArgs e)
         {
-
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to restart the game?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                MyMazeBoard.Restart();
+            }
         }
 
         private void Button_Click_Solve(object sender, RoutedEventArgs e)
         {
-            StringBuilder generateString = new StringBuilder();
-            generateString.Append("solve " + spgVM.VM_MazeName + " 0");
-            spgVM.model.GetSolveString(client, generateString.ToString());
-
+            this.spgVM.GenerateSolveString();
             this.Solve();
 
         }

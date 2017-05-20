@@ -128,36 +128,45 @@ namespace GUI.Controls
         public static readonly DependencyProperty CurrentPositionProperty =
             DependencyProperty.Register("CurrentPosition", typeof(Position), typeof(MazeUserControl));
 
-        private Position currentPosition;
+
+
+
+        public bool FinishGame
+        {
+            get { return (bool)GetValue(FinishGameProperty); }
+            set { SetValue(FinishGameProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for FinishGame.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty FinishGameProperty =
+            DependencyProperty.Register("FinishGame", typeof(bool), typeof(MazeUserControl));
+
+
+
+
+        public Position currentPosition;
         private double WidthOfBlock;
         private double HeightOfBlock;
 
         private Image StartImage;
-        // private Image EndImage;
         private HashSet<Point> WallsSet = new HashSet<Point>();
 
-        private Hashtable WallsCollection = new Hashtable();
         public void Draw()
         {
-            WidthOfBlock =  MazeCanvas.Width / Cols;
+             WidthOfBlock =  MazeCanvas.Width / Cols;
             HeightOfBlock = MazeCanvas.Height / Rows;
+           // WidthOfBlock = MazeCanvas.Width / Rows;
+           // HeightOfBlock = MazeCanvas.Height / Cols;
+            //WidthOfBlock = 100;
+            //HeightOfBlock = 100;
             StartImage = new Image
             {
                 Width = WidthOfBlock,
                 Height = HeightOfBlock,
                 Source = new BitmapImage(new Uri("user.jpg", UriKind.Relative))
             };
-            Canvas.SetLeft(StartImage, InitPosition.Row* HeightOfBlock);
-            Canvas.SetTop(StartImage, InitPosition.Col*WidthOfBlock);
-          /*  EndImage = new Image
-            {
-                Width = WidthOfBlock,
-                Height = HeightOfBlock,
-                Source = new BitmapImage(new Uri("End.jpg", UriKind.Relative))
-            };
-            Canvas.SetLeft(EndImage, GoalPosition.Row * HeightOfBlock);
-            Canvas.SetTop(EndImage, GoalPosition.Col * WidthOfBlock);
-          */
+            Canvas.SetLeft(StartImage, InitPosition.Col * WidthOfBlock);
+            Canvas.SetTop(StartImage, InitPosition.Row * HeightOfBlock );
             int x = 0;
             for (int i = 0; i < Rows; i++)
             {
@@ -175,7 +184,6 @@ namespace GUI.Controls
                     if (MazeString[x].Equals('1'))
                     {
                         rec.Fill = Brushes.Black;
-                        WallsCollection.Add(new Point(i, j),new Point(0,0));
                         WallsSet.Add(new Point(i, j));
                         
                     }
@@ -191,16 +199,15 @@ namespace GUI.Controls
             }
             currentPosition = InitPosition;
             MazeCanvas.Children.Add(StartImage);
-            //MazeCanvas.Children.Add(EndImage);
         }
 
         public void OnKeyDownHandler(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Left)
             {
-                Point Left = new Point(currentPosition.Col - 1, currentPosition.Row);
+                Point left = new Point( currentPosition.Row, currentPosition.Col - 1);
 
-                if (WallsSet.Contains(Left))
+                if (!WallsSet.Contains(left) && (left.Y != -1))
                 {
                     currentPosition.Col -= 1;
                     Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
@@ -209,8 +216,8 @@ namespace GUI.Controls
             }
             if (e.Key == Key.Right)
             {
-                Point Right = new Point(currentPosition.Col + 1, currentPosition.Row);
-                if (WallsSet.Contains(Right))
+                Point right = new Point( currentPosition.Row, currentPosition.Col + 1);
+                if (!WallsSet.Contains(right) && ( right.Y<Cols))
                 {
                     currentPosition.Col += 1;
                     Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
@@ -219,8 +226,8 @@ namespace GUI.Controls
             }
             if (e.Key == Key.Up)
             {
-                Point Up = new Point(currentPosition.Col, currentPosition.Row - 1);
-                if (WallsSet.Contains(Up))
+                Point up = new Point(currentPosition.Row - 1,currentPosition.Col);
+                if (!WallsSet.Contains(up) && (up.X != -1 ))
                 {
                     currentPosition.Row -= 1;
                     Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
@@ -229,13 +236,17 @@ namespace GUI.Controls
             }
             if (e.Key == Key.Down)
             {
-                Point Down = new Point(currentPosition.Col, currentPosition.Row + 1);
-                if (WallsSet.Contains(Down))
+                Point down = new Point( currentPosition.Row + 1, currentPosition.Col);
+                if (!WallsSet.Contains(down) && (down.X<Rows))
                 {
                     currentPosition.Row += 1;
                     Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
                     Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
                 }
+            }
+            if(currentPosition.Equals (GoalPosition))
+            {
+                FinishGame = true;
             }
         }
 
@@ -251,6 +262,12 @@ namespace GUI.Controls
             
         }
 
+        public void Restart()
+        {
+            currentPosition = InitPosition;
+            Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
+            Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+        }
         
 
     }

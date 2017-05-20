@@ -70,10 +70,9 @@
     <Compile Include="Model\MultiClientModel.cs" />
     <Compile Include="Model\SettingsModel.cs" />
     <Compile Include="Model\ClientModel.cs" />
-    <Compile Include="ViewModel\MultiPlayerGameViewModel.cs" />
     <Compile Include="ViewModel\MultiPlayerViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
-    <Compile Include="ViewModel\SInglePlayerGameViewModel.cs" />
+    <Compile Include="ViewModel\SinglePlayerGameViewModel.cs" />
     <Compile Include="ViewModel\SinglePlayerViewModel.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
     <Compile Include="Controls\MazeDefinitionsUserControl.xaml.cs">

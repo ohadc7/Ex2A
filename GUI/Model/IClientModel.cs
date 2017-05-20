@@ -56,6 +56,11 @@ namespace GUI.Model
             get;
             set;
         }
+        bool FinishGame
+        {
+            get;
+            set;
+        }
         TcpClient Connect();
         string Communicate(TcpClient client, string messege);
         void GetMaze(TcpClient client, string mazeInput);

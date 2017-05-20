@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 using CommunicationSettings;
 using MazeLib;
 using GUI.Model;
+using System.Text;
 
 namespace GUI.ViewModel
 {
     class SinglePlayerGameViewModel : ViewModel
     {
         public IClientModel model;
-
+        private TcpClient client;
         public SinglePlayerGameViewModel(IClientModel model)
         {
 
@@ -24,7 +25,16 @@ namespace GUI.ViewModel
             {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
+            client  = this.model.Connect();
         }
+
+        public void GenerateSolveString()
+        {
+            StringBuilder generateString = new StringBuilder();
+            generateString.Append("solve " + VM_MazeName + " " + Properties.Settings.Default.DefaultSearchAlgorithm.ToString());
+            model.GetSolveString(client, generateString.ToString());
+        }
+
 
         public String VM_MazeName
         {
@@ -93,6 +103,15 @@ namespace GUI.ViewModel
             set
             {
                 model.SolveString = value;
+            }
+        }
+
+        public bool VM_FinishGame
+        {
+            get { return model.FinishGame; }
+            set
+            {
+                model.FinishGame = value;
             }
         }
     }

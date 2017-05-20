@@ -34,23 +34,24 @@ namespace SearchAlgorithmsLib
             var s = new Stack<State>();
             var initialState = searchable.getInitialState();
             var path = new LinkedList<State>();
-
             var discovered = new HashSet<State>();
             var solution = new Solution();
             solution.Path = path;
             s.Push(initialState);
             var sSize = s.Count;
+            var goalState = searchable.getGoalState();
             while (sSize > 0)
             {
                 var v = s.Pop();
                 evaluatedNodes++;
-                if (v.Equals(searchable.getGoalState()))
+                if (v.Equals(goalState))
                 {
                     while (!v.Equals(initialState))
                     {
                         solution.Path.AddFirst(v);
                         v = v.CameFrom;
                     }
+                    solution.Path.AddFirst(initialState);
                     return solution;
                 }
 
