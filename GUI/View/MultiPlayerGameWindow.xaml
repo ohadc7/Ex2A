@@ -17,9 +17,9 @@
         </Grid.RowDefinitions>
 
         <Controls:MazeUserControl x:Name="MyMazeBoard" Loaded="MyMazeUserControl_Loaded" Grid.Column="0" Grid.Row="1"
-               Rows="{Binding Rows}" Cols="{Binding Cols}" InitPosition="{Binding InitPosition}" GoalPosition="{Binding GoalPosition}" MazeString="{Binding MazeString}" MazeName="{Binding MazeName}" SolveString="{Binding SolveString}" CurrentPosition="{Binding CurrentPosition}"/>
+               Rows="{Binding Rows}" Cols="{Binding Cols}" InitPosition="{Binding InitPosition}" GoalPosition="{Binding GoalPosition}" MazeString="{Binding MazeString}" MazeName="{Binding MazeName}" SolveString="{Binding SolveString}"/>
         <Controls:MazeUserControl x:Name="OpponentMazeBoard" Loaded="OpponentMazeUserControl_Loaded" Grid.Column="1" Grid.Row="1"
-               Rows="{Binding Rows}" Cols="{Binding Cols}" InitPosition="{Binding InitPosition}" GoalPosition="{Binding GoalPosition}" MazeString="{Binding MazeString}" MazeName="{Binding MazeName}" SolveString="{Binding SolveString}" CurrentPosition="{Binding OpponentPosition}"/>
+               Rows="{Binding Rows}" Cols="{Binding Cols}" InitPosition="{Binding InitPosition}" GoalPosition="{Binding GoalPosition}" MazeString="{Binding MazeString}" MazeName="{Binding MazeName}" SolveString="{Binding SolveString}"/>
 
     </Grid>
 </Window>
