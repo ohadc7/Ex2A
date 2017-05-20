@@ -28,6 +28,8 @@ namespace GUI.View
         public SinglePlayerGameWindow(IClientModel model)
         {
             spgVM = new SinglePlayerGameViewModel(model);
+            spgVM.FinishGameHappend += FinishGame;
+            spgVM.SolveAnimationFinishedHappend += SolveMessege;
             DataContext = spgVM;
             InitializeComponent();
         }
@@ -64,15 +66,14 @@ namespace GUI.View
         {
             this.spgVM.GenerateSolveString();
             this.Solve();
-
         }
 
         public void Solve()
         {
-            
+            Position p = spgVM.VM_InitPosition;
             Task t = Task.Run(() =>
             {
-                Position p = spgVM.VM_InitPosition;
+                MyMazeBoard.animation(p);
                 foreach (char c in spgVM.VM_SolveString)
                 {
                     switch (c)
@@ -91,14 +92,12 @@ namespace GUI.View
                             }
                         case '2':
                             {
-
                                 p.Row -= 1;
                                 MyMazeBoard.animation(p);
                                 break;
                             }
                         case '3':
                             {
-
                                 p.Row += 1;
                                 MyMazeBoard.animation(p);
                                 break;
@@ -107,7 +106,38 @@ namespace GUI.View
                             break;
                     }
                 }
+
             });
+        }
+
+        public void FinishGame(bool finish)
+        {
+            if (finish)
+            {
+                MessageBoxResult result = MessageBox.Show("Good Work! You finished the game.", "Finish Game", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                MainWindow win = (MainWindow)Application.Current.MainWindow;
+                win.Show();
+                this.Close();
+            }
+        }
+
+        public void SolveMessege(bool Solvefinish)
+        {
+            if (Solvefinish)
+            {
+                MessageBoxResult result = MessageBox.Show("Now that we solve the game for you, do you want to try again?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    MyMazeBoard.Restart();
+                }
+                if (result == MessageBoxResult.No)
+                {
+                    MessageBox.Show("press Ok to get back to the main menu", "Info", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                    MainWindow win = (MainWindow)Application.Current.MainWindow;
+                    win.Show();
+                    this.Close();
+                }
+            }
 
         }
 

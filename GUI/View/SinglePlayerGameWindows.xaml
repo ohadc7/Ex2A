@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI.View"  xmlns:Controls="clr-namespace:GUI.Controls"
         mc:Ignorable="d"
-        Title="SinglePlayerGameWindows" d:DesignWidth="500" >
+        Title="{Binding VM_MazeName}">
     <Viewbox>
-
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="62"></RowDefinition>
+                <RowDefinition Height="70"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Controls:MazeUserControl x:Name="MyMazeBoard" Loaded="MazeUserControl_Loaded"  
-               Rows="{Binding VM_Rows}" Cols="{Binding VM_Cols}" InitPosition="{Binding VM_InitPosition}" GoalPosition="{Binding VM_GoalPosition}" MazeString="{Binding VM_MazeString}" MazeName="{Binding VM_MazeName}" SolveString="{Binding VM_SolveString}" CurrentPosition="{Binding VM_CurrentPosition}" FinishGame="{Binding VM_FinishGame}" Grid.Row="1"/>
-            <Button Content="Restart game" HorizontalAlignment="Left" Margin="24,21,0,0" VerticalAlignment="Top" Width="75" Grid.Row="0" Click="Button_Click_Restart"/>
-            <Button Content="Solve maze" HorizontalAlignment="Left" Margin="117,21,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Solve" Grid.Row="0"/>
-            <Button Content="Main menu" HorizontalAlignment="Left" Margin="207,21,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Menu" Grid.Row="0"/>
+
+            <Button Content="Restart game" Grid.Row="0" Margin="114,21,302,0" VerticalAlignment="Top" Width="75"  Click="Button_Click_Restart"/>
+            <Button Content="Solve maze" Grid.Row="0" Margin="214,21,203,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Solve"/>
+            <Button Content="Main menu" Grid.Row="0" Margin="207,21,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Menu"/>
+            <Controls:MazeUserControl Grid.Row="1" x:Name="MyMazeBoard" Loaded="MazeUserControl_Loaded"  
+               Rows="{Binding VM_Rows}" Cols="{Binding VM_Cols}" InitPosition="{Binding VM_InitPosition}" GoalPosition="{Binding VM_GoalPosition}" MazeString="{Binding VM_MazeString}" MazeName="{Binding VM_MazeName}" SolveString="{Binding VM_SolveString}" SolveFinish="{Binding VM_SolveFinish, Mode=TwoWay}" FinishGame="{Binding VM_FinishGame, Mode=TwoWay}"/>
         </Grid>
     </Viewbox>
 </Window>

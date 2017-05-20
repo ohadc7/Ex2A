@@ -16,6 +16,9 @@ namespace GUI.ViewModel
     {
         public IClientModel model;
         private TcpClient client;
+        public delegate void NotifyViewPropertyChanged(bool finish);
+        public event NotifyViewPropertyChanged FinishGameHappend;
+        public event NotifyViewPropertyChanged SolveAnimationFinishedHappend;
         public SinglePlayerGameViewModel(IClientModel model)
         {
 
@@ -25,11 +28,11 @@ namespace GUI.ViewModel
             {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
-            client  = this.model.Connect();
         }
 
         public void GenerateSolveString()
         {
+            client = this.model.Connect();
             StringBuilder generateString = new StringBuilder();
             generateString.Append("solve " + VM_MazeName + " " + Properties.Settings.Default.DefaultSearchAlgorithm.ToString());
             model.GetSolveString(client, generateString.ToString());
@@ -112,6 +115,17 @@ namespace GUI.ViewModel
             set
             {
                 model.FinishGame = value;
+                FinishGameHappend?.Invoke(true);
+            }
+        }
+
+        public bool VM_SolveFinish
+        {
+            get { return model.SolveFinish; }
+            set
+            {
+                model.SolveFinish = value;
+                SolveAnimationFinishedHappend?.Invoke(true);
             }
         }
     }
