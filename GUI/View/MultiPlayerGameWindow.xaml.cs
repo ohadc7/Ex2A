@@ -39,6 +39,8 @@ namespace GUI.View
         private void OpponentMazeUserControl_Loaded(object sender, RoutedEventArgs e)
         {
             OpponentMazeBoard.Draw();
+            //mpVM.Model.ReceivingMessageEvent += mpVM.UpdateViewThatTheServerSentMessageToUs;
+            //mpVM.Model.ReceivingMessageEvent += OpponentMazeBoard.OnOpponentMoveHandler;
         }
     }
 }

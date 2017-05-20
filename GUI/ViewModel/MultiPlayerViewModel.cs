@@ -40,11 +40,30 @@ namespace GUI.ViewModel
             t.Start();
         }
 
-        private void UpdateViewThatTheServerSentMessageToUs(string message)
+        public void UpdateViewThatTheServerSentMessageToUs(string message)
         {
             Console.WriteLine("debug: message from the server - " + message);
-            //message
-            //model.OpponentPosition = 
+
+            var data = (JObject)JsonConvert.DeserializeObject(message);
+            string directionString = data["Direction"].Value<string>();
+            Direction direction;
+            switch (directionString)
+            {
+                case "Up":
+                    direction = Direction.Up;
+                    break;
+                case "Down":
+                    direction = Direction.Down;
+                    break;
+                case "Left":
+                    direction = Direction.Left;
+                    break;
+                case "Right":
+                    direction = Direction.Right;
+                    break;
+            }
+
+            //model.OpponentPosition = ...
         }
 
         private void UpdateViewThatTheServerSentMazeToUs(string serverResponedMaze)

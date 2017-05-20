@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Collections.ObjectModel;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace GUI.Controls
 {
@@ -249,6 +251,78 @@ namespace GUI.Controls
                 FinishGame = true;
             }
         }
+
+
+        public void OnOpponentMoveHandler(string message)
+        {
+            //Direction direction;
+            var data = (JObject)JsonConvert.DeserializeObject(message);
+            string directionString = data["Direction"].Value<string>();
+            Direction direction = Direction.Unknown;
+            switch (directionString)
+            {
+                case "Up":
+                    direction = Direction.Up;
+                    break;
+                case "Down":
+                    direction = Direction.Down;
+                    break;
+                case "Left":
+                    direction = Direction.Left;
+                    break;
+                case "Right":
+                    direction = Direction.Right;
+                    break;
+            }
+
+            if (direction == Direction.Left)
+            {
+                Point left = new Point(currentPosition.Row, currentPosition.Col - 1);
+
+                if (!WallsSet.Contains(left) && (left.Y != -1))
+                {
+                    currentPosition.Col -= 1;
+                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
+                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                }
+            }
+            if (direction == Direction.Right)
+            {
+                Point right = new Point(currentPosition.Row, currentPosition.Col + 1);
+                if (!WallsSet.Contains(right) && (right.Y < Cols))
+                {
+                    currentPosition.Col += 1;
+                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
+                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                }
+            }
+            if (direction == Direction.Up)
+            {
+                Point up = new Point(currentPosition.Row - 1, currentPosition.Col);
+                if (!WallsSet.Contains(up) && (up.X != -1))
+                {
+                    currentPosition.Row -= 1;
+                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
+                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                }
+            }
+            if (direction == Direction.Down)
+            {
+                Point down = new Point(currentPosition.Row + 1, currentPosition.Col);
+                if (!WallsSet.Contains(down) && (down.X < Rows))
+                {
+                    currentPosition.Row += 1;
+                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
+                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                }
+            }
+            if (currentPosition.Equals(GoalPosition))
+            {
+                FinishGame = true;
+            }
+        }
+
+
 
         public void animation(Position p)
         {
