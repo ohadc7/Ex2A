@@ -67,6 +67,8 @@ namespace GUI
             }
 
             MultiPlayerGameWindow mpGW = new MultiPlayerGameWindow(mpVM);//MultiPlayerGameWindow(spVM.Model);
+            mpVM.MultiplayerGameWindow = mpGW;
+
             mpGW.Show();
             this.Close();
         }
@@ -85,6 +87,8 @@ namespace GUI
             }
 
             MultiPlayerGameWindow mpGW = new MultiPlayerGameWindow(mpVM);//MultiPlayerGameWindow(spVM.Model);
+            mpVM.MultiplayerGameWindow = mpGW;
+
             mpGW.Show();
             this.Close();
         }

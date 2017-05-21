@@ -178,7 +178,8 @@ namespace GUI.Controls
 
                     var rec = new Path
                     {
-                        Data = new RectangleGeometry(new Rect(j *  HeightOfBlock, i * WidthOfBlock, WidthOfBlock, HeightOfBlock)),
+                        Data = new RectangleGeometry(new Rect(j * WidthOfBlock, i * HeightOfBlock, WidthOfBlock, HeightOfBlock)),
+                        //Data = new RectangleGeometry(new Rect(j *  HeightOfBlock, i * WidthOfBlock, WidthOfBlock, HeightOfBlock)),
                         Fill = Brushes.White,
                         Stroke = Brushes.Black,
                         StrokeThickness = 2
@@ -213,8 +214,8 @@ namespace GUI.Controls
                 if (!WallsSet.Contains(left) && (left.Y != -1))
                 {
                     currentPosition.Col -= 1;
-                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
-                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                    Canvas.SetLeft(StartImage, currentPosition.Col * WidthOfBlock );
+                    Canvas.SetTop(StartImage, currentPosition.Row * HeightOfBlock);
                 }
             }
             if (e.Key == Key.Right)
@@ -223,8 +224,8 @@ namespace GUI.Controls
                 if (!WallsSet.Contains(right) && ( right.Y<Cols))
                 {
                     currentPosition.Col += 1;
-                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
-                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                    Canvas.SetLeft(StartImage, currentPosition.Col * WidthOfBlock);
+                    Canvas.SetTop(StartImage, currentPosition.Row * HeightOfBlock );
                 }
             }
             if (e.Key == Key.Up)
@@ -233,8 +234,8 @@ namespace GUI.Controls
                 if (!WallsSet.Contains(up) && (up.X != -1 ))
                 {
                     currentPosition.Row -= 1;
-                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
-                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                    Canvas.SetLeft(StartImage, currentPosition.Col * WidthOfBlock);
+                    Canvas.SetTop(StartImage, currentPosition.Row * HeightOfBlock );
                 }
             }
             if (e.Key == Key.Down)
@@ -243,8 +244,8 @@ namespace GUI.Controls
                 if (!WallsSet.Contains(down) && (down.X<Rows))
                 {
                     currentPosition.Row += 1;
-                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
-                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                    Canvas.SetLeft(StartImage, currentPosition.Col * WidthOfBlock );
+                    Canvas.SetTop(StartImage, currentPosition.Row * HeightOfBlock);
                 }
             }
             if(currentPosition.Equals (GoalPosition))
@@ -276,51 +277,56 @@ namespace GUI.Controls
                     break;
             }
 
-            if (direction == Direction.Left)
+            Dispatcher.Invoke(() =>
             {
-                Point left = new Point(currentPosition.Row, currentPosition.Col - 1);
 
-                if (!WallsSet.Contains(left) && (left.Y != -1))
+                if (direction == Direction.Left)
                 {
-                    currentPosition.Col -= 1;
-                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
-                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                    Point left = new Point(currentPosition.Row, currentPosition.Col - 1);
+                    if (!WallsSet.Contains(left) && (left.Y != -1))
+                    {
+                        currentPosition.Col -= 1;
+                        Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
+                        Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                    }
                 }
-            }
-            if (direction == Direction.Right)
-            {
-                Point right = new Point(currentPosition.Row, currentPosition.Col + 1);
-                if (!WallsSet.Contains(right) && (right.Y < Cols))
+                if (direction == Direction.Right)
                 {
-                    currentPosition.Col += 1;
-                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
-                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                    Point right = new Point(currentPosition.Row, currentPosition.Col + 1);
+                    if (!WallsSet.Contains(right) && (right.Y < Cols))
+                    {
+                        currentPosition.Col += 1;
+                        Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
+                        Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                    }
                 }
-            }
-            if (direction == Direction.Up)
-            {
-                Point up = new Point(currentPosition.Row - 1, currentPosition.Col);
-                if (!WallsSet.Contains(up) && (up.X != -1))
+                if (direction == Direction.Up)
                 {
-                    currentPosition.Row -= 1;
-                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
-                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                    Point up = new Point(currentPosition.Row - 1, currentPosition.Col);
+                    if (!WallsSet.Contains(up) && (up.X != -1))
+                    {
+                        currentPosition.Row -= 1;
+                        Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
+                        Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                    }
                 }
-            }
-            if (direction == Direction.Down)
-            {
-                Point down = new Point(currentPosition.Row + 1, currentPosition.Col);
-                if (!WallsSet.Contains(down) && (down.X < Rows))
+                if (direction == Direction.Down)
                 {
-                    currentPosition.Row += 1;
-                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
-                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                    Point down = new Point(currentPosition.Row + 1, currentPosition.Col);
+                    if (!WallsSet.Contains(down) && (down.X < Rows))
+                    {
+                        currentPosition.Row += 1;
+                        Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
+                        Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                    }
                 }
-            }
-            if (currentPosition.Equals(GoalPosition))
-            {
-                FinishGame = true;
-            }
+
+                if (currentPosition.Equals(GoalPosition))
+                {
+                    FinishGame = true;
+                }
+
+            });
         }
 
 

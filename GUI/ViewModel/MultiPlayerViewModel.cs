@@ -1,10 +1,12 @@
 ﻿using GUI.Model;
+using GUI.View;
 using MazeLib;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.ComponentModel;
 using System.Net.Sockets;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GUI.ViewModel
@@ -27,10 +29,13 @@ namespace GUI.ViewModel
             get { return model; }
         }
 
+        public MultiPlayerGameWindow MultiplayerGameWindow { get; set; }
+
         //firstCommand - the start/join command
         public void ConnectAndCommunicate(string firstCommand)
         {
             model.ReceivingMessageEvent += UpdateViewThatTheServerSentMazeToUs;
+
             var t = new Task(() =>
             {
                 PassCommandToServer(firstCommand);
@@ -83,6 +88,10 @@ namespace GUI.ViewModel
             model.CurrentPosition = maze.InitialPos;
 
             IsReady = true;
+
+            /*
+            model.ReceivingMessageEvent += this.MultiplayerGameWindow.OpponentMazeBoard.OnOpponentMoveHandler;
+            */
         }
 
 

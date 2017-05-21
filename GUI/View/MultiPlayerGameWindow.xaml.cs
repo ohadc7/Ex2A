@@ -40,7 +40,7 @@ namespace GUI.View
         {
             OpponentMazeBoard.Draw();
             //mpVM.Model.ReceivingMessageEvent += mpVM.UpdateViewThatTheServerSentMessageToUs;
-            //mpVM.Model.ReceivingMessageEvent += OpponentMazeBoard.OnOpponentMoveHandler;
+            mpVM.Model.ReceivingMessageEvent += OpponentMazeBoard.OnOpponentMoveHandler;
         }
     }
 }
