@@ -34,6 +34,7 @@ namespace GUI.View
         {
             MyMazeBoard.Draw();
             this.KeyDown += MyMazeBoard.OnKeyDownHandler;
+            this.KeyDown += mpVM.OnMyMoveHandler;
         }
 
         private void OpponentMazeUserControl_Loaded(object sender, RoutedEventArgs e)

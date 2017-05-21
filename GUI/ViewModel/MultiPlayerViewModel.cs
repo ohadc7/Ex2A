@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace GUI.ViewModel
 {
@@ -44,11 +45,11 @@ namespace GUI.ViewModel
             //manage all the communication with the server
             t.Start();
         }
-
+/*
         public void UpdateViewThatTheServerSentMessageToUs(string message)
         {
             Console.WriteLine("debug: message from the server - " + message);
-
+            
             var data = (JObject)JsonConvert.DeserializeObject(message);
             string directionString = data["Direction"].Value<string>();
             Direction direction;
@@ -67,15 +68,16 @@ namespace GUI.ViewModel
                     direction = Direction.Right;
                     break;
             }
-
+            
             //model.OpponentPosition = ...
         }
 
+*/
         private void UpdateViewThatTheServerSentMazeToUs(string serverResponedMaze)
         {
             Console.WriteLine("debug: maze from the server - " + serverResponedMaze);
             model.ReceivingMessageEvent -= UpdateViewThatTheServerSentMazeToUs;
-            model.ReceivingMessageEvent += UpdateViewThatTheServerSentMessageToUs;
+            //model.ReceivingMessageEvent += UpdateViewThatTheServerSentMessageToUs;
 
             Maze maze = Maze.FromJSON(serverResponedMaze);
             var data = (JObject)JsonConvert.DeserializeObject(serverResponedMaze);
@@ -92,6 +94,27 @@ namespace GUI.ViewModel
             /*
             model.ReceivingMessageEvent += this.MultiplayerGameWindow.OpponentMazeBoard.OnOpponentMoveHandler;
             */
+        }
+
+
+        public void OnMyMoveHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Left)
+            {
+                PassCommandToServer("play left");
+            }
+            if (e.Key == Key.Right)
+            {
+                PassCommandToServer("play right");
+            }
+            if (e.Key == Key.Up)
+            {
+                PassCommandToServer("play up");
+            }
+            if (e.Key == Key.Down)
+            {
+                PassCommandToServer("play down");
+            }
         }
 
 
