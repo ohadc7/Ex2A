@@ -67,8 +67,6 @@ namespace GUI.Model
             set;
         }
        
-
-
         void NotifyPropertyChanged(string propName);
 
     }

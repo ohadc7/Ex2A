@@ -23,7 +23,6 @@ namespace GUI.Model
         public bool commandIsReadyToBeSent { private get; set; }
 
         public event ServerSentMessage ReceivingMessageEvent;
-       // public event PropertyChangedEventHandler PropertyChanged;
 
         public MultiClientModel()
         {
@@ -127,36 +126,6 @@ namespace GUI.Model
                 client.Close();
             }
         }
-        /*
-        public void NotifyPropertyChanged(string propName)
-        {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }
-
-        
-        private string mazeName;
-        public string MazeName
-        {
-            get { return mazeName; }
-            set
-            {
-                mazeName = value;
-                NotifyPropertyChanged("MazeName");
-            }
-        }
-        private Position currentPosition;
-        public Position CurrentPosition
-        {
-            get { return currentPosition; }
-            set
-            {
-                currentPosition = value;
-                NotifyPropertyChanged("CurrentPosition");
-            }
-        }
-        */
-
         private Position opponentPosition;
         public Position OpponentPosition
         {
@@ -167,152 +136,6 @@ namespace GUI.Model
                 NotifyPropertyChanged("OpponentPosition");
             }
         }
-        /*
-
-        private int rows;
-        public int Rows
-        {
-            get { return rows; }
-            set
-            {
-                rows = value;
-                NotifyPropertyChanged("Rows");
-            }
-        }
-        private int cols;
-        public int Cols
-        {
-            get { return cols; }
-            set
-            {
-                cols = value;
-                NotifyPropertyChanged("Cols");
-            }
-        }
-        private string maze;
-        public string MazeString
-        {
-            get { return maze; }
-            set
-            {
-                maze = value;
-                NotifyPropertyChanged("MazeString");
-            }
-        }
-        private Position initPosition;
-        public Position InitPosition
-        {
-            get { return initPosition; }
-            set
-            {
-                initPosition = value;
-                NotifyPropertyChanged("InitPosition");
-            }
-        }
-        private Position goalPosition;
-        public Position GoalPosition
-        {
-            get { return goalPosition; }
-            set
-            {
-                goalPosition = value;
-                NotifyPropertyChanged("GoalPosition");
-            }
-        }
-        private string solveString;
-        public string SolveString
-        {
-            get { return solveString; }
-            set
-            {
-                solveString = value;
-                NotifyPropertyChanged("SolveString");
-            }
-        }*/
-        
-
-
-
-
-
-
-
-
-
-
-
-        /*
-public int WidthOfBlock
-{
-    get
-    {
-        throw new NotImplementedException();
-    }
-
-    set
-    {
-        throw new NotImplementedException();
-    }
-}
-public int widthOfBlock
-{
-    get
-    {
-        throw new NotImplementedException();
-    }
-
-    set
-    {
-        throw new NotImplementedException();
-    }
-}
-public string SolveString
-{
-    get
-    {
-        throw new NotImplementedException();
-    }
-
-    set
-    {
-        throw new NotImplementedException();
-    }
-}
-
-
-public string Communicate(TcpClient client, string messege)
-{
-throw new NotImplementedException();
-}
-*/
-        /*
-        public TcpClient Connect()
-        {
-            var ep = new IPEndPoint(
-            IPAddress.Parse(GUI.Properties.Settings.Default.ServerIP), Convert.ToInt32(GUI.Properties.Settings.Default.ServerPort));
-            var client = new TcpClient();
-            client.Connect(ep);
-            return client;
-
-        }
-        */
-        /*
-        public void GetMaze(TcpClient client, string messege)
-        {
-            throw new NotImplementedException();
-        }
-        public string recive(TcpClient client)
-        {
-            throw new NotImplementedException();
-        }
-        public string send(TcpClient client, string messege)
-        {
-            throw new NotImplementedException();
-        }
-        public void GetSolveString(TcpClient client, string mazeName)
-        {
-            throw new NotImplementedException();
-        }
-        */
+      
     }
 }

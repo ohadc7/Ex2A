@@ -29,7 +29,7 @@ namespace GUI.Model
     /// <summary>
     /// Class Communication. managing communication with the server (
     /// </summary>
-   public class SingleClientModel : AbstractClient
+    public class SingleClientModel : AbstractClient
     {
 
 
@@ -38,7 +38,7 @@ namespace GUI.Model
 
         }
 
-           /// <summary>
+        /// <summary>
         /// Communicate with the server.
         /// read massage from the user. connect to the server. send the massage to it, receive its answer and print it.
         /// do it iteratively.
@@ -46,8 +46,8 @@ namespace GUI.Model
         /// </summary>
         public TcpClient Connect()
         {
-       
-         //connect to the server:
+
+            //connect to the server:
             var ep = new IPEndPoint(
                 IPAddress.Parse(GUI.Properties.Settings.Default.ServerIP), Convert.ToInt32(GUI.Properties.Settings.Default.ServerPort));
             var client = new TcpClient();
@@ -56,8 +56,8 @@ namespace GUI.Model
         }
         public void GetMaze(TcpClient client, string mazeInput)
         {
-            
-            string serverResponedMaze =  (this.Communicate(client, mazeInput));
+
+            string serverResponedMaze = (this.Communicate(client, mazeInput));
             Maze maze = Maze.FromJSON(serverResponedMaze);
             var data = (JObject)JsonConvert.DeserializeObject(serverResponedMaze);
             MazeString = data["Maze"].Value<String>();
@@ -69,7 +69,7 @@ namespace GUI.Model
             CurrentPosition = maze.InitialPos;
             FinishGame = false;
             SolveFinish = false;
-
+            client.Close();
         }
 
         public void GetSolveString(TcpClient client, string solveCommand)
@@ -77,19 +77,19 @@ namespace GUI.Model
             string solve = (this.Communicate(client, solveCommand));
             var data = (JObject)JsonConvert.DeserializeObject(solve);
             SolveString = data["Solution"].Value<String>();
+            client.Close();
         }
-        public string Communicate(TcpClient client, string messege) {
+        public string Communicate(TcpClient client, string messege)
+        {
 
             using (var stream = client.GetStream())
             using (var reader = new BinaryReader(stream))
             using (var writer = new BinaryWriter(stream))
             {
                 writer.Write(messege);
-               return  reader.ReadString();
+                return reader.ReadString();
 
             }
-
-
         }
 
 

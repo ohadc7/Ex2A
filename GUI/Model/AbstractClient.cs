@@ -13,13 +13,6 @@ namespace GUI.Model
     public abstract class AbstractClient : IClientModel
     {
 
-        //public abstract TcpClient Connect();
-       //public abstract string Communicate(TcpClient client, string messege);
-       //public abstract void GetMaze(TcpClient client, string mazeInput);
-      //  public abstract void GetSolveString(TcpClient client, string mazeName);
-       // public abstract JArray GetListOfGames(TcpClient client);
-
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged(string propName)
