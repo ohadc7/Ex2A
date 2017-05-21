@@ -11,15 +11,17 @@ namespace GUI.ViewModel
     public class SinglePlayerViewModel : ViewModel
     {
         public SingleClientModel model;
-        private int mazeRowsDefinition;
-        private int mazeColsDefinition;
+        //private int mazeRowsDefinition;
+        //private int mazeColsDefinition;
         private TcpClient client;
         public SinglePlayerViewModel()
         {
             model = new SingleClientModel();
             client = model.Connect();
-            mazeRowsDefinition = Properties.Settings.Default.MazeRows;
-            mazeColsDefinition = Properties.Settings.Default.MazeCols;
+            //mazeRowsDefinition = Properties.Settings.Default.MazeRows;
+            //mazeColsDefinition = Properties.Settings.Default.MazeCols;
+            model.Rows = Properties.Settings.Default.MazeRows;
+            model.Cols = Properties.Settings.Default.MazeCols;
         }
 
       
@@ -33,13 +35,15 @@ namespace GUI.ViewModel
 
         public int MazeRowsDefinition
         {
-            get { return mazeRowsDefinition;}
+            //get { return mazeRowsDefinition;}
+            get { return model.Rows; }
             set { model.Rows = value; }
         }
         
         public int MazeColsDefinition
         {
-            get { return mazeColsDefinition;}
+            //get { return mazeColsDefinition;}
+            get { return model.Cols; }
             set { model.Cols = value; }
         }
 
