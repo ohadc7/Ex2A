@@ -10,23 +10,19 @@ namespace GUI.ViewModel
 {
     public class SinglePlayerViewModel : ViewModel
     {
-        public IClientModel model;
+        public SingleClientModel model;
         private int mazeRowsDefinition;
         private int mazeColsDefinition;
         private TcpClient client;
         public SinglePlayerViewModel()
         {
-            model = new ClientModel();
+            model = new SingleClientModel();
             client = model.Connect();
             mazeRowsDefinition = Properties.Settings.Default.MazeRows;
             mazeColsDefinition = Properties.Settings.Default.MazeCols;
         }
 
-        public IClientModel Model
-        {
-            get { return model; }
-        }
-
+      
 
         public void GenerateMaze()
         {

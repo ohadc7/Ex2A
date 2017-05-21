@@ -17,13 +17,13 @@ namespace GUI.Model
 
     public delegate void ServerSentMessage(string message);
 
-    public class MultiClientModel : INotifyPropertyChanged
+    public class MultiClientModel : AbstractClient
     {
         public string MessageToSend { private get; set; }
         public bool commandIsReadyToBeSent { private get; set; }
 
         public event ServerSentMessage ReceivingMessageEvent;
-        public event PropertyChangedEventHandler PropertyChanged;
+       // public event PropertyChangedEventHandler PropertyChanged;
 
         public MultiClientModel()
         {
@@ -127,7 +127,7 @@ namespace GUI.Model
                 client.Close();
             }
         }
-
+        /*
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
@@ -155,7 +155,7 @@ namespace GUI.Model
                 NotifyPropertyChanged("CurrentPosition");
             }
         }
-
+        */
 
         private Position opponentPosition;
         public Position OpponentPosition
@@ -167,7 +167,7 @@ namespace GUI.Model
                 NotifyPropertyChanged("OpponentPosition");
             }
         }
-
+        /*
 
         private int rows;
         public int Rows
@@ -228,7 +228,7 @@ namespace GUI.Model
                 solveString = value;
                 NotifyPropertyChanged("SolveString");
             }
-        }
+        }*/
         
 
 

@@ -14,12 +14,12 @@ namespace GUI.ViewModel
 {
     class SinglePlayerGameViewModel : ViewModel
     {
-        public IClientModel model;
+        public SingleClientModel model;
         private TcpClient client;
         public delegate void NotifyViewPropertyChanged(bool finish);
         public event NotifyViewPropertyChanged FinishGameHappend;
         public event NotifyViewPropertyChanged SolveAnimationFinishedHappend;
-        public SinglePlayerGameViewModel(IClientModel model)
+        public SinglePlayerGameViewModel(SingleClientModel model)
         {
 
             this.model = model;

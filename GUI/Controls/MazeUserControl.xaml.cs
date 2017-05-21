@@ -156,12 +156,8 @@ namespace GUI.Controls
 
         public void Draw()
         {
-           //  WidthOfBlock = System.Windows.SystemParameters.PrimaryScreenWidth / Cols;
-           // HeightOfBlock = System.Windows.SystemParameters.PrimaryScreenHeight / Rows;
             WidthOfBlock = MazeCanvas.Width / Cols;
             HeightOfBlock = MazeCanvas.Height / Rows;
-            //WidthOfBlock = 100;
-            //HeightOfBlock = 100;
             StartImage = new Image
             {
                 Width = WidthOfBlock,
@@ -179,7 +175,6 @@ namespace GUI.Controls
                     var rec = new Path
                     {
                         Data = new RectangleGeometry(new Rect(j * WidthOfBlock, i * HeightOfBlock, WidthOfBlock, HeightOfBlock)),
-                        //Data = new RectangleGeometry(new Rect(j *  HeightOfBlock, i * WidthOfBlock, WidthOfBlock, HeightOfBlock)),
                         Fill = Brushes.White,
                         Stroke = Brushes.Black,
                         StrokeThickness = 2

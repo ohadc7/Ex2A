@@ -29,23 +29,14 @@ namespace GUI.Model
     /// <summary>
     /// Class Communication. managing communication with the server (
     /// </summary>
-    class ClientModel : IClientModel
+   public class SingleClientModel : AbstractClient
     {
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
-        public ClientModel()
+        public SingleClientModel()
         {
 
         }
-
-        public void NotifyPropertyChanged(string propName)
-        {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }
-
-        
 
            /// <summary>
         /// Communicate with the server.
@@ -99,109 +90,6 @@ namespace GUI.Model
             }
 
 
-        }
-
-        public JArray GetListOfGames(TcpClient client)
-        {
-            throw new NotImplementedException();
-        }
-
-        private string mazeName;
-        public string MazeName
-        {
-            get { return mazeName; }
-            set
-            {
-                mazeName = value;
-                NotifyPropertyChanged("MazeName");
-            }
-        }
-        private Position currentPosition;
-        public Position CurrentPosition
-        {
-            get { return currentPosition; }
-            set
-            {
-                currentPosition = value;
-                NotifyPropertyChanged("CurrentPosition");
-            }
-        }
-        private int rows;
-        public int Rows
-        {
-            get { return rows; }
-            set
-            {
-                rows = value;
-                NotifyPropertyChanged("Rows");
-            }
-        }
-        private int cols;
-        public int Cols
-        {
-            get { return cols; }
-            set
-            {
-                cols = value;
-                NotifyPropertyChanged("Cols");
-            }
-        }
-        private string maze;
-        public string MazeString
-        {
-            get { return maze; }
-            set
-            {
-                maze = value;
-                NotifyPropertyChanged("MazeString");
-            }
-        }
-        private Position initPosition;
-        public Position InitPosition
-        {
-            get { return initPosition; }
-            set
-            {
-                initPosition = value;
-                NotifyPropertyChanged("InitPosition");
-            }
-        }
-        private Position goalPosition;
-        public Position GoalPosition
-        {
-            get { return goalPosition; }
-            set
-            {
-                goalPosition = value;
-                NotifyPropertyChanged("GoalPosition");
-            }
-        }
-        private string solveString;
-        public string SolveString
-        {
-            get { return solveString; }
-            set { solveString = value;
-                NotifyPropertyChanged("SolveString");
-            }
-        }
-
-        private bool finishGame;
-        public bool FinishGame
-        {
-            get { return finishGame; }
-            set { finishGame = value;
-                NotifyPropertyChanged("FinishGame"); }
-        }
-
-        private bool solveFinish;
-        public bool SolveFinish
-        {
-            get { return solveFinish; }
-            set
-            {
-                solveFinish = value;
-                NotifyPropertyChanged("SolveFinish");
-            }
         }
 
 

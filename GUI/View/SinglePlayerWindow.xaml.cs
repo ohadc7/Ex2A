@@ -23,7 +23,6 @@ namespace GUI.View
     public partial class SinglePlayerWindow : Window
     {
         public SinglePlayerViewModel spVM;
-        private TcpClient client;
         public SinglePlayerWindow()
         {
             spVM = new SinglePlayerViewModel();
@@ -34,7 +33,7 @@ namespace GUI.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             spVM.GenerateMaze();
-            SinglePlayerGameWindow spGW = new SinglePlayerGameWindow(spVM.Model);
+            SinglePlayerGameWindow spGW = new SinglePlayerGameWindow(spVM.model);
             spGW.Show();
             this.Close();
         }

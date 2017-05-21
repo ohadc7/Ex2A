@@ -65,11 +65,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\AbstractClient.cs" />
     <Compile Include="Model\IClientModel.cs" />
     <Compile Include="Model\ISettingsModel.cs" />
     <Compile Include="Model\MultiClientModel.cs" />
     <Compile Include="Model\SettingsModel.cs" />
-    <Compile Include="Model\ClientModel.cs" />
+    <Compile Include="Model\SingleClientModel.cs" />
     <Compile Include="ViewModel\MultiPlayerViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\SinglePlayerGameViewModel.cs" />

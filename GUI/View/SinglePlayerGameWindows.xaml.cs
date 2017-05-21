@@ -25,7 +25,7 @@ namespace GUI.View
     {
         private SinglePlayerGameViewModel spgVM;
 
-        public SinglePlayerGameWindow(IClientModel model)
+        public SinglePlayerGameWindow(SingleClientModel model)
         {
             spgVM = new SinglePlayerGameViewModel(model);
             spgVM.FinishGameHappend += FinishGame;

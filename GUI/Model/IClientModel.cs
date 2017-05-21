@@ -66,11 +66,11 @@ namespace GUI.Model
             get;
             set;
         }
-        TcpClient Connect();
-        string Communicate(TcpClient client, string messege);
-        void GetMaze(TcpClient client, string mazeInput);
-        void GetSolveString(TcpClient client, string mazeName);
-        JArray GetListOfGames(TcpClient client);
+       
+
+
+        void NotifyPropertyChanged(string propName);
+
     }
 
 }
