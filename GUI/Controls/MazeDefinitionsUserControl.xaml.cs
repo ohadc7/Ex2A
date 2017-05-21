@@ -39,23 +39,5 @@ namespace GUI.Controls
         // Using a DependencyProperty as the backing store for ColsFromSettings.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColsFromSettingsProperty =
             DependencyProperty.Register("ColsFromSettings", typeof(int), typeof(MazeDefinitionsUserControl));
-
-
-
-
-        private void txtMazeName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void txtRows_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void txtCols_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-    }
+      }
 }

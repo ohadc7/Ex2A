@@ -30,12 +30,10 @@ namespace GUI.Controls
           
         }
 
-          private ImageBrush characterImageBrush = new ImageBrush(new BitmapImage(new Uri("user.jpg", UriKind.Relative)));
-
           private ImageBrush endDoorBrush = new ImageBrush(new BitmapImage(new Uri("End.jpg", UriKind.Relative)));
+      
 
 
-       
         public int Rows
         {
             get { return (int)GetValue(RowsProperty); }
@@ -328,12 +326,12 @@ namespace GUI.Controls
 
         public void animation(Position p)
         {
-            Thread.Sleep(700);
+            Thread.Sleep(300);
             Dispatcher.Invoke(() =>
             {
                 currentPosition = p;
-                Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
-                Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                Canvas.SetLeft(StartImage, currentPosition.Col * WidthOfBlock);
+                Canvas.SetTop(StartImage, currentPosition.Row * HeightOfBlock);
                 if (currentPosition.Equals(GoalPosition))
                 {
                     SolveFinish = true;
@@ -345,8 +343,8 @@ namespace GUI.Controls
         public void Restart()
         {
             currentPosition = InitPosition;
-            Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
-            Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+            Canvas.SetLeft(StartImage, currentPosition.Col * WidthOfBlock);
+            Canvas.SetTop(StartImage, currentPosition.Row * HeightOfBlock);
         }
         
 

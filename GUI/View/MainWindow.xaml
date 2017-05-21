@@ -7,9 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid Loaded="MainWindow_Loaded">
-        <Button x:Name="SinglePlayerButton" Content="SinglePlayer" HorizontalAlignment="Left" Height="52" Margin="185,42,0,0" VerticalAlignment="Top" Width="127" Click="SinglePlayerButton_Click"/>
-        <Button x:Name="MultiPlayerButton" Content="MultiPlayer" HorizontalAlignment="Left" Height="52" Margin="185,112,0,0" VerticalAlignment="Top" Width="127" Click="MultiPlayerButton_Click"/>
-        <Button x:Name="SettingsButton" Content="Settings" HorizontalAlignment="Left" Height="52" Margin="185,183,0,0" VerticalAlignment="Top" Width="127" Click="SettingsButton_Click" />
-
+        <Grid.Background>
+            <ImageBrush ImageSource="/GUI;component/Controls/MazeLogo.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Button x:Name="SinglePlayerButton" Content="SinglePlayer" HorizontalAlignment="Left" Height="52" Margin="82,33,0,0" VerticalAlignment="Top" Width="127" Click="SinglePlayerButton_Click"/>
+        <Button x:Name="MultiPlayerButton" Content="MultiPlayer" HorizontalAlignment="Left" Height="52" Margin="302,33,0,0" VerticalAlignment="Top" Width="127" Click="MultiPlayerButton_Click"/>
+        <Button x:Name="SettingsButton" Content="Settings" HorizontalAlignment="Left" Height="52" Margin="185,237,0,0" VerticalAlignment="Top" Width="127" Click="SettingsButton_Click" />
     </Grid>
 </Window>
