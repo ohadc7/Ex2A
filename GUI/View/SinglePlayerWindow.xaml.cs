@@ -28,21 +28,12 @@ namespace GUI.View
         {
             spVM = new SinglePlayerViewModel();
             this.DataContext = spVM;
-            client = spVM.model.Connect();
             InitializeComponent();
-        }
-
-        private void txtMazeName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            StringBuilder generateString = new StringBuilder();
-            generateString.Append("generate "  + spVM.MazeNameDefinition + " " + spVM.MazeRowsDefinition + " " + spVM.MazeColsDefinition);
-
-            spVM.model.GetMaze(client, generateString.ToString());
+            spVM.GenerateMaze();
             SinglePlayerGameWindow spGW = new SinglePlayerGameWindow(spVM.Model);
             spGW.Show();
             this.Close();

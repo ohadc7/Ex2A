@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,10 +11,15 @@ namespace GUI.ViewModel
     public class SinglePlayerViewModel : ViewModel
     {
         public IClientModel model;
-
+        private int mazeRowsDefinition;
+        private int mazeColsDefinition;
+        private TcpClient client;
         public SinglePlayerViewModel()
         {
             model = new ClientModel();
+            client = model.Connect();
+            mazeRowsDefinition = Properties.Settings.Default.MazeRows;
+            mazeColsDefinition = Properties.Settings.Default.MazeCols;
         }
 
         public IClientModel Model
@@ -21,17 +27,24 @@ namespace GUI.ViewModel
             get { return model; }
         }
 
-        private int mazeRowsDefinition;
+
+        public void GenerateMaze()
+        {
+            StringBuilder generateString = new StringBuilder();
+            generateString.Append("generate " + MazeNameDefinition + " " + MazeRowsDefinition + " " + MazeColsDefinition);
+            model.GetMaze(client, generateString.ToString());
+        }
+
         public int MazeRowsDefinition
         {
-            get { return Properties.Settings.Default.MazeRows;}
-            set { mazeRowsDefinition = value; }
+            get { return mazeRowsDefinition;}
+            set { model.Rows = value; }
         }
-        public int mazeColsDefinition;
+        
         public int MazeColsDefinition
         {
-            get { return Properties.Settings.Default.MazeCols;}
-            set { mazeColsDefinition = value; }
+            get { return mazeColsDefinition;}
+            set { model.Cols = value; }
         }
 
         public string mazeNameDefinition;
@@ -39,7 +52,7 @@ namespace GUI.ViewModel
         public string MazeNameDefinition
         {
             get { return mazeNameDefinition; }
-            set { mazeNameDefinition = value; ; }
+            set { mazeNameDefinition = value; }
         }
     }
 }
