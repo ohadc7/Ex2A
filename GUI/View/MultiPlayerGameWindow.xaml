@@ -13,12 +13,16 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="62"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Controls:MazeUserControl x:Name="MyMazeBoard" Loaded="MyMazeUserControl_Loaded" Grid.Column="0" Grid.Row="1"
+        <Button Content="Back to main menu" Grid.Row="0" Margin="0,21,0,0" Grid.ColumnSpan="2" VerticalAlignment="Top" Width="120" Click="Button_Click_Menu"/>
+        <TextBlock Padding="3" Margin="3" Grid.Column="0" Grid.Row="1">  My board:</TextBlock>
+        <TextBlock Padding="3" Margin="3" Grid.Column="1" Grid.Row="1">  Other player's board:</TextBlock>
+        <Controls:MazeUserControl x:Name="MyMazeBoard" Loaded="MyMazeUserControl_Loaded" Grid.Column="0" Grid.Row="2"
                Rows="{Binding Rows}" Cols="{Binding Cols}" InitPosition="{Binding InitPosition}" GoalPosition="{Binding GoalPosition}" MazeString="{Binding MazeString}" MazeName="{Binding MazeName}" SolveString="{Binding SolveString}"/>
-        <Controls:MazeUserControl x:Name="OpponentMazeBoard" Loaded="OpponentMazeUserControl_Loaded" Grid.Column="1" Grid.Row="1"
+        <Controls:MazeUserControl x:Name="OpponentMazeBoard" Loaded="OpponentMazeUserControl_Loaded" Grid.Column="1" Grid.Row="2"
                Rows="{Binding Rows}" Cols="{Binding Cols}" InitPosition="{Binding InitPosition}" GoalPosition="{Binding GoalPosition}" MazeString="{Binding MazeString}" MazeName="{Binding MazeName}" SolveString="{Binding SolveString}"/>
 
     </Grid>

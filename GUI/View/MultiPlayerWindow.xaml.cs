@@ -16,6 +16,7 @@ using System.Net.Sockets;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Threading;
+using GUI.Model;
 
 namespace GUI
 {
@@ -32,20 +33,22 @@ namespace GUI
         public MultiPlayerWindow()
         {
             //request from the server list of available games
-            SinglePlayerViewModel spvm = new SinglePlayerViewModel();
-            TcpClient client = spvm.model.Connect();
-
-            string solve = (spvm.model.Communicate(client, "list"));
+            //SinglePlayerViewModel spvm = new SinglePlayerViewModel();
+            //TcpClient client = spvm.model.Connect();
+            SingleClientModel model = new SingleClientModel();
+            TcpClient client = model.Connect();
+            string solve = (model.Communicate(client, "list"));
             var array = JArray.Parse(solve);
             JArray jarray = array;
             //JArray jarray = spvm.model.GetListOfGames(client);
-
-            Console.WriteLine(jarray);
+            //Console.WriteLine(jarray);
             namesOfAvailableGames = jarray.ToObject<string[]>();
             List<string> stringsList = namesOfAvailableGames.OfType<string>().ToList();
 
             //create mpvm
             mpVM = new MultiPlayerViewModel();
+            mpVM.Rows = Properties.Settings.Default.MazeRows;
+            mpVM.Cols = Properties.Settings.Default.MazeCols;
             /*client =*/ //mpVM.ConnectAndCommunicate();
             this.DataContext = mpVM;
             InitializeComponent();

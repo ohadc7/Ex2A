@@ -117,19 +117,32 @@ namespace GUI.ViewModel
             }
         }
 
-
-        private int mazeRowsDefinition;
+        /*
+                private int mazeRowsDefinition;
+                public int MazeRowsDefinition
+                {
+                    get { return mazeRowsDefinition; }
+                    set { mazeRowsDefinition = value; }
+                }
+                private int mazeColsDefinition;
+                public int MazeColsDefinition
+                {
+                    get { return mazeColsDefinition; }
+                    set { mazeColsDefinition = value; }
+                }
+        */
         public int MazeRowsDefinition
         {
-            get { return mazeRowsDefinition; }
-            set { mazeRowsDefinition = value; }
+            get { return model.Rows; }
+            set { model.Rows = value; }
         }
-        private int mazeColsDefinition;
+
         public int MazeColsDefinition
         {
-            get { return mazeColsDefinition; }
-            set { mazeColsDefinition = value; }
+            get { return model.Cols; }
+            set { model.Cols = value; }
         }
+
 
         public string mazeNameDefinition;
 
