@@ -7,7 +7,7 @@
         xmlns:Controls="clr-namespace:GUI.Controls"
          x:Class="GUI.MultiPlayerWindow"
         mc:Ignorable="d"
-        Title="MultiPlayerWindow" Height="300" Width="300">
+        Title="MultiPlayer" Height="300" Width="300">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -31,7 +31,23 @@
 
 
         <Controls:MazeDefinitionsUserControl Grid.Row="2" Grid.ColumnSpan="2" RowsFromSettings="{Binding MazeRowsDefinition}" ColsFromSettings="{Binding MazeColsDefinition}"/>
-        <Button Content="Start Game" HorizontalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Top" Width="75" Margin="3" Click="StartGameButton_Click"/>
-        <!--TextBlock x:Name="waitng_indication" Padding="3" Margin="3" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"> Waiting to the other player... </-->
+        <Button x:Name="startGameButton" Content="Start Game" HorizontalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Top" Width="75" Margin="3" Click="StartGameButton_Click"/>
+        
+        <TextBlock x:Name="waiting_indication" Padding="3" Margin="3" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red"> 
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Text" Value="" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=startGameButton, Path=ClickMode}" Value="Press">
+                            <Setter Property="Text" Value="Waiting to the other player..." />
+                        </DataTrigger>
+                        <!--Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Text" Value="Waiting to the other player..." />
+                        </-->
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
     </Grid>
 </Window>

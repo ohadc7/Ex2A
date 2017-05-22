@@ -42,6 +42,7 @@ namespace GUI.View
             OpponentMazeBoard.Draw();
             //mpVM.Model.ReceivingMessageEvent += mpVM.UpdateViewThatTheServerSentMessageToUs;
             mpVM.Model.ReceivingMessageEvent += OpponentMazeBoard.OnOpponentMoveHandler;
+            mpVM.Model.GameBecameClosedEvent += CloseGame;
         }
 
         private void Button_Click_Menu(object sender, RoutedEventArgs e)
@@ -49,11 +50,39 @@ namespace GUI.View
             MessageBoxResult result = MessageBox.Show("Are you sure you want to return to the main menu?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
+                mpVM.PassCommandToServer("close");
+                //MainWindow win = (MainWindow)Application.Current.MainWindow;
+                //win.Show();
+                //this.Close();
+            }
+        }
+
+        private void CloseGame()
+        {
+            /*
+            MessageBoxResult result = MessageBox.Show("The game is closed", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                mpVM.PassCommandToServer("close");
                 MainWindow win = (MainWindow)Application.Current.MainWindow;
                 win.Show();
                 this.Close();
             }
-        }
+            */
 
+            MessageBox.Show("The game is closed", "Info", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+
+            Dispatcher.Invoke(() =>
+            {
+                MainWindow win = (MainWindow)Application.Current.MainWindow;
+                win.Show();
+                this.Close();
+            });
+/*
+            MainWindow win = (MainWindow)Application.Current.MainWindow;
+            win.Show();
+            this.Close();
+*/
+        }
     }
 }

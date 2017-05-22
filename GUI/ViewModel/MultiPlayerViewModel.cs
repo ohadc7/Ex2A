@@ -12,10 +12,14 @@ using System.Windows.Input;
 
 namespace GUI.ViewModel
 {
+    //public delegate void MyEventHandler();
+
     public class MultiPlayerViewModel : ViewModel
     {
         //TcpClient client;
         public bool IsReady;
+        //public event MyEventHandler IsReady;
+
 
         private MultiClientModel model;
 
@@ -89,6 +93,7 @@ namespace GUI.ViewModel
             model.GoalPosition = maze.GoalPos;
             model.CurrentPosition = maze.InitialPos;
 
+            //IsReady?.Invoke();
             IsReady = true;
 
             /*
@@ -243,5 +248,17 @@ namespace GUI.ViewModel
                 model.SolveString = value;
             }
         }
+
+
+        public String VM_MazeName
+        {
+            get { return model.MazeName; }
+            set
+            {
+                model.MazeName = value;
+
+            }
+        }
+
     }
 }

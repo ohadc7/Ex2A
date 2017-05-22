@@ -44,7 +44,7 @@ namespace GUI
             //Console.WriteLine(jarray);
             namesOfAvailableGames = jarray.ToObject<string[]>();
             List<string> stringsList = namesOfAvailableGames.OfType<string>().ToList();
-
+            
             //create mpvm
             mpVM = new MultiPlayerViewModel();
             mpVM.Rows = Properties.Settings.Default.MazeRows;
@@ -53,18 +53,51 @@ namespace GUI
             this.DataContext = mpVM;
             InitializeComponent();
 
+            //waitng_indication.Visibility = Visibility.Hidden;
+            //waitng_indication.Visibility = Visibility.Visible;
+
             cboMazeNames.ItemsSource = stringsList;
         }
 
         private void StartGameButton_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder startString = new StringBuilder();
-            startString.Append("start " + mpVM.MazeNameDefinition + " " + mpVM.MazeRowsDefinition + " " + mpVM.MazeColsDefinition); 
-            //mpVM.Model.GetMaze(client, generateString.ToString());
+            startString.Append("start " + mpVM.MazeNameDefinition + " " + mpVM.MazeRowsDefinition + " " + mpVM.MazeColsDefinition);
 
             mpVM.ConnectAndCommunicate(startString.ToString());
 
-            while(!mpVM.IsReady)
+            //this.waitng_indication.Visibility = Visibility.Visible;
+        
+
+
+            /*
+            var t = new Task(() =>
+            {
+                this.waitng_indication.Visibility = Visibility.Hidden;
+            });
+                        t.Start();
+            */
+
+                //mpVM.IsReady += PassToGameWindow;
+                /*
+                    while (!mpVM.IsReady)
+                    {
+                        Thread.Sleep(100);
+                    }
+
+
+                    MultiPlayerGameWindow mpGW = new MultiPlayerGameWindow(mpVM);//MultiPlayerGameWindow(spVM.Model);
+                    mpVM.MultiplayerGameWindow = mpGW;
+
+                    mpGW.Show();
+                    this.Close();
+                    */
+                PassToGameWindow();
+        }
+
+        public void PassToGameWindow()
+        {
+            while (!mpVM.IsReady)
             {
                 Thread.Sleep(100);
             }
@@ -72,8 +105,10 @@ namespace GUI
             MultiPlayerGameWindow mpGW = new MultiPlayerGameWindow(mpVM);//MultiPlayerGameWindow(spVM.Model);
             mpVM.MultiplayerGameWindow = mpGW;
 
+            //**/this.Close();
             mpGW.Show();
             this.Close();
+
         }
 
         private void JoinGameButton_Click(object sender, RoutedEventArgs e)
@@ -83,17 +118,22 @@ namespace GUI
             string joinCommand = "join " + mpVM.SelectedGame;
 
             mpVM.ConnectAndCommunicate(joinCommand);
+            PassToGameWindow();
 
+            //mpVM.IsReady += PassToGameWindow;
+            /*
             while (!mpVM.IsReady)
             {
                 Thread.Sleep(100);
             }
+
 
             MultiPlayerGameWindow mpGW = new MultiPlayerGameWindow(mpVM);//MultiPlayerGameWindow(spVM.Model);
             mpVM.MultiplayerGameWindow = mpGW;
 
             mpGW.Show();
             this.Close();
+            */
         }
     }
 }

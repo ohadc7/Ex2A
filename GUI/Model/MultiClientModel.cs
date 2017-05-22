@@ -13,9 +13,10 @@ using System.Threading;
 
 namespace GUI.Model
 {
-    public delegate void ChangedEventHandler(object sender, EventArgs e);
+    //public delegate void ChangedEventHandler(object sender, EventArgs e);
 
     public delegate void ServerSentMessage(string message);
+    public delegate void GameBecameClosed();
 
     public class MultiClientModel : AbstractClient
     {
@@ -23,6 +24,7 @@ namespace GUI.Model
         public bool commandIsReadyToBeSent { private get; set; }
 
         public event ServerSentMessage ReceivingMessageEvent;
+        public event GameBecameClosed GameBecameClosedEvent;
 
         public MultiClientModel()
         {
@@ -85,7 +87,10 @@ namespace GUI.Model
                             {
                                 var updateFromServer = reader.ReadString();
                                 if (updateFromServer == Messages.PassToSinglePlayerMassage)
+                                {
+                                    GameBecameClosedEvent?.Invoke();
                                     stop = true;
+                                }
                                 else
                                 {
                                     //Console.WriteLine(updateFromServer);
@@ -102,7 +107,7 @@ namespace GUI.Model
                             {
                                 while (!commandIsReadyToBeSent)
                                 {
-                                    Thread.Sleep(50);
+                                    Thread.Sleep(20);
                                 }
                                 command = MessageToSend;
                                 /*
