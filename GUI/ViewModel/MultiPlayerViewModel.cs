@@ -1,4 +1,5 @@
-﻿using GUI.Model;
+﻿using GUI.Controls;
+using GUI.Model;
 using GUI.View;
 using MazeLib;
 using Newtonsoft.Json;
@@ -8,7 +9,9 @@ using System.ComponentModel;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace GUI.ViewModel
 {
@@ -19,7 +22,10 @@ namespace GUI.ViewModel
         //TcpClient client;
         public bool IsReady;
         //public event MyEventHandler IsReady;
-
+        public MazeUserControl MyMazeBoard { get; set; }
+        public MazeUserControl OpponentMazeBoard { get; set; }
+        public delegate void NotifyViewPropertyChanged(bool finish);
+        public event NotifyViewPropertyChanged FinishGameHappend;
 
         private MultiClientModel model;
 
@@ -49,34 +55,7 @@ namespace GUI.ViewModel
             //manage all the communication with the server
             t.Start();
         }
-/*
-        public void UpdateViewThatTheServerSentMessageToUs(string message)
-        {
-            Console.WriteLine("debug: message from the server - " + message);
-            
-            var data = (JObject)JsonConvert.DeserializeObject(message);
-            string directionString = data["Direction"].Value<string>();
-            Direction direction;
-            switch (directionString)
-            {
-                case "Up":
-                    direction = Direction.Up;
-                    break;
-                case "Down":
-                    direction = Direction.Down;
-                    break;
-                case "Left":
-                    direction = Direction.Left;
-                    break;
-                case "Right":
-                    direction = Direction.Right;
-                    break;
-            }
-            
-            //model.OpponentPosition = ...
-        }
 
-*/
         private void UpdateViewThatTheServerSentMazeToUs(string serverResponedMaze)
         {
             Console.WriteLine("debug: maze from the server - " + serverResponedMaze);
@@ -120,7 +99,44 @@ namespace GUI.ViewModel
             {
                 PassCommandToServer("play down");
             }
+
+            if (MyMazeBoard.currentPosition.Equals(MyMazeBoard.GoalPosition))
+            {
+                MyMazeBoard.FinishGame = true;
+                FinishGameHappend.Invoke(true);
+            }
         }
+
+        public void OnOpponentMoveHandler(string message)
+        {
+            //I didn't succeed to implement. Ido.
+/*
+            if (OpponentMazeBoard.FinishGame)
+            {
+                this.OpponentFinishGame(true);
+            }
+*/
+ /*
+            if (OpponentMazeBoard.currentPosition.Equals(OpponentMazeBoard.GoalPosition))
+            {
+                OpponentMazeBoard.FinishGame = true;
+                this.OpponentFinishGame(true);
+            }
+*/
+        }
+
+        public void OpponentFinishGame(bool finish)
+        {
+            if (finish)
+            {
+                MessageBoxResult result = MessageBox.Show("The other player finished the game. You losed", "Finish Game", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                //MainWindow win = (MainWindow)Application.Current.MainWindow;
+                //win.Show();
+                //this.Close();
+                //mpVM.PassCommandToServer("close");
+            }
+        }
+
 
         /*
                 private int mazeRowsDefinition;
@@ -257,6 +273,16 @@ namespace GUI.ViewModel
             {
                 model.MazeName = value;
 
+            }
+        }
+
+        public bool VM_FinishGame
+        {
+            get { return model.FinishGame; }
+            set
+            {
+                model.FinishGame = value;
+                FinishGameHappend?.Invoke(true);
             }
         }
 

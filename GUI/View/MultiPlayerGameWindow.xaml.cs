@@ -27,6 +27,7 @@ namespace GUI.View
         {
             this.mpVM = mpVM;
             this.DataContext = mpVM;
+            mpVM.FinishGameHappend += FinishGame;
             InitializeComponent();
         }
 
@@ -35,6 +36,7 @@ namespace GUI.View
             MyMazeBoard.Draw();
             this.KeyDown += MyMazeBoard.OnKeyDownHandler;
             this.KeyDown += mpVM.OnMyMoveHandler;
+            mpVM.MyMazeBoard = MyMazeBoard;
         }
 
         private void OpponentMazeUserControl_Loaded(object sender, RoutedEventArgs e)
@@ -42,7 +44,9 @@ namespace GUI.View
             OpponentMazeBoard.Draw();
             //mpVM.Model.ReceivingMessageEvent += mpVM.UpdateViewThatTheServerSentMessageToUs;
             mpVM.Model.ReceivingMessageEvent += OpponentMazeBoard.OnOpponentMoveHandler;
+            mpVM.Model.ReceivingMessageEvent += mpVM.OnOpponentMoveHandler;
             mpVM.Model.GameBecameClosedEvent += CloseGame;
+            mpVM.OpponentMazeBoard = OpponentMazeBoard;
         }
 
         private void Button_Click_Menu(object sender, RoutedEventArgs e)
@@ -83,6 +87,18 @@ namespace GUI.View
             win.Show();
             this.Close();
 */
+        }
+
+        public void FinishGame(bool finish)
+        {
+            if (finish)
+            {
+                MessageBoxResult result = MessageBox.Show("Good Work! You finished the game. You are the winner!", "Finish Game", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                //MainWindow win = (MainWindow)Application.Current.MainWindow;
+                //win.Show();
+                //this.Close();
+                mpVM.PassCommandToServer("close");
+            }
         }
     }
 }

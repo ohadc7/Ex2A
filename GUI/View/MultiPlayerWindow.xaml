@@ -38,12 +38,13 @@
                 <Style TargetType="TextBlock">
                     <Setter Property="Text" Value="" />
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=startGameButton, Path=ClickMode}" Value="Press">
+                        <DataTrigger Binding=
+                                     "{Binding ElementName=startGameButton, Path=ClickMode}" Value="Press">
                             <Setter Property="Text" Value="Waiting to the other player..." />
                         </DataTrigger>
-                        <!--Trigger Property="IsMouseOver" Value="True">
+                        <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Text" Value="Waiting to the other player..." />
-                        </-->
+                        </Trigger>
                     </Style.Triggers>
                 </Style>
             </TextBlock.Style>
