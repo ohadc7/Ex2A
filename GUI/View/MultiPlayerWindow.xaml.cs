@@ -51,8 +51,10 @@ namespace GUI
             mpVM.Cols = Properties.Settings.Default.MazeCols;
             /*client =*/ //mpVM.ConnectAndCommunicate();
             this.DataContext = mpVM;
+
             InitializeComponent();
 
+            
             //waitng_indication.Visibility = Visibility.Hidden;
             //waitng_indication.Visibility = Visibility.Visible;
 
@@ -92,7 +94,9 @@ namespace GUI
                     mpGW.Show();
                     this.Close();
                     */
-                PassToGameWindow();
+
+
+           PassToGameWindow();
         }
 
         public void PassToGameWindow()
@@ -135,5 +139,10 @@ namespace GUI
             this.Close();
             */
         }
+
+
+
+
+
     }
 }

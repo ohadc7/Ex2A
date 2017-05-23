@@ -50,7 +50,7 @@ namespace GUI.Controls
             set { SetValue(ColsProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        // Using a DependencyProperty as the backing store for Cols.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColsProperty =
             DependencyProperty.Register("Cols", typeof(int), typeof(MazeUserControl), new PropertyMetadata(0));
 

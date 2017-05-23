@@ -100,5 +100,11 @@ namespace GUI.View
                 mpVM.PassCommandToServer("close");
             }
         }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            mpVM.PassCommandToServer("close");
+            base.OnClosed(new EventArgs());
+        }
     }
 }

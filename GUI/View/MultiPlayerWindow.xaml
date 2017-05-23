@@ -33,8 +33,10 @@
         <Controls:MazeDefinitionsUserControl Grid.Row="2" Grid.ColumnSpan="2" RowsFromSettings="{Binding MazeRowsDefinition}" ColsFromSettings="{Binding MazeColsDefinition}"/>
         <Button x:Name="startGameButton" Content="Start Game" HorizontalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Top" Width="75" Margin="3" Click="StartGameButton_Click"/>
         
-        <TextBlock x:Name="waiting_indication" Padding="3" Margin="3" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red"> 
-            <TextBlock.Style>
+        <TextBlock x:Name="waiting_indication" Padding="3" Margin="3" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" Visibility="Hidden"> 
+            Waiting to the other player...
+            <!-- see http://www.wpf-tutorial.com/styles/trigger-datatrigger-event-trigger/ one example before the last example-->
+            <!--TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Text" Value="" />
                     <Style.Triggers>
@@ -47,7 +49,7 @@
                         </Trigger>
                     </Style.Triggers>
                 </Style>
-            </TextBlock.Style>
+            </-->
         </TextBlock>
 
     </Grid>
