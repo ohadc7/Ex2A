@@ -16,7 +16,6 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-
         <Button Content="Back to main menu" Grid.Row="0" Margin="0,21,0,0" Grid.ColumnSpan="2" VerticalAlignment="Top" Width="120" Click="Button_Click_Menu"/>
         <TextBlock Padding="3" Margin="3" Grid.Column="0" Grid.Row="1">  My board:</TextBlock>
         <TextBlock Padding="3" Margin="3" Grid.Column="1" Grid.Row="1">  Other player's board:</TextBlock>

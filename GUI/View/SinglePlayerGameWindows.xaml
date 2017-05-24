@@ -12,7 +12,6 @@
                 <RowDefinition Height="70"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-
             <Button Content="Restart game" Grid.Row="0" Margin="114,21,302,0" VerticalAlignment="Top" Width="75"  Click="Button_Click_Restart"/>
             <Button Content="Solve maze" Grid.Row="0" Margin="214,21,203,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Solve"/>
             <Button Content="Main menu" Grid.Row="0" Margin="207,21,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Menu"/>

@@ -14,7 +14,7 @@ namespace GUI.ViewModel
 {
     class SinglePlayerGameViewModel : ViewModel
     {
-        public SingleClientModel model;
+        private SingleClientModel model;
         private TcpClient client;
         public delegate void NotifyViewPropertyChanged(bool finish);
         public event NotifyViewPropertyChanged FinishGameHappend;
