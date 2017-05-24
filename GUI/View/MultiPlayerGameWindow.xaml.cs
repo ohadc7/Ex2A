@@ -1,18 +1,6 @@
 ﻿using GUI.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GUI.View
 {
@@ -27,8 +15,9 @@ namespace GUI.View
         {
             this.mpVM = mpVM;
             this.DataContext = mpVM;
-            mpVM.FinishGameHappend += FinishGame;
-            mpVM.Model.NoCommunicationWithServerEvent += NotifyAboutCommunicationProblem;
+            //subscribe to events about the communication
+            mpVM.FinishGameHappened += FinishGame;
+            mpVM.Model.CommunicationProblemEvent += NotifyAboutCommunicationProblem;
             InitializeComponent();
         }
 
@@ -43,22 +32,18 @@ namespace GUI.View
         private void OpponentMazeUserControl_Loaded(object sender, RoutedEventArgs e)
         {
             OpponentMazeBoard.Draw();
-            //mpVM.Model.ReceivingMessageEvent += mpVM.UpdateViewThatTheServerSentMessageToUs;
             mpVM.Model.ReceivingMessageEvent += OpponentMazeBoard.OnOpponentMoveHandler;
-            mpVM.Model.ReceivingMessageEvent += mpVM.OnOpponentMoveHandler;
             mpVM.Model.GameBecameClosedEvent += CloseGame;
             mpVM.OpponentMazeBoard = OpponentMazeBoard;
         }
 
         private void Button_Click_Menu(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to return to the main menu?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to return to the main menu?",
+                "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
                 mpVM.PassCommandToServer("close");
-                //MainWindow win = (MainWindow)Application.Current.MainWindow;
-                //win.Show();
-                //this.Close();
             }
         }
 
@@ -76,13 +61,10 @@ namespace GUI.View
 
         private void NotifyAboutCommunicationProblem()
         {
-            MessageBox.Show("We didn't succeed to connect to the server", "Info", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            MessageBox.Show("We didn't succeed to connect to the server",
+                "Info", MessageBoxButton.OK, MessageBoxImage.Asterisk);
             Dispatcher.Invoke(() =>
             {
-                //MainWindow win = (MainWindow)Application.Current.MainWindow;
-                //win.Show();
-                //this.Close();
-                //win.Close();
                 Application.Current.Shutdown();
             });
         }
@@ -91,10 +73,8 @@ namespace GUI.View
         {
             if (finish)
             {
-                MessageBoxResult result = MessageBox.Show("Good Work! You finished the game. You are the winner!", "Finish Game", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                //MainWindow win = (MainWindow)Application.Current.MainWindow;
-                //win.Show();
-                //this.Close();
+                MessageBoxResult result = MessageBox.Show("Good Work! You finished the game. You are the winner!",
+                    "Finish Game", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 mpVM.PassCommandToServer("close");
             }
         }
