@@ -1,776 +1,377 @@
-commit b0f0d5cc60772bbc523e9be3eb4143e0f35fd317
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Sat Apr 22 21:25:49 2017 +0300
+commit 7e6d3b1bb1c8de47f738538497814cccda96d781
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Wed May 24 17:49:37 2017 +0300
 
-    last commit - ex1 works. now to submit
+    fix n*m problem
 
-commit eed03823f8c8853d2e222de97e0eb4967e1c86d8
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Sat Apr 22 21:11:01 2017 +0300
+commit f4f99c71dd18abf1f195b9c820ad48c69ca20a05
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Wed May 24 17:35:07 2017 +0300
 
-    commit fix
+    finish. submit files
 
-commit acac2d732586f5c8c2d93b562c2bb553de02d691
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Fri Apr 21 19:05:47 2017 +0300
+commit e30d73890c7c7381ae4041725fd23610f8c1944f
+Merge: 0bd23d9 24e854e
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Wed May 24 14:32:03 2017 +0300
 
-    finish project
+    Merge branch 'master' of https://github.com/ohadc7/Ex2A.git
 
-commit bbf86a1504c985298ee6ba12aabc029448874102
-Author: ido <idoklein1@gmail.com>
-Date:   Fri Apr 21 17:55:03 2017 +0300
+commit 0bd23d901dca910c98f649adc3d3dd5d34572b78
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Wed May 24 14:31:52 2017 +0300
+
+    delete dup code, change view of maze
+
+commit cd3321b578697c80f2017e3538e0325b031d8d4f
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Wed May 24 13:29:40 2017 +0300
+
+    add window ALERT
+
+commit a897224069b6f32950ae893fd1879d10a1ca6ce0
+Merge: 09c2d4a 489f3fc
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Wed May 24 13:26:42 2017 +0300
+
+    merge
+
+commit 09c2d4a397db7e902639573da4b899524d0f91fc
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Wed May 24 13:25:47 2017 +0300
+
+    add window alert
+
+commit 24e854e93fcb919b0664e7b85d85cc585f57d4ad
+Merge: ae0606b cd3321b
+Author: עידו קליין <idoklein1@outlook.co.il>
+Date:   Wed May 24 10:35:57 2017 +0300
+
+    Merge branch 'master' of https://github.com/ohadc7/Ex2A
+
+commit ae0606b01ff412e99e7886e8713507febc3acde8
+Author: עידו קליין <idoklein1@outlook.co.il>
+Date:   Wed May 24 10:35:16 2017 +0300
 
     comments
 
-commit 76f8e2e0c59d5bc0e9e9f2f16636bba5555c0fad
-Merge: 7e7bd04 42fc8c2
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Fri Apr 21 15:37:39 2017 +0300
+commit 489f3fc3591640b6b20187f25df434ad710ab439
+Author: עידו קליין <idoklein1@outlook.co.il>
+Date:   Wed May 24 10:19:07 2017 +0300
 
-    Merge branch 'master' of https://github.com/idokl/Ex1Adv2
+    comments
 
-commit 7e7bd0420bb854df91783762a877dbf16a8efe25
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Fri Apr 21 15:37:17 2017 +0300
+commit 89c4637e31cccd8f3c24a2e64ed9eb90d20d356f
+Author: עידו קליין <idoklein1@outlook.co.il>
+Date:   Wed May 24 09:42:25 2017 +0300
 
-    join and play fix, add port configuratin
+    comments.
+    send list command when the combobox is opened
 
-commit 42fc8c22c2a05eb1e5e829c7f37e4acf05ac460a
-Author: ido <idoklein1@gmail.com>
-Date:   Fri Apr 21 15:29:15 2017 +0300
+commit 2cb885229afdb858d1817635d3cedb1fb5b0e6f4
+Author: עידו קליין <idoklein1@outlook.co.il>
+Date:   Wed May 24 07:19:36 2017 +0300
 
-    comments to SearchAlgorithmsLib
+    notify and close if no communication with the server
 
-commit ba59e4e946b69459c3dabca27e5d6a0fb9aa7c8c
-Author: ido <idoklein1@gmail.com>
-Date:   Fri Apr 21 14:04:45 2017 +0300
+commit a7716305b8af626e17a7beea3a23e30d791ced6f
+Author: עידו קליין <idoklein1@outlook.co.il>
+Date:   Tue May 23 20:31:54 2017 +0300
 
-    2
+    X closes the multiPlayer game
 
-commit 570615d5ad4c4c2b79349c59406689f691bc4626
-Author: ido <idoklein1@gmail.com>
-Date:   Fri Apr 21 13:17:10 2017 +0300
+commit fa2effd98a97b16f1e592aefeb5dfcb3a1c60dd5
+Author: עידו קליין <idoklein1@outlook.co.il>
+Date:   Tue May 23 16:50:28 2017 +0300
 
-    fix bugs of play command.
-    arrangement of the events.
-    I started to add comments.
+    notify to the winner that he won
 
-commit d327d9168c7a9b88daf0ec4f160a2b1028a11a2c
-Merge: 8ca14d9 ca6af6b
-Author: ido <idoklein1@gmail.com>
-Date:   Fri Apr 21 07:36:24 2017 +0300
+commit bd30425cd3ab996da8f10c9411bb40d969e96709
+Author: עידו קליין <idoklein1@outlook.co.il>
+Date:   Tue May 23 01:17:46 2017 +0300
+
+    addition of multiplayer abbilities 2
+
+commit 111221a54751c8a7c03bd06d427088d93f442143
+Author: עידו קליין <idoklein1@outlook.co.il>
+Date:   Mon May 22 11:16:17 2017 +0300
+
+    addition of multiplayer abilities
+
+commit d4a14c3c0068ebc091168c3f41be9b8f37491a54
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Sun May 21 15:03:00 2017 +0300
+
+    add logo to main windows
+
+commit 02367ae8a9a4b252b22866ce3c89bdbec8cc1c7d
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Sun May 21 14:34:31 2017 +0300
+
+    add close socket after get result from server
+
+commit e603ec9f8f842e23ff38eb91c1dd41d88b555d60
+Author: עידו קליין <idoklein1@outlook.co.il>
+Date:   Sun May 21 13:09:19 2017 +0300
+
+    ability to set number of rows and cols in singlePlayerWindow
+
+commit c8213d9282e144503afcd0b6f4bae8e291767de7
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Sun May 21 14:03:04 2017 +0300
+
+    create abstract client to reduce duplicate code
+
+commit 9af7855eebe632b0afad96501b937589202d896c
+Merge: 057a253 d897988
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Sun May 21 13:07:39 2017 +0300
+
+    Merge branch 'master' of https://github.com/ohadc7/Ex2A.git
+
+commit 057a253d391db33cdb8eecb429e1b8cfcddc797e
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Sun May 21 13:07:27 2017 +0300
+
+    middle of bind userDefinitions
+
+commit d897988d89061fb233ee93ec31c21370a0d2970c
+Author: עידו קליין <idoklein1@outlook.co.il>
+Date:   Sun May 21 11:55:37 2017 +0300
+
+    send play command to the server when I move
+
+commit b3ca99d68fd46d812fabbf6487dbc2d6b7794ec2
+Author: עידו קליין <idoklein1@outlook.co.il>
+Date:   Sun May 21 11:34:12 2017 +0300
+
+    multiplayer: the window respond to 'play' command of opponent.
+    I enabled to define height different than width.
+
+commit e41be0941885e1b0766b1471512f4aa08fc3cd0c
+Merge: e8b0067 ec0fcca
+Author: עידו קליין <idoklein1@outlook.co.il>
+Date:   Sun May 21 02:23:05 2017 +0300
+
+    Merge branch 'master' of https://github.com/ohadc7/Ex2A
+
+commit ec0fccaf8b93252340bd95c84794173fedf0ce89
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Sun May 21 02:53:15 2017 +0300
+
+    fix current position missing
+
+commit a9a3791a6a441aa78514370ba3e0712b78f36afa
+Merge: 31f0640 9775815
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Sun May 21 02:48:25 2017 +0300
 
     merge
 
-commit 8ca14d9bbf4f328b164b66b1f7d4650e974e3cff
-Author: ido <idoklein1@gmail.com>
-Date:   Fri Apr 21 07:28:30 2017 +0300
-
-    start of documentetion of algorithmLib
-
-commit ca6af6bd83eca44a836a37634d3decaa3fdf7a6a
+commit 31f06408027575abb345f82a00dde59f76ad0eb5
 Author: ohad cohen <ohadc7@gmail.com>
-Date:   Fri Apr 21 07:12:40 2017 +0300
+Date:   Sun May 21 02:45:48 2017 +0300
 
-    play command works (but print the output twice :/)
-    close command works only in guestClient
+    solve works
 
-commit b26aa344d4005c8dcfd48f2d94ad5bee75155e52
-Merge: b8a0434 c07d862
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Fri Apr 21 04:02:15 2017 +0300
-
-    Merge branch 'master' of https://github.com/idokl/Ex1Adv2
-
-commit b8a04344bb6c2644e067d278cab1aafe0c5f63e1
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Fri Apr 21 04:01:45 2017 +0300
-
-    play almost works
-
-commit c07d862bdaa0965fb2fdbbebce3f172ee765033e
+commit e8b00678391a7f3a3ae6fc59dbcf3f42258c75d8
 Author: עידו קליין <idoklein1@outlook.co.il>
-Date:   Thu Apr 20 23:48:17 2017 +0300
+Date:   Sun May 21 02:22:28 2017 +0300
 
     1
 
-commit 5bc41eede83ff41a3a5e536e40fbe5e4e3f7e875
-Merge: 87bb516 d667e6d
+commit 35863aecc018dac583b7a88d4a067627ee47ac32
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Sun May 21 00:46:04 2017 +0300
+
+    singleplayer finish, except finish game when character hit end
+
+commit 97758155556bb6594ddac1e630a52cabbd0c6d4d
 Author: עידו קליין <idoklein1@outlook.co.il>
-Date:   Thu Apr 20 23:45:22 2017 +0300
+Date:   Sun May 21 00:19:28 2017 +0300
 
-    Merge branch 'master' of https://github.com/idokl/Ex1Adv2
+    working on multiplayer game
 
-commit 87bb5165e357721fb2e80b9ed31a2140cd25334c
+commit becd374fb5e39da38052d1c0eccd867d424ea825
 Author: עידו קליין <idoklein1@outlook.co.il>
-Date:   Thu Apr 20 23:44:52 2017 +0300
+Date:   Fri May 19 17:24:09 2017 +0300
 
-    StatePool
+    fix of multiplayer
 
-commit d667e6d7310d9f02c3747e22695491f4716b4f51
+commit fe05727468f5deff5572e434443cac3d4f3ca216
 Author: ohad cohen <ohadc7@gmail.com>
-Date:   Thu Apr 20 21:05:09 2017 +0300
+Date:   Fri May 19 17:32:09 2017 +0300
 
-    start of paly implemention
+    delete images
 
-commit f1e5c493444747aee1172f321301d9e74b870377
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 20 01:40:13 2017 +0300
-
-    using the icommands 'play' and 'close' in the multiplayergameController
-
-commit 236b1080e20ca78619fcc6b591ec0120a29a781f
+commit cab3c65f876387c5129851b63c4c863ce79e5096
 Author: ohad cohen <ohadc7@gmail.com>
-Date:   Wed Apr 19 20:27:32 2017 +0300
+Date:   Fri May 19 17:17:57 2017 +0300
 
-    fix masseges problem
+    aniamtion works
 
-commit 24f14c00d042b0cacc0abfa4868f0d79da1c6244
+commit e5cdd454044d46296e4698ea4854e0c605b022f6
 Author: עידו קליין <idoklein1@outlook.co.il>
-Date:   Wed Apr 19 19:28:10 2017 +0300
+Date:   Fri May 19 15:57:57 2017 +0300
 
-    a
+    multiplayer game begins to work
 
-commit 21c6495ea573fd09262bc0a36648a244cf3439b9
+commit 516dc58c8db942b1592e2df3004f8de85a8daff4
 Author: עידו קליין <idoklein1@outlook.co.il>
-Date:   Wed Apr 19 19:24:40 2017 +0300
+Date:   Fri May 19 08:12:51 2017 +0300
 
-    addition of CommunicationSettings
+    saving settings window state by the OK button.
+    working on multiplayer.
 
-commit 5dffe2cc5bf30edac2db1d5eefc6488e41867c7f
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Wed Apr 19 17:28:57 2017 +0300
-
-    change main structure
-
-commit ae463ed030c05f0d93043f9c907677028a075c38
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Wed Apr 19 03:54:20 2017 +0300
-
-    middle of play
-
-commit 9ef8501cdd60b625ea4b8285816fa6c6b793e978
-Author: ido <idoklein1@gmail.com>
-Date:   Tue Apr 18 23:08:08 2017 +0300
-
-    organization
-
-commit f93178c30f97a3ff20b7702ffbf89ae9028eccca
-Author: ido <idoklein1@gmail.com>
-Date:   Tue Apr 18 22:43:58 2017 +0300
-
-    communication (single player and multi player) work
-
-commit 1117f469aac24bb4615e36bb26f75dcaa139516c
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Tue Apr 18 16:09:05 2017 +0300
-
-    move MultiPlayerGame to Controller directory
-
-commit 225a2211b3066baa7e7a40fe144a87407b0df035
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Tue Apr 18 15:22:58 2017 +0300
-
-    change the structure of files into directories of MVC
-
-commit b0da7c5ffeb0d59f87b21e4212ac0f27c621d9de
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Tue Apr 18 14:19:57 2017 +0300
-
-    move the create of MultiplyerDS from start class to start.model
-
-commit dffcbfb093f7cd37ba76b170b9fbe271be30bf55
-Author: ido <idoklein1@gmail.com>
-Date:   Tue Apr 18 12:26:17 2017 +0300
-
-    attempt1
-
-commit 1d5fc9c6784dd55530c46629fd067c8fcb94350a
-Author: ido <idoklein1@gmail.com>
-Date:   Tue Apr 18 03:44:42 2017 +0300
-
-    multiplayer game started to work
-
-commit 9cb1139b00fd80cd505baaac8103950ed7fe55f9
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 16 16:10:21 2017 +0300
-
-    mess
-
-commit b3dcf0d96d472075161bafe54afe498d4d74a58b
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Sun Apr 16 01:58:13 2017 +0300
-
-    middle of mp works
-
-commit 31cf9550b3e18094985652f20b24016edfe7a5fb
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Fri Apr 14 18:37:27 2017 +0300
-
-    changes alot of little things. list command works.
-
-commit 62dad9ccada5ed5fbcf29dd4e34f3908cb0e8ce7
-Merge: b592cd6 fb2c8e3
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Fri Apr 14 16:33:28 2017 +0300
-
-    Merge remote-tracking branch 'refs/remotes/origin/master'
-
-commit b592cd6009e61afc6b4d9b50324ad1be4fb8bb12
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Fri Apr 14 16:33:08 2017 +0300
-
-    isAvilble option
-
-commit fb2c8e3922bf35aa3fba9235284a74b7ee31d546
-Author: ido <idoklein1@gmail.com>
-Date:   Fri Apr 14 16:30:01 2017 +0300
-
-    version from yesterday 14:59
-
-commit 60c21b05b4465bdec4ca1f1a8d74ed5a0e5ba634
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Thu Apr 13 14:59:21 2017 +0300
-
-    add multiPlayer class and change commands acordding
-
-commit 5ba136e5f29ce45697610fe3278a7261973b5538
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Thu Apr 13 01:26:02 2017 +0300
-
-    move interface to diffrent folder
-
-commit 08833270757f23dc5cc258f1c6ed8cbfe3a84ac9
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Wed Apr 12 23:17:59 2017 +0300
-
-    json works
-
-commit 5a5f7366bcec27684d1736d68b399a6825dad349
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Wed Apr 12 22:41:58 2017 +0300
-
-    clientHandler fix json
-
-commit b9c4f7bc2af09e3d46365c29a0847d9e5fc0f418
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Wed Apr 12 22:29:28 2017 +0300
-
-    json
-
-commit 50ed0dfaa6b65db7add89ee5f76fe9f58dc2c263
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Wed Apr 12 16:44:17 2017 +0300
-
-    create packet to transfer info,  change commands acording, revert client back
-
-commit 23ae279ede4fa2b43502037f34fd38c4f324b796
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Wed Apr 12 00:40:36 2017 +0300
-
-    change commands and client comunication
-
-commit 12cedeab762493b335a6028d04f2cd1a67614e2d
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Mon Apr 10 17:37:40 2017 +0300
-
-    change to Direction enum
-
-commit b016bc623c1163937306c73b365768fbfd44a161
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Sun Apr 9 19:07:39 2017 +0300
-
-    list command
-
-commit 8fc09e3226e54f1038ca3915287e1cdd69a3e575
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 9 03:15:08 2017 +0300
-
-    I worked on "solve" command
-
-commit e642a5d223799589b51dfe67d25fa8e9eb01ca42
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 9 00:10:57 2017 +0300
-
-    I fixed the BFS and optimized it
-
-commit 3c79fbb110b9350ecb5f3d3c8e04846c81a228f1
-Author: ido <idoklein1@gmail.com>
-Date:   Fri Apr 7 15:44:45 2017 +0300
-
-    iterative communication with clients
-
-commit bad39e0025e3bb0c13c545839b4b02c444d9087d
-Author: ido <idoklein1@gmail.com>
-Date:   Fri Apr 7 14:38:30 2017 +0300
-
-    communication between server and client
-
-commit 1e8049426c5d587b41e327064067064c0ee1b0aa
-Author: ido <idoklein1@gmail.com>
-Date:   Fri Apr 7 10:24:55 2017 +0300
-
-    commit
-
-commit d237d5c22b24282cce48a3deffa86a8f967d025d
-Merge: 271e110 3466a72
-Author: ido <idoklein1@gmail.com>
-Date:   Fri Apr 7 10:24:15 2017 +0300
-
-    Merge branch 'master' of https://github.com/idokl/Ex1Adv2
-
-commit 271e1101b05f773428b02c282690bda053d02f31
-Author: ido <idoklein1@gmail.com>
-Date:   Fri Apr 7 10:23:18 2017 +0300
-
-    commit
-
-commit 3466a729221e868362dd5906e4a9d890fa5f31e7
-Merge: 67c6fc0 ccc5f91
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Fri Apr 7 10:14:00 2017 +0300
-
-    merge
-
-commit 67c6fc0c8fa865b7300ac85888b011ca72baed13
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Fri Apr 7 10:11:56 2017 +0300
-
-    change PQAdapter to be absrtact. add evaluteNodes to DFS ALgo, add more commands to model
-
-commit ccc5f91d9f983b2f2bac5cd82a5f2f4d8f0b98cc
-Merge: 763afe7 2ba4505
-Author: ido <idoklein1@gmail.com>
-Date:   Fri Apr 7 00:13:03 2017 +0300
-
-    commit
-
-commit 763afe7de30966e606e7259970076b8d175594b0
-Author: ido <idoklein1@gmail.com>
-Date:   Fri Apr 7 00:10:51 2017 +0300
-
-    commit
-
-commit 2ba450575aedde7f7da26bd14ef713e2a5832e86
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Fri Apr 7 00:09:34 2017 +0300
-
-    continue
-
-commit 4322e01985a498eca1378c6c6b81806374ca726f
-Merge: c62c9aa f7fa3a5
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 6 20:13:11 2017 +0300
-
-    merge
-
-commit c62c9aa2456d0c0014ee4c557305209f195bbeba
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 6 20:01:21 2017 +0300
-
-    communication
-
-commit 29ac4aee180760621721a602a97ebb1f7021869b
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 6 20:00:11 2017 +0300
-
-    communication
-
-commit f7fa3a5a0c347d478cbeb7ab4c0f9689cef70a67
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Thu Apr 6 19:58:17 2017 +0300
-
-    add commands
-
-commit 19c0ebc75c1c18541d6e1d620742d7b8a5e6f335
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Thu Apr 6 18:27:48 2017 +0300
-
-    add command files
-
-commit 7914d18b126015eedb435cdf6d8b0fd1209a3847
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 6 17:38:39 2017 +0300
-
-    addition of client project
-
-commit 670f6ec67fdc97cff6a8cc6cee21a8b0aaa57bc3
-Merge: 722e8a9 0ac074f
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Thu Apr 6 17:17:45 2017 +0300
-
-    merge
-
-commit 722e8a92135eeec730b49f5c8b180223a72ce70d
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Thu Apr 6 17:14:37 2017 +0300
-
-    add few commands
-
-commit 0ac074fc555a398ce1fa0ab1fe0136d67094229e
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 6 17:10:53 2017 +0300
-
-    no changes 2
-
-commit 94890da500f33fffc2eee381c080f1c09260c87e
-Merge: 2b74a70 804bbc6
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 6 17:09:54 2017 +0300
-
-    Merge branch 'master' of https://github.com/idokl/Ex1Adv2
-
-commit 2b74a708b34d3e7c45d87b8933165bbb462e06dc
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 6 17:09:40 2017 +0300
-
-    no changes
-
-commit 4f507b2c8785f293574a9814f94ec1ba940b64e7
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 6 17:07:51 2017 +0300
-
-    additions of methods from the Tirgul presentation (with few changes)
-
-commit 804bbc6f3eae674307b949f68f14178683619e97
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Thu Apr 6 15:19:46 2017 +0300
-
-    reorder fix
-
-commit cd4a9567643ec22f864dacacd7aacb9c8947fa04
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 6 15:04:23 2017 +0300
-
-    push
-
-commit 302c1dea117807c0ec0baf3c750612426d1f57e0
-Merge: d6efae2 f011b94
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 6 15:01:47 2017 +0300
-
-    merge
-
-commit d6efae229196f0798e9b68649a4521d250aaac23
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 6 14:56:44 2017 +0300
-
-    commit3
-
-commit a741e092f5e1aefdb780f81590d0a329a9b26ad3
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 6 14:51:47 2017 +0300
-
-    commit2
-
-commit 4a5a071ce1aa7782f932168fac0a2f508a0a0e4d
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 6 14:49:28 2017 +0300
-
-    commit
-
-commit f011b9482923fefbe71a99e4484821e1fdff0c91
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Thu Apr 6 14:40:23 2017 +0300
-
-    add pqAdapter
-
-commit c872e81b9fc2b148c74fb8a0305a97909fe1a413
-Merge: b3808ec 410569d
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Thu Apr 6 14:07:37 2017 +0300
-
-    Merge branch 'master' of https://github.com/idokl/Ex1Adv2
-
-commit b3808ec5b117e3226093a566d759b13466383f9b
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Thu Apr 6 14:06:54 2017 +0300
-
-    reorder searcher
-
-commit 410569dd1d712b7db9a2d6a8dc1e03c555ab25e4
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 6 14:05:33 2017 +0300
-
-    fix of "ICommand" and "View".
-    addition of classes from the Tirgul presentation.
-
-commit ea295c4a608e864912db0a6912a4308c9a931399
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 6 12:48:01 2017 +0300
-
-    I passed the commands from IView to IController.
-    I added view class.
-
-commit 217ab9be3a8b0ba55b1cea2e64a1277620bb46ad
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Thu Apr 6 12:23:56 2017 +0300
-
-    mission 2
-
-commit ac4a96d7560c9e8a405f70f336e2de0b4e04804c
-Author: ido <idoklein1@gmail.com>
-Date:   Thu Apr 6 11:42:27 2017 +0300
-
-    evaluatedNodes
-
-commit 1e3447cfd288cca9ba992f4b2e3e0959e434ffee
-Author: ido <idoklein1@gmail.com>
-Date:   Wed Apr 5 23:47:17 2017 +0300
-
-    testing of "commit"
-
-commit 3d3a5d4af12cdb72670086733296eb8ea87f9c66
+commit 4a4e31bd1949e13f47d3c8ba810edf87b386b389
 Author: עידו קליין <idoklein1@outlook.co.il>
-Date:   Wed Apr 5 22:50:10 2017 +0300
+Date:   Fri May 19 07:17:07 2017 +0300
 
-    20 * 20 maze
+    list of multiplayer games to join to in multiplayer window
 
-commit f84a7b5a7435ec850533c604c0aa9b68b79fbb8a
+commit 806dd295d58ada341c690144eada688251e3392b
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Fri May 19 02:53:51 2017 +0300
+
+    animation works (solve do wrong route, TODO check why)
+
+commit aec3e334acae7b4bd1dcead5dda8dd348753f275
+Merge: fb7a757 2aa09bd
 Author: עידו קליין <idoklein1@outlook.co.il>
-Date:   Wed Apr 5 14:48:14 2017 +0300
+Date:   Thu May 18 22:48:26 2017 +0300
 
-    comparer fix
+    merging
 
-commit add2a2743bc79ceed3073c1a2f0c663aa8c1066b
+commit 2aa09bd289e2a872fdc68248f78dcf19aaf418de
 Author: ohad cohen <ohadc7@gmail.com>
-Date:   Wed Apr 5 13:57:23 2017 +0300
+Date:   Thu May 18 22:50:56 2017 +0300
 
-    change main program
+    Move on Map works (no barriers yet)
 
-commit 29e9cf1b17fa48a9f77b58d490709a5cf6731c35
+commit fb7a757ad5731c504c2ed84bee7a2c5389c8f2d2
+Author: עידו קליין <idoklein1@outlook.co.il>
+Date:   Thu May 18 22:13:18 2017 +0300
+
+    multiplayer window
+    and multiplayer communication
+
+commit 9f236696dde3176f715e1431c545ddbbe8a7b830
 Author: ohad cohen <ohadc7@gmail.com>
-Date:   Wed Apr 5 12:56:46 2017 +0300
+Date:   Thu May 18 14:10:54 2017 +0300
 
-    dfs works
+    middle of move and solve
 
-commit b0547d5888f8410a51c1a04836565a454bb149e3
+commit 6565b03f1ba23a9ab184ff4840629b833d476167
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Thu May 18 01:53:10 2017 +0300
+
+    move character works, after the init jump (need to fix)
+
+commit e8d70c00fe02431382fde7f74ebf0c8a4f5ad40f
+Merge: 2d0466b 3852349
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Wed May 17 23:39:34 2017 +0300
+
+    Merge branch 'master' of https://github.com/ohadc7/Ex2A.git
+
+commit 3852349d6322c7c2c2ef819add09cae61c6ca4d5
+Author: ido <idoklein1@gmail.com>
+Date:   Wed May 17 23:34:19 2017 +0300
+
+    not interesting changes (multiplayer)
+
+commit 2d0466b6762841221264b3a9fc4bccfd9f7c644e
 Author: ohadc7 <ohadc7@gmail.com>
-Date:   Wed Apr 5 01:58:49 2017 +0300
+Date:   Wed May 17 23:31:15 2017 +0300
 
-    ccc
+    solve animation works (kind of)
 
-commit 65f121545c63b000a4204e2b66c58e22987ff71b
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Wed Apr 5 01:58:00 2017 +0300
+commit 600bcc95c6b1e8b9dcc4f20530ab8af25d1f9908
+Author: ido <idoklein1@gmail.com>
+Date:   Wed May 17 22:30:30 2017 +0300
 
-    reOrder project
+    not interesting changes
 
-commit 791baee9bf526b1be20e0689b6b6d82ca8d05857
+commit eb5a434fcfc532c4c80b09a363d41614fd4aefff
+Author: ido <idoklein1@gmail.com>
+Date:   Wed May 17 22:29:20 2017 +0300
+
+    not interesting changes
+
+commit 634e21c16c3a3a719dd6f7466d464828a41ef28a
 Author: ohad cohen <ohadc7@gmail.com>
-Date:   Wed Apr 5 01:38:32 2017 +0300
+Date:   Wed May 17 19:51:03 2017 +0300
 
-    last for tonight
+    contiones
 
-commit e4562819ee975e56a64b264a7eafe474f812aebb
-Merge: 4b251b6 c091bee
+commit 801dcca30b9cfcbcce8c73b7ea8dca2b14248068
 Author: ohad cohen <ohadc7@gmail.com>
-Date:   Wed Apr 5 01:22:04 2017 +0300
+Date:   Wed May 17 16:08:40 2017 +0300
 
-    Merge branch 'master' of https://github.com/idokl/Ex1Adv2.git
+    init and goal works
 
-commit 4b251b68a021d511e4852026fb06313d4aa1036a
+commit d6c8dccccc296f85824d113ba56e7a8297b0688b
 Author: ohad cohen <ohadc7@gmail.com>
-Date:   Wed Apr 5 01:18:53 2017 +0300
+Date:   Wed May 17 13:16:02 2017 +0300
 
-    add back dfs
+    maze draw work
 
-commit c091bee8526dbb0fc51dbb0614c5f74d8c191ea8
-Merge: 2c5e4f0 01d370b
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Wed Apr 5 00:50:11 2017 +0300
+commit cd4e8bfbcbeb2e2d5bd77cc0af10fa6b1832eab2
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Wed May 17 11:20:12 2017 +0300
 
-    Merge branch 'master' of https://github.com/idokl/Ex1Adv2
+    drawing maze user control works, need to fix the wall drawing
 
-commit 2c5e4f0d0ab7d71a59ecfa26b29c9ec32b105a1d
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Wed Apr 5 00:49:53 2017 +0300
+commit ca520d926fdd0c7255acb0c28e9412b5ad43b90d
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Wed May 17 01:56:54 2017 +0300
+
+    mazeString binding still not work, everything else works
+
+commit c3e17b1bbde36f865cb3f5229fbc47356c770738
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Tue May 16 21:40:22 2017 +0300
+
+    allmost work maze user control, last detail to do: maze string
+
+commit 261b4b79897f0548a22423b93b0d78351e662151
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Tue May 16 15:30:31 2017 +0300
+
+    reorder vie model of user control, create client model
+
+commit a458ced26a8ab3b563e7a015f77f1d078499995e
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Mon May 15 22:05:04 2017 +0300
+
+    middile of dpd work
+
+commit 463ac41f5749d29ec7fc8a948132b245e3baa4c9
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Mon May 15 16:20:40 2017 +0300
+
+    currently
+
+commit 526b7d3e3ec45daa40175a87d861c4a58157877e
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Mon May 15 13:25:05 2017 +0300
+
+    all good
+
+commit 67ad2ced71c83ed38b43898af299d7e012e3be60
+Author: ohad cohen <ohadc7@gmail.com>
+Date:   Mon May 15 13:17:19 2017 +0300
 
     test
 
-commit 01d370b71f5a45d42507e3d5f9ce0d2aa136c476
+commit f7955e4af4d879907e93607a8e1ad298f722f91b
 Author: ohad cohen <ohadc7@gmail.com>
-Date:   Tue Apr 4 20:46:24 2017 +0300
+Date:   Mon May 15 13:16:29 2017 +0300
 
-    dfs
+    first commit
 
-commit 74bffee062057bfdd764f11bfa296a3c560395d6
+commit b0a1bd0c82b869a17111843605ac1f3f4bdc3aad
 Author: ohad cohen <ohadc7@gmail.com>
-Date:   Tue Apr 4 20:14:06 2017 +0300
+Date:   Mon May 15 13:13:09 2017 +0300
 
-    middle of bfs and dfs
-
-commit f0db0428d37909fadd3a69082b35876e6f3debfb
-Merge: c15b715 3de7266
-Author: ido <idoklein1@gmail.com>
-Date:   Tue Apr 4 01:07:07 2017 +0300
-
-    Merge branch 'master' of https://github.com/idokl/Ex1Adv2
-
-commit c15b7153930877ec060970e3b943b2ec45f09fc7
-Author: ido <idoklein1@gmail.com>
-Date:   Tue Apr 4 01:05:33 2017 +0300
-
-    bfs update
-
-commit 3de7266264e2788ceab2445e6a7b121a31fc4952
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Mon Apr 3 21:45:25 2017 +0300
-
-    dfs
-
-commit 821d592b2b53327b82227d75954a8a55660c9eb2
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Mon Apr 3 11:52:06 2017 +0300
-
-    begin of dfs
-
-commit 38a120b46ece0463f3612935902c11b9aa49d131
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Mon Apr 3 00:44:27 2017 +0300
-
-    new
-
-commit 744cc7b4693558c929b709e7a1a2a93a01be5184
-Merge: 3d2f20a fc1d878
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Mon Apr 3 00:42:50 2017 +0300
-
-    Merge branch 'master' of https://github.com/idokl/Ex1Adv2
-
-commit 3d2f20a52be8f17b4b15b9a1e8ad78d3775ed22e
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Mon Apr 3 00:42:21 2017 +0300
-
-    test
-
-commit fc1d87828fc01525d43456458795e5677a72a19d
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 2 23:37:06 2017 +0300
-
-    tests (and few repairs)
-
-commit d1109545b2a71e6234024bdcef27f1f42e0e11fd
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 2 22:25:38 2017 +0300
-
-    push again
-
-commit 8d102011b36c5d561badaf59b899f3a5fd2ab75f
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 2 22:24:17 2017 +0300
-
-    I fixed stateComparer,
-    I changed members of searcher to be protected.
-    I deleted unnecessary method of the ISearchable interface.
-    I fixed BestFirstSearch.
-
-commit aac0abdd49b0ab45d9eaa1be60b0c1ec566e11f4
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 2 21:16:15 2017 +0300
-
-    commit again 2
-
-commit f9bd96971e20ae97cb19d4bb1ea7d13b2eca5b69
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 2 21:15:15 2017 +0300
-
-    commit again
-
-commit f8367372ea1927ba12a60d78e522befe8ff361e4
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 2 21:09:38 2017 +0300
-
-    I fixed the Searcher class
-
-commit caf8afc6576a82801d3784c9b65874c43a32d393
-Merge: 51d0312 d9157ab
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 2 21:05:43 2017 +0300
-
-    Merge branch 'master' of https://github.com/idokl/Ex1Adv2
-
-commit 51d0312e0fecc2c0b40ef052e695f9ab2ecf9ce1
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 2 21:03:49 2017 +0300
-
-    I copied the searcher implementation from AP2 presentation
-
-commit d9157ab20422544e7858428cb1c14e400a2fd834
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Sun Apr 2 16:13:33 2017 +0300
-
-    Searcher
-
-commit 629d17474acdc1ef3870986efed833d29ff9448a
-Author: ohad cohen <ohadc7@gmail.com>
-Date:   Sun Apr 2 15:41:53 2017 +0300
-
-    add jason
-
-commit 1c4d8de6bb62fe7cf06d8e96bdf9d9c1b76ea593
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 2 13:55:15 2017 +0300
-
-    a
-
-commit 6c1503e2606066d2e57fa8efd0c9d22e3df1d442
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Sun Apr 2 13:52:52 2017 +0300
-
-    searcher commit
-
-commit 43031d439f05275d0a5c4ae002b7bb21c5d184d4
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 2 13:51:24 2017 +0300
-
-    comment
-
-commit 76b1c4ddcf04397a9af3b119a4fb32587ab25514
-Merge: 38a721c 2f058eb
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 2 13:48:27 2017 +0300
-
-    merge
-
-commit 38a721c1f1e2080077b66b20b4bb7d501a5877ef
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 2 13:29:51 2017 +0300
-
-    bbb
-
-commit 2f058eb621eded006de8fe97fa68cdbb723a0dc2
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Sun Apr 2 13:35:02 2017 +0300
-
-    test2
-
-commit 8d10cec9adcdd226ae71ce0d919c5f0935f7d0ea
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 2 13:29:51 2017 +0300
-
-    bbb
-
-commit 05d017d720a2796cb8cdc681f7710d20664b700c
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 2 13:27:57 2017 +0300
-
-    ido commit
-
-commit 766a3678ee91d6b713b091f6632e3945490b5263
-Author: ohadc7 <ohadc7@gmail.com>
-Date:   Sun Apr 2 13:21:16 2017 +0300
-
-    first try
-
-commit cbcd17af23964003f3ccced9717d29265655c6b8
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 2 13:09:24 2017 +0300
-
-    Add project files.
-
-commit b5436f91faadf7c5b13579a4072cc594f375a0a6
-Author: ido <idoklein1@gmail.com>
-Date:   Sun Apr 2 13:09:22 2017 +0300
-
-    Add .gitignore and .gitattributes.
+    first commit
