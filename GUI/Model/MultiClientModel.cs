@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
 using MazeLib;
 using System.Net;
@@ -13,8 +9,6 @@ using System.Threading;
 
 namespace GUI.Model
 {
-    //public delegate void ChangedEventHandler(object sender, EventArgs e);
-
     public delegate void ServerSentMessage(string message);
     public delegate void SomethingHappend();
 
@@ -45,19 +39,15 @@ namespace GUI.Model
                 //read command from the user:
                 if (!commandIsReadyToBeSent)
                 {
-                    //Console.Write("debug massage: Please enter a command: ");
-                    //command = "";//Console.ReadLine();
-                    while(!commandIsReadyToBeSent)
+                    while (!commandIsReadyToBeSent)
                     {
                         Thread.Sleep(50);
                     }
-                    //commandIsReadyToBeSent = true;
                     command = MessageToSend;
                 }
 
                 try
                 {
-
                     //connect to the server:
                     var ep = new IPEndPoint(
                         IPAddress.Parse(GUI.Properties.Settings.Default.ServerIP), Convert.ToInt32(GUI.Properties.Settings.Default.ServerPort));
@@ -100,7 +90,6 @@ namespace GUI.Model
                                         else
                                         {
                                             //Console.WriteLine(updateFromServer);
-                                            //this.Message = updateFromServer;
                                             ReceivingMessageEvent?.Invoke(updateFromServer);
                                         }
                                     }
@@ -121,11 +110,6 @@ namespace GUI.Model
                                         Thread.Sleep(20);
                                     }
                                     command = MessageToSend;
-                                    /*
-                                    //Console.Write("debug massage: You are in MultiPlayer mode. Please enter a command: ");
-                                    command = Console.ReadLine();
-                                    commandIsReadyToBeSent = true;
-                                    */
                                 }
 
                                 if (!stop)
@@ -147,6 +131,7 @@ namespace GUI.Model
                 }
             }
         }
+
         private Position opponentPosition;
         public Position OpponentPosition
         {
@@ -157,6 +142,6 @@ namespace GUI.Model
                 NotifyPropertyChanged("OpponentPosition");
             }
         }
-      
+
     }
 }
