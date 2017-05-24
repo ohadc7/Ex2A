@@ -46,7 +46,15 @@ namespace GUI.View
         /// </summary>
         public SinglePlayerWindow()
         {
-            spVM = new SinglePlayerViewModel();
+            try
+            {
+                spVM = new SinglePlayerViewModel();
+            }
+            catch (Exception)
+            {
+                NotifyCommunicationProblem();
+            }
+
             this.DataContext = spVM;
             InitializeComponent();
         }
@@ -58,10 +66,28 @@ namespace GUI.View
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            spVM.GenerateMaze();
+            try
+            {
+                spVM.GenerateMaze();
+            }
+            catch (Exception)
+            {
+                NotifyCommunicationProblem();
+            }
             SinglePlayerGameWindow spGW = new SinglePlayerGameWindow(spVM.model);
             spGW.Show();
             this.Close();
+        }
+
+        private void NotifyCommunicationProblem()
+        {
+            MessageBox.Show("We didn't succeed to connect to the server",
+                "Info", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            Dispatcher.Invoke(() =>
+            {
+                Application.Current.Shutdown();
+            });
+
         }
     }
 }

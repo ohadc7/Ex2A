@@ -146,17 +146,30 @@ namespace GUI
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void UpdateComboBox(Object sender, EventArgs e)
         {
-            //request from the server list of available games
-            SingleClientModel model = new SingleClientModel();
-            TcpClient client = model.Connect();
-            string solve = (model.Communicate(client, "list"));
-            var array = JArray.Parse(solve);
-            JArray jarray = array;
-            namesOfAvailableGames = jarray.ToObject<string[]>();
-            List<string> stringsList = namesOfAvailableGames.OfType<string>().ToList();
+            try
+            {
+                //request from the server list of available games
+                SingleClientModel model = new SingleClientModel();
+                TcpClient client = model.Connect();
+                string solve = (model.Communicate(client, "list"));
+                var array = JArray.Parse(solve);
+                JArray jarray = array;
+                namesOfAvailableGames = jarray.ToObject<string[]>();
+                List<string> stringsList = namesOfAvailableGames.OfType<string>().ToList();
 
-            //add names of available games to the combo-box
-            cboMazeNames.ItemsSource = stringsList;
+                //add names of available games to the combo-box
+                cboMazeNames.ItemsSource = stringsList;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("We didn't succeed to connect to the server",
+                    "Info", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                Dispatcher.Invoke(() =>
+                {
+                    Application.Current.Shutdown();
+                });
+            }
+
         }
     }
 }

@@ -256,6 +256,10 @@ namespace GUI.Controls
         /// </summary>
         public void Draw()
         {
+            //canvasBorder.Height = MazeCanvas.Height;
+            //canvasBorder.Width = MazeCanvas.Width;
+
+
             WidthOfBlock = MazeCanvas.Width / Cols;
             HeightOfBlock = MazeCanvas.Height / Rows;
             canvasBorder.Height = Rows * HeightOfBlock;
