@@ -1,4 +1,17 @@
-﻿using GUI.Model;
+﻿// ***********************************************************************
+// Assembly         : GUI
+// Author           : ohad
+// Created          : 05-15-2017
+//
+// Last Modified By : ohad
+// Last Modified On : 05-21-2017
+// ***********************************************************************
+// <copyright file="SinglePlayerWindow.xaml.cs" company="">
+//     Copyright ©  2017
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using GUI.Model;
 using GUI.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -20,9 +33,17 @@ namespace GUI.View
     /// <summary>
     /// Interaction logic for SinglePlayer.xaml
     /// </summary>
+    /// <seealso cref="System.Windows.Window" />
+    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class SinglePlayerWindow : Window
     {
+        /// <summary>
+        /// The sp vm
+        /// </summary>
         public SinglePlayerViewModel spVM;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SinglePlayerWindow"/> class.
+        /// </summary>
         public SinglePlayerWindow()
         {
             spVM = new SinglePlayerViewModel();
@@ -30,6 +51,11 @@ namespace GUI.View
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles the Click event of the Button control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             spVM.GenerateMaze();

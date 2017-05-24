@@ -1,4 +1,17 @@
-﻿using System.Windows;
+﻿// ***********************************************************************
+// Assembly         : GUI
+// Author           : ohad
+// Created          : 05-15-2017
+//
+// Last Modified By : ohad
+// Last Modified On : 05-24-2017
+// ***********************************************************************
+// <copyright file="MazeUserControl.xaml.cs" company="">
+//     Copyright ©  2017
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -21,19 +34,31 @@ namespace GUI.Controls
     /// <summary>
     /// Interaction logic for MazeUserControl.xaml
     /// </summary>
+    /// <seealso cref="System.Windows.Controls.UserControl" />
+    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class MazeUserControl : UserControl
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MazeUserControl"/> class.
+        /// </summary>
         public MazeUserControl()
         {
             InitializeComponent();
           
         }
 
-          private ImageBrush endDoorBrush = new ImageBrush(new BitmapImage(new Uri("End.jpg", UriKind.Relative)));
-      
+        /// <summary>
+        /// The end door brush
+        /// </summary>
+        private ImageBrush endDoorBrush = new ImageBrush(new BitmapImage(new Uri("End.jpg", UriKind.Relative)));
 
 
+
+        /// <summary>
+        /// Gets or sets the rows.
+        /// </summary>
+        /// <value>The rows.</value>
         public int Rows
         {
             get { return (int)GetValue(RowsProperty); }
@@ -41,9 +66,16 @@ namespace GUI.Controls
         }
 
         // Using a DependencyProperty as the backing store for Rows.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// The rows property
+        /// </summary>
         public static readonly DependencyProperty RowsProperty =
             DependencyProperty.Register("Rows", typeof(int), typeof(MazeUserControl), new PropertyMetadata(0));
 
+        /// <summary>
+        /// Gets or sets the cols.
+        /// </summary>
+        /// <value>The cols.</value>
         public int Cols
         {
             get { return (int)GetValue(ColsProperty); }
@@ -51,11 +83,18 @@ namespace GUI.Controls
         }
 
         // Using a DependencyProperty as the backing store for Cols.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// The cols property
+        /// </summary>
         public static readonly DependencyProperty ColsProperty =
             DependencyProperty.Register("Cols", typeof(int), typeof(MazeUserControl), new PropertyMetadata(0));
 
 
-       
+
+        /// <summary>
+        /// Gets or sets the name of the maze.
+        /// </summary>
+        /// <value>The name of the maze.</value>
         public string MazeName
         {
             get { return (string)GetValue(MazeNameProperty); }
@@ -63,12 +102,19 @@ namespace GUI.Controls
         }
 
         // Using a DependencyProperty as the backing store for MazeName.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// The maze name property
+        /// </summary>
         public static readonly DependencyProperty MazeNameProperty =
             DependencyProperty.Register("MazeName", typeof(string), typeof(MazeUserControl));
 
 
 
 
+        /// <summary>
+        /// Gets or sets the maze string.
+        /// </summary>
+        /// <value>The maze string.</value>
         public string MazeString
         {
             get { return (string)GetValue(MazeStringProperty); }
@@ -76,10 +122,17 @@ namespace GUI.Controls
         }
 
         // Using a DependencyProperty as the backing store for MazeString.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// The maze string property
+        /// </summary>
         public static readonly DependencyProperty MazeStringProperty =
             DependencyProperty.Register("MazeString", typeof(string), typeof(MazeUserControl));
 
-        
+
+        /// <summary>
+        /// Gets or sets the initialize position.
+        /// </summary>
+        /// <value>The initialize position.</value>
         public Position InitPosition
         {
             get { return (Position)GetValue(InitPositionProperty); }
@@ -87,12 +140,19 @@ namespace GUI.Controls
         }
 
         // Using a DependencyProperty as the backing store for InitPosition.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// The initialize position property
+        /// </summary>
         public static readonly DependencyProperty InitPositionProperty =
             DependencyProperty.Register("InitPosition", typeof(Position), typeof(MazeUserControl));
 
 
 
 
+        /// <summary>
+        /// Gets or sets the goal position.
+        /// </summary>
+        /// <value>The goal position.</value>
         public Position GoalPosition
         {
             get { return (Position)GetValue(GoalPositionProperty); }
@@ -100,12 +160,19 @@ namespace GUI.Controls
         }
 
         // Using a DependencyProperty as the backing store for GoalPosition.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// The goal position property
+        /// </summary>
         public static readonly DependencyProperty GoalPositionProperty =
             DependencyProperty.Register("GoalPosition", typeof(Position), typeof(MazeUserControl));
 
 
 
 
+        /// <summary>
+        /// Gets or sets the solve string.
+        /// </summary>
+        /// <value>The solve string.</value>
         public string SolveString
         {
             get { return (string)GetValue(SolveStringProperty); }
@@ -113,6 +180,9 @@ namespace GUI.Controls
         }
 
         // Using a DependencyProperty as the backing store for SolveString.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// The solve string property
+        /// </summary>
         public static readonly DependencyProperty SolveStringProperty =
             DependencyProperty.Register("SolveString", typeof(string), typeof(MazeUserControl));
 
@@ -120,6 +190,10 @@ namespace GUI.Controls
 
 
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [solve finish].
+        /// </summary>
+        /// <value><c>true</c> if [solve finish]; otherwise, <c>false</c>.</value>
         public bool SolveFinish
         {
             get { return (bool)GetValue(SolveFinishProperty); }
@@ -127,11 +201,18 @@ namespace GUI.Controls
         }
 
         // Using a DependencyProperty as the backing store for SolveFinish.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// The solve finish property
+        /// </summary>
         public static readonly DependencyProperty SolveFinishProperty =
             DependencyProperty.Register("SolveFinish", typeof(bool), typeof(MazeUserControl));
 
 
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [finish game].
+        /// </summary>
+        /// <value><c>true</c> if [finish game]; otherwise, <c>false</c>.</value>
         public bool FinishGame
         {
             get { return (bool)GetValue(FinishGameProperty); }
@@ -139,19 +220,40 @@ namespace GUI.Controls
         }
 
         // Using a DependencyProperty as the backing store for FinishGame.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// The finish game property
+        /// </summary>
         public static readonly DependencyProperty FinishGameProperty =
             DependencyProperty.Register("FinishGame", typeof(bool), typeof(MazeUserControl));
 
 
 
 
+        /// <summary>
+        /// The current position
+        /// </summary>
         public Position currentPosition;
+        /// <summary>
+        /// The width of block
+        /// </summary>
         private double WidthOfBlock;
+        /// <summary>
+        /// The height of block
+        /// </summary>
         private double HeightOfBlock;
 
+        /// <summary>
+        /// The start image
+        /// </summary>
         private Image StartImage;
+        /// <summary>
+        /// The walls set
+        /// </summary>
         private HashSet<Point> WallsSet = new HashSet<Point>();
 
+        /// <summary>
+        /// Draws this instance.
+        /// </summary>
         public void Draw()
         {
             WidthOfBlock = MazeCanvas.Width / Cols;
@@ -201,6 +303,11 @@ namespace GUI.Controls
             MazeCanvas.Children.Add(StartImage);
         }
 
+        /// <summary>
+        /// Handles the <see cref="E:KeyDownHandler" /> event.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="KeyEventArgs"/> instance containing the event data.</param>
         public void OnKeyDownHandler(object sender, KeyEventArgs e)
         {
             Direction d = new Direction();
@@ -219,10 +326,14 @@ namespace GUI.Controls
                     d = Direction.Down;
                     break;
             }
-            move(d);
+            Move(d);
         }
 
 
+        /// <summary>
+        /// Called when [opponent move handler].
+        /// </summary>
+        /// <param name="message">The message.</param>
         public void OnOpponentMoveHandler(string message)
         {
             var data = (JObject)JsonConvert.DeserializeObject(message);
@@ -246,13 +357,17 @@ namespace GUI.Controls
 
             Dispatcher.Invoke(() =>
             {
-                move(direction);
+                Move(direction);
             });
         }
 
 
 
-        public void animation(Position p)
+        /// <summary>
+        /// Animations the specified p.
+        /// </summary>
+        /// <param name="p">The p.</param>
+        public void Animation(Position p)
         {
             Thread.Sleep(300);
             Dispatcher.Invoke(() =>
@@ -268,15 +383,22 @@ namespace GUI.Controls
             
         }
 
+        /// <summary>
+        /// Restarts this instance.
+        /// </summary>
         public void Restart()
         {
             currentPosition = InitPosition;
             Canvas.SetLeft(StartImage, currentPosition.Col * WidthOfBlock);
             Canvas.SetTop(StartImage, currentPosition.Row * HeightOfBlock);
         }
-        
 
-        private void move(Direction direction)
+
+        /// <summary>
+        /// Moves the specified direction.
+        /// </summary>
+        /// <param name="direction">The direction.</param>
+        private void Move(Direction direction)
         {
 
             if (direction == Direction.Left)

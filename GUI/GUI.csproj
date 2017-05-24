@@ -35,9 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MazeGeneratorLib">
-      <HintPath>D:\D Documents\My Documents\עידו\לימודים\אוניברסיטת בר אילן\מדעי המחשב\תכנות מתקדם 2\תרגיל 1\מטלה 1-20170330\MazeGeneratorLib.dll</HintPath>
-    </Reference>
     <Reference Include="MazeLib">
       <HintPath>D:\D Documents\My Documents\עידו\לימודים\אוניברסיטת בר אילן\מדעי המחשב\תכנות מתקדם 2\תרגיל 1\מטלה 1-20170330\MazeLib.dll</HintPath>
     </Reference>

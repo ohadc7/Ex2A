@@ -1,4 +1,17 @@
-﻿using GUI.ViewModel;
+﻿// ***********************************************************************
+// Assembly         : GUI
+// Author           : ohad
+// Created          : 05-15-2017
+//
+// Last Modified By : ohad
+// Last Modified On : 05-24-2017
+// ***********************************************************************
+// <copyright file="MultiPlayerWindow.xaml.cs" company="">
+//     Copyright ©  2017
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using GUI.ViewModel;
 using GUI.View;
 using System;
 using System.Collections.Generic;
@@ -23,12 +36,29 @@ namespace GUI
     /// <summary>
     /// Interaction logic for MultiPlayerWindow.xaml
     /// </summary>
+    /// <seealso cref="System.Windows.Window" />
+    /// <seealso cref="System.Windows.Markup.IComponentConnector" />
     public partial class MultiPlayerWindow : Window
     {
+        /// <summary>
+        /// The mp vm
+        /// </summary>
         private MultiPlayerViewModel mpVM;
+        /// <summary>
+        /// The names of available games
+        /// </summary>
         private string[] namesOfAvailableGames;
+        /// <summary>
+        /// The stop
+        /// </summary>
         bool stop = false;
+        /// <summary>
+        /// The wa
+        /// </summary>
         private WaitingAlertWindow wa;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultiPlayerWindow"/> class.
+        /// </summary>
         public MultiPlayerWindow()
         {
             //create mpvm
@@ -44,6 +74,11 @@ namespace GUI
             cboMazeNames.DropDownOpened += UpdateComboBox;
         }
 
+        /// <summary>
+        /// Handles the Click event of the StartGameButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void StartGameButton_Click(object sender, RoutedEventArgs e)
         {
             wa.Show();
@@ -55,6 +90,9 @@ namespace GUI
            PassToGameWindow();
         }
 
+        /// <summary>
+        /// Passes to game window.
+        /// </summary>
         public void PassToGameWindow()
         {
             //wait to the server response
@@ -72,6 +110,11 @@ namespace GUI
             this.Close();
         }
 
+        /// <summary>
+        /// Handles the Click event of the JoinGameButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void JoinGameButton_Click(object sender, RoutedEventArgs e)
         {
             //send command "join <maze_name>" to the server and open multiplayerGame Window to join the game.
@@ -82,6 +125,9 @@ namespace GUI
         }
 
         //it will will be executed when CommunicationProblemEvent takes place
+        /// <summary>
+        /// Notifies the about communication problem.
+        /// </summary>
         private void NotifyAboutCommunicationProblem()
         {
             stop = true;
@@ -93,6 +139,11 @@ namespace GUI
             });
         }
 
+        /// <summary>
+        /// Updates the ComboBox.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void UpdateComboBox(Object sender, EventArgs e)
         {
             //request from the server list of available games

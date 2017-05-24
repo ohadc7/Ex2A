@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : GUI
+// Author           : ohad
+// Created          : 05-15-2017
+//
+// Last Modified By : ohad
+// Last Modified On : 05-24-2017
+// ***********************************************************************
+// <copyright file="SinglePlayerGameViewModel.cs" company="">
+//     Copyright ©  2017
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.ComponentModel;
 using System.Configuration;
 using System.IO;
@@ -12,13 +25,31 @@ using System.Text;
 
 namespace GUI.ViewModel
 {
+    /// <summary>
+    /// Class SinglePlayerGameViewModel.
+    /// </summary>
+    /// <seealso cref="GUI.ViewModel.ViewModel" />
     class SinglePlayerGameViewModel : ViewModel
     {
+        /// <summary>
+        /// The model
+        /// </summary>
         private SingleClientModel model;
+        /// <summary>
+        /// The client
+        /// </summary>
         private TcpClient client;
+        /// <summary>
+        /// Delegate NotifyViewPropertyChanged
+        /// </summary>
+        /// <param name="finish">if set to <c>true</c> [finish].</param>
         public delegate void NotifyViewPropertyChanged(bool finish);
         public event NotifyViewPropertyChanged FinishGameHappend;
         public event NotifyViewPropertyChanged SolveAnimationFinishedHappend;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SinglePlayerGameViewModel"/> class.
+        /// </summary>
+        /// <param name="model">The model.</param>
         public SinglePlayerGameViewModel(SingleClientModel model)
         {
 
@@ -30,6 +61,9 @@ namespace GUI.ViewModel
             };
         }
 
+        /// <summary>
+        /// Generates the solve string.
+        /// </summary>
         public void GenerateSolveString()
         {
             client = this.model.Connect();
@@ -39,6 +73,10 @@ namespace GUI.ViewModel
         }
 
 
+        /// <summary>
+        /// Gets or sets the name of the vm maze.
+        /// </summary>
+        /// <value>The name of the vm maze.</value>
         public String VM_MazeName
         {
             get { return model.MazeName; }
@@ -49,6 +87,10 @@ namespace GUI.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets or sets the vm current position.
+        /// </summary>
+        /// <value>The vm current position.</value>
         public Position VM_CurrentPosition
         {
             get { return model.CurrentPosition; }
@@ -59,6 +101,10 @@ namespace GUI.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets or sets the vm rows.
+        /// </summary>
+        /// <value>The vm rows.</value>
         public int VM_Rows
         {
             get { return model.Rows; }
@@ -67,7 +113,11 @@ namespace GUI.ViewModel
                 model.Rows = value;
             }
         }
-        
+
+        /// <summary>
+        /// Gets or sets the vm cols.
+        /// </summary>
+        /// <value>The vm cols.</value>
         public int VM_Cols
         {
             get { return model.Cols; }
@@ -76,6 +126,10 @@ namespace GUI.ViewModel
                 model.Cols = value;
             }
         }
+        /// <summary>
+        /// Gets or sets the vm maze string.
+        /// </summary>
+        /// <value>The vm maze string.</value>
         public string VM_MazeString
         {
             get { return model.MazeString; }
@@ -84,6 +138,10 @@ namespace GUI.ViewModel
                 model.MazeString = value;
             }
         }
+        /// <summary>
+        /// Gets or sets the vm initialize position.
+        /// </summary>
+        /// <value>The vm initialize position.</value>
         public Position VM_InitPosition
         {
             get { return model.InitPosition; }
@@ -92,6 +150,10 @@ namespace GUI.ViewModel
                 model.InitPosition = value;
             }
         }
+        /// <summary>
+        /// Gets or sets the vm goal position.
+        /// </summary>
+        /// <value>The vm goal position.</value>
         public Position VM_GoalPosition
         {
             get { return model.GoalPosition; }
@@ -100,6 +162,10 @@ namespace GUI.ViewModel
                 model.GoalPosition = value;
             }
         }
+        /// <summary>
+        /// Gets or sets the vm solve string.
+        /// </summary>
+        /// <value>The vm solve string.</value>
         public string VM_SolveString
         {
             get { return model.SolveString; }
@@ -109,6 +175,10 @@ namespace GUI.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [vm finish game].
+        /// </summary>
+        /// <value><c>true</c> if [vm finish game]; otherwise, <c>false</c>.</value>
         public bool VM_FinishGame
         {
             get { return model.FinishGame; }
@@ -119,6 +189,10 @@ namespace GUI.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [vm solve finish].
+        /// </summary>
+        /// <value><c>true</c> if [vm solve finish]; otherwise, <c>false</c>.</value>
         public bool VM_SolveFinish
         {
             get { return model.SolveFinish; }

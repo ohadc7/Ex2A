@@ -1,4 +1,17 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : GUI
+// Author           : ohad
+// Created          : 05-15-2017
+//
+// Last Modified By : ohad
+// Last Modified On : 05-24-2017
+// ***********************************************************************
+// <copyright file="MultiClientModel.cs" company="">
+//     Copyright ©  2017
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using System;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using MazeLib;
@@ -9,23 +22,48 @@ using System.Threading;
 
 namespace GUI.Model
 {
+    /// <summary>
+    /// Delegate ServerSentMessage
+    /// </summary>
+    /// <param name="message">The message.</param>
     public delegate void ServerSentMessage(string message);
+    /// <summary>
+    /// Delegate SomethingHappend
+    /// </summary>
     public delegate void SomethingHappend();
 
+    /// <summary>
+    /// Class MultiClientModel.
+    /// </summary>
+    /// <seealso cref="GUI.Model.AbstractClient" />
     public class MultiClientModel : AbstractClient
     {
+        /// <summary>
+        /// Gets or sets the message to send.
+        /// </summary>
+        /// <value>The message to send.</value>
         public string MessageToSend { private get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether [command is ready to be sent].
+        /// </summary>
+        /// <value><c>true</c> if [command is ready to be sent]; otherwise, <c>false</c>.</value>
         public bool commandIsReadyToBeSent { private get; set; }
 
         public event ServerSentMessage ReceivingMessageEvent;
         public event SomethingHappend GameBecameClosedEvent;
         public event SomethingHappend CommunicationProblemEvent;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultiClientModel"/> class.
+        /// </summary>
         public MultiClientModel()
         {
             commandIsReadyToBeSent = false;
         }
 
+        /// <summary>
+        /// Communicates this instance.
+        /// </summary>
         public void Communicate()
         {
             var command = MessageToSend;
@@ -94,7 +132,7 @@ namespace GUI.Model
                                         }
                                     }
                                 }
-                                catch (Exception e)
+                                catch (Exception)
                                 {
                                     CommunicationProblemEvent?.Invoke();
                                 }
@@ -125,14 +163,21 @@ namespace GUI.Model
                     //Disconnect
                     client.Close();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     CommunicationProblemEvent?.Invoke();
                 }
             }
         }
 
+        /// <summary>
+        /// The opponent position
+        /// </summary>
         private Position opponentPosition;
+        /// <summary>
+        /// Gets or sets the opponent position.
+        /// </summary>
+        /// <value>The opponent position.</value>
         public Position OpponentPosition
         {
             get { return opponentPosition; }

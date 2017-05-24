@@ -35,8 +35,8 @@ SelectedIndex="{Binding SearchAlgorithm, UpdateSourceTrigger=Explicit}" IsEditab
             <ComboBoxItem>BFS</ComboBoxItem>
             <ComboBoxItem>DFS</ComboBoxItem>
         </ComboBox>
-        <Button x:Name="OkButton" Grid.Column="0" Content="Ok" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Top" Width="75" Click="btnOK_Click"/>
-        <Button x:Name="CancelButton" Content="Cancel" Grid.Column="1"  HorizontalAlignment="Center"  Grid.Row="5" VerticalAlignment="Top"  Click="btnCancel_Click"/>
+        <Button x:Name="OkButton" Grid.Column="0" Content="Ok" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Top" Width="75" Click="BtnOK_Click"/>
+        <Button x:Name="CancelButton" Content="Cancel" Grid.Column="1"  HorizontalAlignment="Center"  Grid.Row="5" VerticalAlignment="Top"  Click="BtnCancel_Click"/>
 
         
 

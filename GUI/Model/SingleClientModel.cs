@@ -4,7 +4,7 @@
 // Created          : 04-06-2017
 //
 // Last Modified By : IDO1
-// Last Modified On : 04-21-2017
+// Last Modified On : 05-21-2017
 // ***********************************************************************
 // <copyright file="Communication.cs" company="">
 //     Copyright ©  2017
@@ -29,10 +29,14 @@ namespace GUI.Model
     /// <summary>
     /// Class Communication. managing communication with the server (
     /// </summary>
+    /// <seealso cref="GUI.Model.AbstractClient" />
     public class SingleClientModel : AbstractClient
     {
 
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SingleClientModel"/> class.
+        /// </summary>
         public SingleClientModel()
         {
 
@@ -44,6 +48,7 @@ namespace GUI.Model
         /// do it iteratively.
         /// (in 'Multi-Player-Mode' save the connection with the server. in 'Single-Player-Mode' disconnect.)
         /// </summary>
+        /// <returns>TcpClient.</returns>
         public TcpClient Connect()
         {
 
@@ -54,6 +59,11 @@ namespace GUI.Model
             client.Connect(ep);
             return client;
         }
+        /// <summary>
+        /// Gets the maze.
+        /// </summary>
+        /// <param name="client">The client.</param>
+        /// <param name="mazeInput">The maze input.</param>
         public void GetMaze(TcpClient client, string mazeInput)
         {
 
@@ -72,6 +82,11 @@ namespace GUI.Model
             client.Close();
         }
 
+        /// <summary>
+        /// Gets the solve string.
+        /// </summary>
+        /// <param name="client">The client.</param>
+        /// <param name="solveCommand">The solve command.</param>
         public void GetSolveString(TcpClient client, string solveCommand)
         {
             string solve = (this.Communicate(client, solveCommand));
@@ -79,6 +94,12 @@ namespace GUI.Model
             SolveString = data["Solution"].Value<String>();
             client.Close();
         }
+        /// <summary>
+        /// Communicates the specified client.
+        /// </summary>
+        /// <param name="client">The client.</param>
+        /// <param name="messege">The messege.</param>
+        /// <returns>System.String.</returns>
         public string Communicate(TcpClient client, string messege)
         {
 
