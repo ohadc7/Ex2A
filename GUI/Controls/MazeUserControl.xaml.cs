@@ -258,8 +258,8 @@ namespace GUI.Controls
         {
             WidthOfBlock = MazeCanvas.Width / Cols;
             HeightOfBlock = MazeCanvas.Height / Rows;
-            canvasBorder.Height = Rows * WidthOfBlock;
-            canvasBorder.Width = Cols * HeightOfBlock;
+            canvasBorder.Height = Rows * HeightOfBlock;
+            canvasBorder.Width = Cols * WidthOfBlock;
             canvasBorder.BorderBrush = Brushes.Black;
             canvasBorder.BorderThickness = new Thickness(3);
             StartImage = new Image
@@ -280,7 +280,7 @@ namespace GUI.Controls
                     {
                         Data = new RectangleGeometry(new Rect(j * WidthOfBlock, i * HeightOfBlock, WidthOfBlock, HeightOfBlock)),
                         Fill = Brushes.White,
-                        StrokeThickness = 2
+                        StrokeThickness = 2,
                     };
                     
                     if (MazeString[x].Equals('1'))
@@ -407,8 +407,8 @@ namespace GUI.Controls
                 if (!WallsSet.Contains(left) && (left.Y != -1))
                 {
                     currentPosition.Col -= 1;
-                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
-                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                    Canvas.SetLeft(StartImage, currentPosition.Col * WidthOfBlock);
+                    Canvas.SetTop(StartImage, currentPosition.Row * HeightOfBlock);
                 }
             }
             if (direction == Direction.Right)
@@ -417,8 +417,8 @@ namespace GUI.Controls
                 if (!WallsSet.Contains(right) && (right.Y < Cols))
                 {
                     currentPosition.Col += 1;
-                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
-                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                    Canvas.SetLeft(StartImage, currentPosition.Col * WidthOfBlock);
+                    Canvas.SetTop(StartImage, currentPosition.Row * HeightOfBlock);
                 }
             }
             if (direction == Direction.Up)
@@ -427,8 +427,8 @@ namespace GUI.Controls
                 if (!WallsSet.Contains(up) && (up.X != -1))
                 {
                     currentPosition.Row -= 1;
-                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
-                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                    Canvas.SetLeft(StartImage, currentPosition.Col * WidthOfBlock);
+                    Canvas.SetTop(StartImage, currentPosition.Row * HeightOfBlock);
                 }
             }
             if (direction == Direction.Down)
@@ -437,8 +437,8 @@ namespace GUI.Controls
                 if (!WallsSet.Contains(down) && (down.X < Rows))
                 {
                     currentPosition.Row += 1;
-                    Canvas.SetLeft(StartImage, currentPosition.Col * HeightOfBlock);
-                    Canvas.SetTop(StartImage, currentPosition.Row * WidthOfBlock);
+                    Canvas.SetLeft(StartImage, currentPosition.Col * WidthOfBlock);
+                    Canvas.SetTop(StartImage, currentPosition.Row * HeightOfBlock);
                 }
             }
             if (currentPosition.Equals(GoalPosition))
