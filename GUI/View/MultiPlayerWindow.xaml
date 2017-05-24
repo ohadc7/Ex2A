@@ -24,11 +24,8 @@
         </Grid.RowDefinitions>
 
         <TextBlock Padding="3" Margin="3">List of games: </TextBlock>
-        <ComboBox x:Name="cboMazeNames" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="100" Margin="3" IsEditable="False">
-
-        </ComboBox>
+        <ComboBox x:Name="cboMazeNames" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="100" Margin="3" IsEditable="False"> </ComboBox>
         <Button Content="Join Game" HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" Width="75" Margin="3" Click="JoinGameButton_Click"/>
-
 
         <Controls:MazeDefinitionsUserControl Grid.Row="2" Grid.ColumnSpan="2" RowsFromSettings="{Binding MazeRowsDefinition}" ColsFromSettings="{Binding MazeColsDefinition}"/>
         <Button x:Name="startGameButton" Content="Start Game" HorizontalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Top" Width="75" Margin="3" Click="StartGameButton_Click"/>

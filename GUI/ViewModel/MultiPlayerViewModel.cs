@@ -19,13 +19,11 @@ namespace GUI.ViewModel
 
     public class MultiPlayerViewModel : ViewModel
     {
-        //TcpClient client;
-        public bool IsReady;
-        //public event MyEventHandler IsReady;
+        public bool IsReady; //indicates that the game is ready to begin (in new MultiplayeGameWindow)
         public MazeUserControl MyMazeBoard { get; set; }
         public MazeUserControl OpponentMazeBoard { get; set; }
         public delegate void NotifyViewPropertyChanged(bool finish);
-        public event NotifyViewPropertyChanged FinishGameHappend;
+        public event NotifyViewPropertyChanged FinishGameHappened;
 
         private MultiClientModel model;
 
@@ -42,11 +40,11 @@ namespace GUI.ViewModel
 
         public MultiPlayerGameWindow MultiplayerGameWindow { get; set; }
 
-        //firstCommand - the start/join command
+        //firstCommand - the start/join command to send to the server
         public void ConnectAndCommunicate(string firstCommand)
         {
             model.ReceivingMessageEvent += UpdateViewThatTheServerSentMazeToUs;
-
+            //Task to send this command to server and manage continous communication with the server
             var t = new Task(() =>
             {
                 PassCommandToServer(firstCommand);
@@ -56,11 +54,11 @@ namespace GUI.ViewModel
             t.Start();
         }
 
+        //it will be executed only in the first time model.ReceivingMessageEvent (receiving message from server) 
+        //takes place (The message in this case is the maze that the server generated).
         private void UpdateViewThatTheServerSentMazeToUs(string serverResponedMaze)
         {
-            Console.WriteLine("debug: maze from the server - " + serverResponedMaze);
             model.ReceivingMessageEvent -= UpdateViewThatTheServerSentMazeToUs;
-            //model.ReceivingMessageEvent += UpdateViewThatTheServerSentMessageToUs;
 
             Maze maze = Maze.FromJSON(serverResponedMaze);
             var data = (JObject)JsonConvert.DeserializeObject(serverResponedMaze);
@@ -72,17 +70,13 @@ namespace GUI.ViewModel
             model.GoalPosition = maze.GoalPos;
             model.CurrentPosition = maze.InitialPos;
 
-            //IsReady?.Invoke();
             IsReady = true;
-
-            /*
-            model.ReceivingMessageEvent += this.MultiplayerGameWindow.OpponentMazeBoard.OnOpponentMoveHandler;
-            */
         }
 
-
+        //it will be executed when the user will press the keyboard
         public void OnMyMoveHandler(object sender, KeyEventArgs e)
         {
+            //update the server about the current player step
             if (e.Key == Key.Left)
             {
                 PassCommandToServer("play left");
@@ -100,58 +94,21 @@ namespace GUI.ViewModel
                 PassCommandToServer("play down");
             }
 
+            //if the current player arrived to the goal position in the maze, activate the appropriate event
             if (MyMazeBoard.currentPosition.Equals(MyMazeBoard.GoalPosition))
             {
                 MyMazeBoard.FinishGame = true;
-                FinishGameHappend.Invoke(true);
+                FinishGameHappened.Invoke(true);
             }
         }
 
-        public void OnOpponentMoveHandler(string message)
+        public void PassCommandToServer(string command)
         {
-            //I didn't succeed to implement. Ido.
-/*
-            if (OpponentMazeBoard.FinishGame)
-            {
-                this.OpponentFinishGame(true);
-            }
-*/
- /*
-            if (OpponentMazeBoard.currentPosition.Equals(OpponentMazeBoard.GoalPosition))
-            {
-                OpponentMazeBoard.FinishGame = true;
-                this.OpponentFinishGame(true);
-            }
-*/
-        }
-
-        public void OpponentFinishGame(bool finish)
-        {
-            if (finish)
-            {
-                MessageBoxResult result = MessageBox.Show("The other player finished the game. You losed", "Finish Game", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                //MainWindow win = (MainWindow)Application.Current.MainWindow;
-                //win.Show();
-                //this.Close();
-                //mpVM.PassCommandToServer("close");
-            }
+            this.model.MessageToSend = command;
+            this.model.commandIsReadyToBeSent = true;
         }
 
 
-        /*
-                private int mazeRowsDefinition;
-                public int MazeRowsDefinition
-                {
-                    get { return mazeRowsDefinition; }
-                    set { mazeRowsDefinition = value; }
-                }
-                private int mazeColsDefinition;
-                public int MazeColsDefinition
-                {
-                    get { return mazeColsDefinition; }
-                    set { mazeColsDefinition = value; }
-                }
-        */
         public int MazeRowsDefinition
         {
             get { return model.Rows; }
@@ -164,9 +121,7 @@ namespace GUI.ViewModel
             set { model.Cols = value; }
         }
 
-
         public string mazeNameDefinition;
-
         public string MazeNameDefinition
         {
             get { return mazeNameDefinition; }
@@ -181,99 +136,63 @@ namespace GUI.ViewModel
 
         }
 
-        public void PassCommandToServer(string command)
-        {
-            this.model.MessageToSend = command;
-            this.model.commandIsReadyToBeSent = true;
-        }
-
         public string MazeName
         {
             get { return model.MazeName; }
-            set
-            {
-                model.MazeName = value;
-            }
+            set { model.MazeName = value; }
         }
+
         public Position CurrentPosition
         {
             get { return model.CurrentPosition; }
-            set
-            {
-                model.CurrentPosition = value;
-            }
+            set { model.CurrentPosition = value; }
         }
-
 
         public Position OpponentPosition
         {
             get { return model.OpponentPosition; }
-            set
-            {
-                model.OpponentPosition = value;
-            }
+            set { model.OpponentPosition = value; }
         }
-
-
 
         public int Rows
         {
             get { return model.Rows; }
-            set
-            {
-                model.Rows = value;
-            }
+            set { model.Rows = value; }
         }
+
         public int Cols
         {
             get { return model.Cols; }
-            set
-            {
-                model.Cols = value;
-            }
+            set { model.Cols = value; }
         }
+
         public string MazeString
         {
             get { return model.MazeString; }
-            set
-            {
-                model.MazeString = value;
-            }
+            set { model.MazeString = value; }
         }
         public Position InitPosition
         {
             get { return model.InitPosition; }
             set
-            {
-                model.InitPosition = value;
-            }
+            { model.InitPosition = value; }
         }
         public Position GoalPosition
         {
             get { return model.GoalPosition; }
-            set
-            {
-                model.GoalPosition = value;
-            }
+            set { model.GoalPosition = value; }
         }
         public string SolveString
         {
             get { return model.SolveString; }
-            set
-            {
-                model.SolveString = value;
-            }
+            set { model.SolveString = value; }
         }
 
 
         public String VM_MazeName
         {
             get { return model.MazeName; }
-            set
-            {
-                model.MazeName = value;
-
-            }
+            set { model.MazeName = value; }
         }
 
         public bool VM_FinishGame
@@ -282,7 +201,7 @@ namespace GUI.ViewModel
             set
             {
                 model.FinishGame = value;
-                FinishGameHappend?.Invoke(true);
+                FinishGameHappened?.Invoke(true);
             }
         }
 

@@ -27,8 +27,9 @@ namespace GUI.View
         {
             this.mpVM = mpVM;
             this.DataContext = mpVM;
-            mpVM.FinishGameHappend += FinishGame;
-            mpVM.Model.NoCommunicationWithServerEvent += NotifyAboutCommunicationProblem;
+            //subscribe to events about the communication
+            mpVM.FinishGameHappened += FinishGame;
+            mpVM.Model.CommunicationProblemEvent += NotifyAboutCommunicationProblem;
             InitializeComponent();
         }
 
@@ -43,9 +44,7 @@ namespace GUI.View
         private void OpponentMazeUserControl_Loaded(object sender, RoutedEventArgs e)
         {
             OpponentMazeBoard.Draw();
-            //mpVM.Model.ReceivingMessageEvent += mpVM.UpdateViewThatTheServerSentMessageToUs;
             mpVM.Model.ReceivingMessageEvent += OpponentMazeBoard.OnOpponentMoveHandler;
-            mpVM.Model.ReceivingMessageEvent += mpVM.OnOpponentMoveHandler;
             mpVM.Model.GameBecameClosedEvent += CloseGame;
             mpVM.OpponentMazeBoard = OpponentMazeBoard;
         }

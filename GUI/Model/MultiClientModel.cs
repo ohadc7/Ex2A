@@ -25,7 +25,7 @@ namespace GUI.Model
 
         public event ServerSentMessage ReceivingMessageEvent;
         public event SomethingHappend GameBecameClosedEvent;
-        public event SomethingHappend NoCommunicationWithServerEvent;
+        public event SomethingHappend CommunicationProblemEvent;
 
         public MultiClientModel()
         {
@@ -107,7 +107,7 @@ namespace GUI.Model
                                 }
                                 catch (Exception e)
                                 {
-                                    NoCommunicationWithServerEvent?.Invoke();
+                                    CommunicationProblemEvent?.Invoke();
                                 }
                             });
                             readUpdates.Start();
@@ -143,7 +143,7 @@ namespace GUI.Model
                 }
                 catch (Exception e)
                 {
-                    NoCommunicationWithServerEvent?.Invoke();
+                    CommunicationProblemEvent?.Invoke();
                 }
             }
         }
