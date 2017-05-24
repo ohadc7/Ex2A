@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="{Binding VM_MazeName}">
     <Grid>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />

@@ -84,7 +84,8 @@ namespace GUI
         private void NotifyAboutCommunicationProblem()
         {
             stop = true;
-            MessageBox.Show("We didn't succeed to connect to the server", "Info", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            MessageBox.Show("We didn't succeed to connect to the server",
+                "Info", MessageBoxButton.OK, MessageBoxImage.Asterisk);
             Dispatcher.Invoke(() =>
             {
                 Application.Current.Shutdown();
