@@ -16,7 +16,7 @@ namespace GUI.Model
     //public delegate void ChangedEventHandler(object sender, EventArgs e);
 
     public delegate void ServerSentMessage(string message);
-    public delegate void GameBecameClosed();
+    public delegate void SomethingHappend();
 
     public class MultiClientModel : AbstractClient
     {
@@ -24,7 +24,8 @@ namespace GUI.Model
         public bool commandIsReadyToBeSent { private get; set; }
 
         public event ServerSentMessage ReceivingMessageEvent;
-        public event GameBecameClosed GameBecameClosedEvent;
+        public event SomethingHappend GameBecameClosedEvent;
+        public event SomethingHappend NoCommunicationWithServerEvent;
 
         public MultiClientModel()
         {
@@ -54,81 +55,96 @@ namespace GUI.Model
                     command = MessageToSend;
                 }
 
-                //connect to the server:
-                var ep = new IPEndPoint(
-                    IPAddress.Parse(GUI.Properties.Settings.Default.ServerIP), Convert.ToInt32(GUI.Properties.Settings.Default.ServerPort));
-                var client = new TcpClient();
-                client.Connect(ep);
-                //Console.WriteLine("debug massage: You are connected");
-
-                using (var stream = client.GetStream())
-                using (var reader = new BinaryReader(stream))
-                using (var writer = new BinaryWriter(stream))
+                try
                 {
-                    // Send the command to server:
-                    if (commandIsReadyToBeSent)
-                    {
-                        writer.Write(command);
-                        commandIsReadyToBeSent = false;
-                    }
 
-                    // Get answer from server and print it:
-                    var answerFromServer = reader.ReadString();
-                    if (!(answerFromServer == Messages.PassToMultiPlayerMassage))
-                    Console.WriteLine("{0}", answerFromServer);
-                    //Manage long communication with the server:
-                    else
+                    //connect to the server:
+                    var ep = new IPEndPoint(
+                        IPAddress.Parse(GUI.Properties.Settings.Default.ServerIP), Convert.ToInt32(GUI.Properties.Settings.Default.ServerPort));
+                    var client = new TcpClient();
+                    client.Connect(ep);
+                    //Console.WriteLine("debug massage: You are connected");
+
+                    using (var stream = client.GetStream())
+                    using (var reader = new BinaryReader(stream))
+                    using (var writer = new BinaryWriter(stream))
                     {
-                        //flag to stop the long communication
-                        var stop = false;
-                        var readUpdates = new Task(() =>
+                        // Send the command to server:
+                        if (commandIsReadyToBeSent)
                         {
+                            writer.Write(command);
+                            commandIsReadyToBeSent = false;
+                        }
+
+                        // Get answer from server and print it:
+                        var answerFromServer = reader.ReadString();
+                        if (!(answerFromServer == Messages.PassToMultiPlayerMassage))
+                            Console.WriteLine("{0}", answerFromServer);
+                        //Manage long communication with the server:
+                        else
+                        {
+                            //flag to stop the long communication
+                            var stop = false;
+                            var readUpdates = new Task(() =>
+                            {
+                                try
+                                {
+                                    while (!stop)
+                                    {
+                                        var updateFromServer = reader.ReadString();
+                                        if (updateFromServer == Messages.PassToSinglePlayerMassage)
+                                        {
+                                            GameBecameClosedEvent?.Invoke();
+                                            stop = true;
+                                        }
+                                        else
+                                        {
+                                            //Console.WriteLine(updateFromServer);
+                                            //this.Message = updateFromServer;
+                                            ReceivingMessageEvent?.Invoke(updateFromServer);
+                                        }
+                                    }
+                                }
+                                catch (Exception e)
+                                {
+                                    NoCommunicationWithServerEvent?.Invoke();
+                                }
+                            });
+                            readUpdates.Start();
+
                             while (!stop)
                             {
-                                var updateFromServer = reader.ReadString();
-                                if (updateFromServer == Messages.PassToSinglePlayerMassage)
+                                if (!commandIsReadyToBeSent)
                                 {
-                                    GameBecameClosedEvent?.Invoke();
-                                    stop = true;
+                                    while (!commandIsReadyToBeSent)
+                                    {
+                                        Thread.Sleep(20);
+                                    }
+                                    command = MessageToSend;
+                                    /*
+                                    //Console.Write("debug massage: You are in MultiPlayer mode. Please enter a command: ");
+                                    command = Console.ReadLine();
+                                    commandIsReadyToBeSent = true;
+                                    */
                                 }
-                                else
-                                {
-                                    //Console.WriteLine(updateFromServer);
-                                    //this.Message = updateFromServer;
-                                    ReceivingMessageEvent?.Invoke(updateFromServer);
-                                }
-                            }
-                        });
-                        readUpdates.Start();
 
-                        while (!stop)
-                        {
-                             if (!commandIsReadyToBeSent)
-                            {
-                                while (!commandIsReadyToBeSent)
-                                {
-                                    Thread.Sleep(20);
-                                }
-                                command = MessageToSend;
-                                /*
-                                //Console.Write("debug massage: You are in MultiPlayer mode. Please enter a command: ");
-                                command = Console.ReadLine();
-                                commandIsReadyToBeSent = true;
-                                */
+                                if (!stop)
+                                    if (commandIsReadyToBeSent)
+                                    {
+                                        writer.Write(command);
+                                        commandIsReadyToBeSent = false;
+                                    }
                             }
-
-                            if (!stop)
-                                if (commandIsReadyToBeSent)
-                                {
-                                    writer.Write(command);
-                                    commandIsReadyToBeSent = false;
-                                }
+                            stop = true;
                         }
-                        stop = true;
                     }
+                    //Disconnect
+                    client.Close();
                 }
-                //Disconnect
-                client.Close();
+                catch (Exception e)
+                {
+                    NoCommunicationWithServerEvent?.Invoke();
+                }
             }
         }
         private Position opponentPosition;

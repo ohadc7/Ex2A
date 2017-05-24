@@ -28,6 +28,7 @@ namespace GUI.View
             this.mpVM = mpVM;
             this.DataContext = mpVM;
             mpVM.FinishGameHappend += FinishGame;
+            mpVM.Model.NoCommunicationWithServerEvent += NotifyAboutCommunicationProblem;
             InitializeComponent();
         }
 
@@ -63,17 +64,6 @@ namespace GUI.View
 
         private void CloseGame()
         {
-            /*
-            MessageBoxResult result = MessageBox.Show("The game is closed", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
-            {
-                mpVM.PassCommandToServer("close");
-                MainWindow win = (MainWindow)Application.Current.MainWindow;
-                win.Show();
-                this.Close();
-            }
-            */
-
             MessageBox.Show("The game is closed", "Info", MessageBoxButton.OK, MessageBoxImage.Asterisk);
 
             Dispatcher.Invoke(() =>
@@ -82,11 +72,19 @@ namespace GUI.View
                 win.Show();
                 this.Close();
             });
-/*
-            MainWindow win = (MainWindow)Application.Current.MainWindow;
-            win.Show();
-            this.Close();
-*/
+        }
+
+        private void NotifyAboutCommunicationProblem()
+        {
+            MessageBox.Show("We didn't succeed to connect to the server", "Info", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            Dispatcher.Invoke(() =>
+            {
+                //MainWindow win = (MainWindow)Application.Current.MainWindow;
+                //win.Show();
+                //this.Close();
+                //win.Close();
+                Application.Current.Shutdown();
+            });
         }
 
         public void FinishGame(bool finish)

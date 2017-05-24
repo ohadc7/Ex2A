@@ -28,7 +28,7 @@ namespace GUI
         private MultiPlayerViewModel mpVM;
         //private TcpClient client;
         private string[] namesOfAvailableGames;
-        
+        bool stop = false;
 
         public MultiPlayerWindow()
         {
@@ -47,6 +47,7 @@ namespace GUI
             
             //create mpvm
             mpVM = new MultiPlayerViewModel();
+            mpVM.Model.NoCommunicationWithServerEvent += NotifyAboutCommunicationProblem;
             mpVM.Rows = Properties.Settings.Default.MazeRows;
             mpVM.Cols = Properties.Settings.Default.MazeCols;
             /*client =*/ //mpVM.ConnectAndCommunicate();
@@ -103,7 +104,9 @@ namespace GUI
         {
             while (!mpVM.IsReady)
             {
-                Thread.Sleep(100);
+                if (stop)
+                    return;
+                Thread.Sleep(200);
             }
 
             MultiPlayerGameWindow mpGW = new MultiPlayerGameWindow(mpVM);//MultiPlayerGameWindow(spVM.Model);
@@ -139,6 +142,18 @@ namespace GUI
             this.Close();
             */
         }
+
+        private void NotifyAboutCommunicationProblem()
+        {
+            stop = true;
+            MessageBox.Show("We didn't succeed to connect to the server", "Info", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            Dispatcher.Invoke(() =>
+            {
+                //MainWindow win = (MainWindow)Application.Current.MainWindow;
+                Application.Current.Shutdown();
+            });
+        }
+
 
 
 
