@@ -28,7 +28,7 @@ namespace GUI
         private MultiPlayerViewModel mpVM;
         private string[] namesOfAvailableGames;
         bool stop = false;
-
+        private WaitingAlertWindow wa;
         public MultiPlayerWindow()
         {
             //create mpvm
@@ -38,7 +38,7 @@ namespace GUI
             mpVM.Rows = Properties.Settings.Default.MazeRows;
             mpVM.Cols = Properties.Settings.Default.MazeCols;
             this.DataContext = mpVM;
-
+            wa = new WaitingAlertWindow();
             InitializeComponent();
             
             cboMazeNames.DropDownOpened += UpdateComboBox;
@@ -46,6 +46,7 @@ namespace GUI
 
         private void StartGameButton_Click(object sender, RoutedEventArgs e)
         {
+            wa.Show();
             //send command "start <maze_name> <rows> <cols>" to the server, wait to opponent and start a game in multiplayerGame Window.
             StringBuilder startString = new StringBuilder();
             startString.Append("start " + mpVM.MazeNameDefinition + " " + mpVM.MazeRowsDefinition + " " + mpVM.MazeColsDefinition);
@@ -63,7 +64,7 @@ namespace GUI
                     return;
                 Thread.Sleep(200);
             }
-
+            wa.Close();
             //open game window
             MultiPlayerGameWindow mpGW = new MultiPlayerGameWindow(mpVM);
             mpVM.MultiplayerGameWindow = mpGW;
