@@ -256,16 +256,8 @@ namespace GUI.Controls
         /// </summary>
         public void Draw()
         {
-            //canvasBorder.Height = MazeCanvas.Height;
-            //canvasBorder.Width = MazeCanvas.Width;
-
-
             WidthOfBlock = MazeCanvas.Width / Cols;
             HeightOfBlock = MazeCanvas.Height / Rows;
-            canvasBorder.Height = Rows * HeightOfBlock;
-            canvasBorder.Width = Cols * WidthOfBlock;
-            canvasBorder.BorderBrush = Brushes.Black;
-            canvasBorder.BorderThickness = new Thickness(3);
             StartImage = new Image
             {
                 Width = WidthOfBlock,
@@ -284,7 +276,8 @@ namespace GUI.Controls
                     {
                         Data = new RectangleGeometry(new Rect(j * WidthOfBlock, i * HeightOfBlock, WidthOfBlock, HeightOfBlock)),
                         Fill = Brushes.White,
-                        StrokeThickness = 2,
+                        Stroke = Brushes.BlueViolet,
+                        StrokeThickness = 1,
                     };
                     
                     if (MazeString[x].Equals('1'))
