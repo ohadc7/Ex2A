@@ -29,6 +29,7 @@ namespace GUI
         //private TcpClient client;
         private string[] namesOfAvailableGames;
         bool stop = false;
+        private WaitingAlertWindow wa;
 
         public MultiPlayerWindow()
         {
@@ -52,7 +53,7 @@ namespace GUI
             mpVM.Cols = Properties.Settings.Default.MazeCols;
             /*client =*/ //mpVM.ConnectAndCommunicate();
             this.DataContext = mpVM;
-
+            wa = new WaitingAlertWindow();
             InitializeComponent();
 
             
@@ -64,6 +65,7 @@ namespace GUI
 
         private void StartGameButton_Click(object sender, RoutedEventArgs e)
         {
+            wa.Show();
             StringBuilder startString = new StringBuilder();
             startString.Append("start " + mpVM.MazeNameDefinition + " " + mpVM.MazeRowsDefinition + " " + mpVM.MazeColsDefinition);
 
@@ -108,7 +110,7 @@ namespace GUI
                     return;
                 Thread.Sleep(200);
             }
-
+            wa.Close();
             MultiPlayerGameWindow mpGW = new MultiPlayerGameWindow(mpVM);//MultiPlayerGameWindow(spVM.Model);
             mpVM.MultiplayerGameWindow = mpGW;
 
