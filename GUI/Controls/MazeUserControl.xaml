@@ -5,5 +5,5 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
             >
-    <Canvas Name="MazeCanvas" KeyDown="OnKeyDownHandler" Width="500" Height="500"></Canvas>
+        <Canvas Name="MazeCanvas" KeyDown="OnKeyDownHandler" Width="500" Height="500"></Canvas>
 </UserControl>

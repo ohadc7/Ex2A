@@ -160,7 +160,7 @@ namespace GUI.Controls
             {
                 Width = WidthOfBlock,
                 Height = HeightOfBlock,
-                Source = new BitmapImage(new Uri("user.jpg", UriKind.Relative))
+                Source = new BitmapImage(new Uri("User.png", UriKind.Relative))
             };
             Canvas.SetLeft(StartImage, InitPosition.Col * WidthOfBlock);
             Canvas.SetTop(StartImage, InitPosition.Row * HeightOfBlock );
@@ -174,7 +174,7 @@ namespace GUI.Controls
                     {
                         Data = new RectangleGeometry(new Rect(j * WidthOfBlock, i * HeightOfBlock, WidthOfBlock, HeightOfBlock)),
                         Fill = Brushes.White,
-                        Stroke = Brushes.Black,
+                       // Stroke = Brushes.Black,
                         StrokeThickness = 2
                     };
                     
